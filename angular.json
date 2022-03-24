@@ -31,6 +31,8 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/@nebular/theme/styles/prebuilt/default.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -99,6 +101,8 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/nebular-icons/scss/nebular-icons.scss",
               "src/styles.scss"
             ],
             "scripts": []
