@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --prod --base-href https://cesarhfborges.github.io/portifolio && npx ngh --dir=dist --branch=portifolio"
+    "deploy": "ng build --prod --base-href https://cesarhfborges.github.io/portifolio/ && npx ngh --dir=dist --branch=portifolio"
   },
   "private": true,
   "dependencies": {
