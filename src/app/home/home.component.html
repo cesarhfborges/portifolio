@@ -7,33 +7,30 @@
         </nb-card-header>
         <nb-card-body>
           <div class="row">
-            <div class="col-3 d-flex justify-content-center align-self-start">
+            <div class="col-4 d-flex justify-content-center align-self-start">
 
               <nb-user
-                size="large"
-                picture="https://cdn-icons-png.flaticon.com/512/147/147144.png"
+                size="giant"
+                picture="../assets/imgs/perfil.jpg"
                 showName="false"
                 showTitle="false"
               ></nb-user>
 
             </div>
-            <div class="col-9">
-              <p class="p-0 m-0">César Henrique</p>
-              <p class="p-0 m-0">Programador Sênior</p>
-              <p class="p-0 m-0">cesarhfborges@gmail.com</p>
-              <p class="p-0 m-0">61 9999-8888</p>
-              <p class="p-0 m-0">Brasília, DF, Brasil</p>
-              <p class="p-0 m-0">github</p>
-              <p class="p-0 m-0">linkedIn</p>
+            <div class="col-8">
               <p class="p-0 m-0">
-                <a target="_blank" href="https://api.whatsapp.com/send?phone=61991508973&text=Ola,%20teste">Whatsapp</a>
+                <b>César Henrique</b>
+              </p>
+              <p class="p-0 m-0">Programador Sênior</p>
+              <p class="p-0 m-0 mb-2">
+                Brasília, DF, Brasil
+              </p>
+              <p class="p-0 m-0" *ngFor="let link of links">
+                <fa-icon [icon]="link.icon"></fa-icon>&nbsp;<a target="_blank" [href]="link.url">{{link.label}}</a>
               </p>
 
               <button class="mt-4" nbButton status="info" fullWidth>
                 <nb-icon icon="download-outline"></nb-icon>&nbsp;Download PDF
-              </button>
-              <button class="mt-4" nbButton status="info" fullWidth>
-                <nb-icon icon="download-outline"></nb-icon>&nbsp;Chamar no whatsapp
               </button>
             </div>
           </div>
@@ -61,7 +58,7 @@
           Educação
         </nb-card-header>
         <nb-card-body>
-          Cursando Sistema da Informação – Estácio Facitec 6o Semestre
+          <p class="p-0 m-0" *ngFor="let educacao of listaEducacao">{{educacao}}</p>
         </nb-card-body>
       </nb-card>
       <nb-card>
@@ -69,57 +66,58 @@
           Formação Técnica
         </nb-card-header>
         <nb-card-body>
-          Curso Web Designer linguagem HTML5, CSS3 e Javascript – CursoemVideo
-          – Design Responsivo
-          – Semântica
-          – Interfaces
-          ● Curso Algoritmos de programação – CursoemVideo
-          – Estruturas de repetição,
-          – Rotinas, Vetores e Matrizes
-          – Operadores lógicos, relacionais, condicionais
-          ● Curso Java Orientado a Objetos – Caelum FJ11
-          – Bibliotecas
-          – Orientação a Objetos
-          – Collections framework
-          ● Curso Java para web – Udemy
-          – Sockets
-          – DAO/MySqli/Json/XML
-          – Java 8 EE
-          Curso Android – Udemy
-          – Conceitos
-          – Interface Gráfica
-          – Manipulação de Dados
-          ● Curso PHP 7 – Udemy
-          – Sessions
-          – Orientação e Objetos
-          – Sistema de API em Json Rest/RestFull
-          ● Curso IONIC 4 – Udemy
-          – IONIC Creator
-          – API Integrations
-          – Estruturas
-          ● Curso KOTLIN Developer – Udemy
-          – Estruturas
-          – Creator
-          – Services
-          – Interceptor Creator
-          ● Curso Laravel 5.8 – Udemy
-          – Estruturas e Parâmetros
-          – MVC Eloquent / ORM / Tinker
-          – Cors, headers
-          – Eloquent
-          – Login API
-          ● SPA com Vue JS – Udemy
-          – Components
-          – Templates
-          – Sevices, Interceptors
-          – Axio e API
-          – Tratamento de Erros
-          ● Angular 8 – Udemy
-          – Components
-          – Node
-          – Interface
-          – WebPack
-          – Interceptor
+
+          <ul *ngFor="let formacao of listaFormacao">
+            <li class="fw-bold">{{formacao.curso}} - {{formacao.instituicao}}</li>
+            <ul *ngIf="formacao.itens.length > 0">
+              <li *ngFor="let item of formacao.itens">{{item}}</li>
+            </ul>
+          </ul>
+
+
+<!--          ● Curso Java Orientado a Objetos – Caelum FJ11-->
+<!--          – Bibliotecas-->
+<!--          – Orientação a Objetos-->
+<!--          – Collections framework-->
+<!--          ● Curso Java para web – Udemy-->
+<!--          – Sockets-->
+<!--          – DAO/MySqli/Json/XML-->
+<!--          – Java 8 EE-->
+<!--          Curso Android – Udemy-->
+<!--          – Conceitos-->
+<!--          – Interface Gráfica-->
+<!--          – Manipulação de Dados-->
+<!--          ● Curso PHP 7 – Udemy-->
+<!--          – Sessions-->
+<!--          – Orientação e Objetos-->
+<!--          – Sistema de API em Json Rest/RestFull-->
+<!--          ● Curso IONIC 4 – Udemy-->
+<!--          – IONIC Creator-->
+<!--          – API Integrations-->
+<!--          – Estruturas-->
+<!--          ● Curso KOTLIN Developer – Udemy-->
+<!--          – Estruturas-->
+<!--          – Creator-->
+<!--          – Services-->
+<!--          – Interceptor Creator-->
+<!--          ● Curso Laravel 5.8 – Udemy-->
+<!--          – Estruturas e Parâmetros-->
+<!--          – MVC Eloquent / ORM / Tinker-->
+<!--          – Cors, headers-->
+<!--          – Eloquent-->
+<!--          – Login API-->
+<!--          ● SPA com Vue JS – Udemy-->
+<!--          – Components-->
+<!--          – Templates-->
+<!--          – Sevices, Interceptors-->
+<!--          – Axio e API-->
+<!--          – Tratamento de Erros-->
+<!--          ● Angular 8 – Udemy-->
+<!--          – Components-->
+<!--          – Node-->
+<!--          – Interface-->
+<!--          – WebPack-->
+<!--          – Interceptor-->
         </nb-card-body>
       </nb-card>
       <nb-card>
@@ -127,9 +125,9 @@
           Certificações
         </nb-card-header>
         <nb-card-body>
-          ● Cerficação de Suporte – Alterdata
-          ● Cerficação Karoo – Alterdata
-          ● PHP (em andamento)
+          <ul>
+            <li *ngFor="let certificacao of listaCertificacoes">{{certificacao}}</li>
+          </ul>
         </nb-card-body>
       </nb-card>
 
@@ -138,9 +136,9 @@
           Outras capacitações:
         </nb-card-header>
         <nb-card-body>
-          – Curso Técnico de Montagem e Manutenção de Microcomputadores – SENAC DF
-          – Curso Técnico de Manutenção de notebooks e placas em geral – CAPACITA TI
-          – Dark Mira PHP – Dark Mira
+          <ul>
+            <li *ngFor="let capacitacoes of listaOutrasCapacitacoes">{{capacitacoes.nome}} - {{capacitacoes.empresa}}</li>
+          </ul>
         </nb-card-body>
       </nb-card>
       <nb-card>
@@ -159,38 +157,55 @@
           Experiência Profissional:
         </nb-card-header>
         <nb-card-body>
-          ● EMPRESA: Campanha Nacional das Escolas da Comunidade - CNEC
-          ● FUNÇÃO: Programador Pleno
-          ● PERÍODO: 01/2020 - 06/2020
-          - Linguagens: PHP 5, 7.4 (Laravel, Yii2), Typescript (Angular, Vue, Ionic), Javascript/Jquery, python.
-          - Api/WebService: Rest, SOAP, integração (TOTVS, Cielo, SPCOM, Google)
-          - Frameworks visuais: Bootstrap, Material, Primefaces.
-          - DB: SqlServer, MySql.
-          ● EMPRESA: Sebrae DF
-          ● FUNÇÃO: Programador Pleno
-          ● PERÍODO: 07/2019 - 12/2019
-          - Linguagens: PHP 5 (Laravel, PHPSlim), Javascript/Jquery
-          - Api/WebService: Rest, SOAP, integração (TOTVS, LDAP)
-          - DB: SqlServer, MySql.
-          ● EMPRESA: SdRedes
-          ● FUNÇÃO: Programador Pleno / Coordenador de Desenvolvimento
-          ● PERÍODO: 08/2018 - 10/2019
-          - Técnologias: PHP 7+ (Laravel, PHPSlim), Typescript (Angular, Vue, Ionic, React), Javascript/Jquery,
-          python, pascal.
-          - Api/WebService: Rest, SOAP, integração (TOTVS, SendGrid, Sophos firewall, LDAP, Google, Facebook)
-          - DB: SqlServer, MySql, mongo, firebase.
-          ● EMPRESA: Recopeças Industrial LTDA (PLATOFLEX)
-          ● FUNÇÃO: Programador
-          ● PERÍODO: 03/2014 - 07/2018
-          - Linguagens: PHP 5+ (PHPSlim, Yii2), Typescript (Angular), Javascript/Jquery.
-          - Api/WebService: Rest, SOAP, integração (Cigam ERP)
-          - Frameworks visuais: Bootstrap, Material.
-          - DB: SqlServer, MySql, Oracle XE, SQLite. (Ms Access em algumas situações)
 
-          ● EMPRESA: Recopeças Industrial LTDA (PLATOFLEX)
-          ● FUNÇÃO: Tecnico TI
-          ● PERÍODO: 09/2011 - 03/2014
-          - Outros: Suporte de TI, manutenção, redes e etc.
+          <ul *ngFor="let experiencia of listaDeExperiencias" style="list-style-type: none">
+            <li class="fw-bold">
+              <p class="p-0 m-0"><b>EMPRESA:</b>&nbsp;{{experiencia.empresa}}</p>
+              <p class="p-0 m-0"><b>FUNÇÃO:</b>&nbsp;{{experiencia.funcao}}</p>
+              <p class="p-0 m-0"><b>PERÍODO:</b>&nbsp;{{experiencia.periodo}}</p>
+            </li>
+            <ul *ngIf="experiencia.itens.length > 0">
+              <li *ngFor="let item of experiencia.itens">{{item}}</li>
+            </ul>
+          </ul>
+
+
+
+<!--          ● EMPRESA: Campanha Nacional das Escolas da Comunidade - CNEC-->
+<!--          ● FUNÇÃO: Programador Pleno-->
+<!--          ● PERÍODO: 01/2020 - 06/2020-->
+<!--          -->
+<!--          - Linguagens: PHP 5, 7.4 (Laravel, Yii2), Typescript (Angular, Vue, Ionic), Javascript/Jquery, python.-->
+<!--          - Api/WebService: Rest, SOAP, integração (TOTVS, Cielo, SPCOM, Google)-->
+<!--          - Frameworks visuais: Bootstrap, Material, Primefaces.-->
+<!--          - DB: SqlServer, MySql.-->
+<!--          -->
+<!--          -->
+<!--          ● EMPRESA: Sebrae DF-->
+<!--          ● FUNÇÃO: Programador Pleno-->
+<!--          ● PERÍODO: 07/2019 - 12/2019-->
+<!--          - Linguagens: PHP 5 (Laravel, PHPSlim), Javascript/Jquery-->
+<!--          - Api/WebService: Rest, SOAP, integração (TOTVS, LDAP)-->
+<!--          - DB: SqlServer, MySql.-->
+<!--          ● EMPRESA: SdRedes-->
+<!--          ● FUNÇÃO: Programador Pleno / Coordenador de Desenvolvimento-->
+<!--          ● PERÍODO: 08/2018 - 10/2019-->
+<!--          - Técnologias: PHP 7+ (Laravel, PHPSlim), Typescript (Angular, Vue, Ionic, React), Javascript/Jquery,-->
+<!--          python, pascal.-->
+<!--          - Api/WebService: Rest, SOAP, integração (TOTVS, SendGrid, Sophos firewall, LDAP, Google, Facebook)-->
+<!--          - DB: SqlServer, MySql, mongo, firebase.-->
+<!--          ● EMPRESA: Recopeças Industrial LTDA (PLATOFLEX)-->
+<!--          ● FUNÇÃO: Programador-->
+<!--          ● PERÍODO: 03/2014 - 07/2018-->
+<!--          - Linguagens: PHP 5+ (PHPSlim, Yii2), Typescript (Angular), Javascript/Jquery.-->
+<!--          - Api/WebService: Rest, SOAP, integração (Cigam ERP)-->
+<!--          - Frameworks visuais: Bootstrap, Material.-->
+<!--          - DB: SqlServer, MySql, Oracle XE, SQLite. (Ms Access em algumas situações)-->
+
+<!--          ● EMPRESA: Recopeças Industrial LTDA (PLATOFLEX)-->
+<!--          ● FUNÇÃO: Tecnico TI-->
+<!--          ● PERÍODO: 09/2011 - 03/2014-->
+<!--          - Outros: Suporte de TI, manutenção, redes e etc.-->
         </nb-card-body>
       </nb-card>
 
