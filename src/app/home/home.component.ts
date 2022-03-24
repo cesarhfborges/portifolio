@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  listaEducacao: Array<any> = ['Cursando Sistema da Informação – Estácio Facitec 6o Semestre'];
+  listaEducacao: Array<any> = ['Cursando Sistema da Informação – Estácio Facitec 6º Semestre'];
 
   listaFormacao: Array<{
     curso: string,
@@ -124,6 +124,83 @@ export class HomeComponent implements OnInit {
         'Collections framework',
       ]
     },
+    {
+      curso: 'Curso Java para web',
+      instituicao: 'Udemy',
+      itens: [
+        'Sockets',
+        'DAO/MySqli/Json/XML',
+        'Java 8 EE',
+      ]
+    },
+    {
+      curso: 'Curso Android',
+      instituicao: 'Udemy',
+      itens: [
+        'Conceitos',
+        'Interface Gráfica',
+        'Manipulação de Dados/Requests',
+      ]
+    },
+    {
+      curso: 'Curso PHP 7',
+      instituicao: 'Udemy',
+      itens: [
+        'Sessions',
+        'Orientação e Objetos',
+        'Sistema de API em Json Rest/RestFull',
+      ]
+    },
+    {
+      curso: 'Curso IONIC 4',
+      instituicao: 'Udemy',
+      itens: [
+        'IONIC Creator',
+        'API Integrations',
+        'Estruturas',
+      ]
+    },
+    {
+      curso: 'Curso KOTLIN Developer',
+      instituicao: 'Udemy',
+      itens: [
+        'Estruturas',
+        'Creator',
+        'Services',
+        'Interceptor Creator',
+      ]
+    },
+    {
+      curso: 'Curso Laravel 5.8',
+      instituicao: 'Udemy',
+      itens: [
+        'Estruturas e Parâmetros',
+        'MVC Eloquent / ORM / Tinker',
+        'Cors, headers',
+        'Eloquent',
+      ]
+    },
+    {
+      curso: 'SPA com Vue JS',
+      instituicao: 'Udemy',
+      itens: [
+        'Components',
+        'Templates',
+        'Sevices, Interceptors',
+        'Axio e API',
+      ]
+    },
+    {
+      curso: 'Angular 8',
+      instituicao: 'Udemy',
+      itens: [
+        'Components',
+        'Node',
+        'Interface',
+        'WebPack',
+        'Interceptor',
+      ]
+    }
   ];
 
   listaCertificacoes: Array<string> = [
@@ -149,6 +226,17 @@ export class HomeComponent implements OnInit {
 
   listaDeExperiencias: Array<any> = [
     {
+      empresa: 'CooperSystem',
+      funcao: 'Programador Sênios',
+      periodo: '01/2021 - Atual',
+      itens: [
+        'Linguagens: PHP 5, 7.4 (Laravel, Yii2), Typescript (Angular, Vue, Ionic), Javascript/Jquery, python.',
+        'Api/WebService: Rest, SOAP, integração (TOTVS, Cielo, SPCOM, Google)',
+        'Frameworks visuais: Bootstrap, Material, Primefaces.',
+        'DB: SqlServer, MySql.',
+      ]
+    },
+    {
       empresa: 'Campanha Nacional das Escolas da Comunidade - CNEC',
       funcao: 'Programador Pleno',
       periodo: '01/2020 - 06/2020',
@@ -157,6 +245,37 @@ export class HomeComponent implements OnInit {
         'Api/WebService: Rest, SOAP, integração (TOTVS, Cielo, SPCOM, Google)',
         'Frameworks visuais: Bootstrap, Material, Primefaces.',
         'DB: SqlServer, MySql.',
+      ]
+    },
+    {
+      empresa: 'Sebrae DF',
+      funcao: 'Programador Pleno',
+      periodo: '07/2019 - 12/2019',
+      itens: [
+        'Linguagens: PHP 5 (Laravel, PHPSlim), Javascript/Jquery',
+        'Api/WebService: Rest, SOAP, integração (TOTVS, LDAP)',
+        'DB: SqlServer, MySql.',
+      ]
+    },
+    {
+      empresa: 'SdRedes',
+      funcao: 'Programador Pleno / Coordenador de Desenvolvimento',
+      periodo: '08/2018 - 10/2019',
+      itens: [
+        'Técnologias: PHP 7+ (Laravel, PHPSlim), Typescript (Angular, Vue, Ionic, React), Javascript/Jquery, python, pascal.',
+        'Api/WebService: Rest, SOAP, integração (TOTVS, SendGrid, Sophos firewall, LDAP, Google, Facebook)',
+        'DB: SqlServer, MySql, mongo, firebase.',
+      ]
+    },
+    {
+      empresa: 'Recopeças Industrial LTDA (PLATOFLEX)',
+      funcao: 'Programador',
+      periodo: '03/2014 - 07/2018',
+      itens: [
+        'Linguagens: PHP 5+ (PHPSlim, Yii2), Typescript (Angular), Javascript/Jquery.',
+        'Api/WebService: Rest, SOAP, integração (Cigam ERP)',
+        'Frameworks visuais: Bootstrap, Material.',
+        'DB: SqlServer, MySql, Oracle XE, SQLite. (Ms Access em algumas situações)',
       ]
     }
   ];
