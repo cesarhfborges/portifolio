@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-4 sticky-top h-100 pt-3">
-      <nb-card>
+      <nb-card @enterLeftAnimation>
         <nb-card-header>
           Informações Pessoais:
         </nb-card-header>
@@ -37,7 +37,7 @@
         </nb-card-body>
       </nb-card>
 
-      <nb-card>
+      <nb-card @enterLeftAnimation>
         <nb-card-header>
           Sobre mim
         </nb-card-header>
@@ -53,7 +53,7 @@
       </nb-card>
     </div>
     <div class="col-8 pt-3">
-      <nb-card>
+      <nb-card @enterRightAnimation>
         <nb-card-header>
           Educação
         </nb-card-header>
@@ -61,7 +61,7 @@
           <p class="p-0 m-0" *ngFor="let educacao of listaEducacao">{{educacao}}</p>
         </nb-card-body>
       </nb-card>
-      <nb-card>
+      <nb-card @enterRightAnimation>
         <nb-card-header>
           Formação Técnica
         </nb-card-header>
@@ -120,7 +120,7 @@
 <!--          – Interceptor-->
         </nb-card-body>
       </nb-card>
-      <nb-card>
+      <nb-card @enterRightAnimation>
         <nb-card-header>
           Certificações
         </nb-card-header>
@@ -131,7 +131,7 @@
         </nb-card-body>
       </nb-card>
 
-      <nb-card>
+      <nb-card @enterRightAnimation>
         <nb-card-header>
           Outras capacitações:
         </nb-card-header>
@@ -141,7 +141,7 @@
           </ul>
         </nb-card-body>
       </nb-card>
-      <nb-card>
+      <nb-card @enterRightAnimation>
         <nb-card-header>
           Conhecimentos adicionais
         </nb-card-header>
@@ -152,7 +152,7 @@
         </nb-card-body>
       </nb-card>
 
-      <nb-card>
+      <nb-card @enterRightAnimation>
         <nb-card-header>
           Experiência Profissional:
         </nb-card-header>

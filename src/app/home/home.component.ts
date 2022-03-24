@@ -1,11 +1,44 @@
 import {Component, OnInit} from '@angular/core';
 import {faGithub, faLinkedin, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
 import {faAt, faBuilding, faEarthAmericas, faPhone} from '@fortawesome/free-solid-svg-icons';
+import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('enterLeftAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(-200px)' }),
+        animate(
+          '450ms ease-in',
+          style({ opacity: 1, transform: 'translateX(0)' })
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '450ms ease-in',
+          style({ opacity: 0, transform: 'translateX(-200px)' })
+        ),
+      ]),
+    ]),
+    trigger('enterRightAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(200px)' }),
+        animate(
+          '450ms ease-in',
+          style({ opacity: 1, transform: 'translateX(0)' })
+        ),
+      ]),
+      transition(':leave', [
+        animate(
+          '450ms ease-in',
+          style({ opacity: 0, transform: 'translateX(200px)' })
+        ),
+      ]),
+    ]),
+  ]
 })
 export class HomeComponent implements OnInit {
 
