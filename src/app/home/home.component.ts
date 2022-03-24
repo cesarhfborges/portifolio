@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  listaEducacao: Array<any> = ['Cursando Sistema da Informação – Estácio Facitec 6º Semestre'];
+  listaEducacao: Array<any> = ['Cursando Sistema da Informação – Estácio Facitec 8º Semestre'];
 
   listaFormacao: Array<{
     curso: string,
