@@ -227,13 +227,12 @@ export class HomeComponent implements OnInit {
   listaDeExperiencias: Array<any> = [
     {
       empresa: 'CooperSystem',
-      funcao: 'Programador Sênios',
+      funcao: 'Programador Sênior',
       periodo: '01/2021 - Atual',
       itens: [
-        'Linguagens: PHP 5, 7.4 (Laravel, Yii2), Typescript (Angular, Vue, Ionic), Javascript/Jquery, python.',
-        'Api/WebService: Rest, SOAP, integração (TOTVS, Cielo, SPCOM, Google)',
-        'Frameworks visuais: Bootstrap, Material, Primefaces.',
-        'DB: SqlServer, MySql.',
+        'Linguagens: Java 8 e 11 (SpringBoot, Quarkus),Typescript (Angular, React), Javascript.',
+        'Api/WebService: Rest, Operações bancarias',
+        'Frameworks visuais: Bootstrap, Material, PrimeNg, Nebular e Interna.',
       ]
     },
     {
