@@ -631,6 +631,9 @@ THE SOFTWARE.
 eva-icons
 MIT
 
+ngx-bar-rating
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
