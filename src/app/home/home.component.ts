@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {faGithub, faLinkedin, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
+import {faAngular, faGithub, faJava, faLinkedin, faPhp, faReact, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
 import {faAt, faBuilding, faEarthAmericas, faPhone} from '@fortawesome/free-solid-svg-icons';
 import {animate, style, transition, trigger} from '@angular/animations';
 
@@ -46,8 +46,15 @@ export class HomeComponent implements OnInit {
     world: faEarthAmericas,
     phone: faPhone,
     email: faAt,
-    trabalho: faBuilding
+    trabalho: faBuilding,
   };
+
+  frameworks: Array<any> = [
+    faAngular,
+  faPhp,
+  faJava,
+  faReact
+  ]
 
   links: Array<{ label: string, url: string, icon: any }> = [
     {

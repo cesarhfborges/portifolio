@@ -1,0 +1,12 @@
+.highlight {
+  display: inline;
+  background-repeat: no-repeat;
+  transition: all 500ms ease-in-out;
+  background-position: left;
+  background-size: 0 100%;
+  background-image: linear-gradient(yellow, yellow);
+
+  &:hover {
+    background-size: 100% 100%
+  }
+}

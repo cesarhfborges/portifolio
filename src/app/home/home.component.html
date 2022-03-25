@@ -42,13 +42,29 @@
           Sobre mim
         </nb-card-header>
         <nb-card-body>
-          <p>
-            Como profissional na área de TI adquiri experiência em desenvolvimento de software e sistemas em
-            linguagens Java, PHP, Python, JavaScript/Typescript, Dart, C++, VBScript, Pascal, Banco de dados – Oracle,
-            MySQL, MSSql, SQLite, Firebase, Node, desenvolvimento de aplicativos Android, experiencia em framework:
-            laravel 5.8+, yii2, php-slim, zend2, angular6+, vue, ionic, react, frameworks visuais bootstrap 4-3, materialize,
-            component pack primeng, primefaces, nebular.
-          </p>
+          <div class="row">
+            <div class="col-12">
+              <fa-icon *ngFor="let f of frameworks" [icon]="f"></fa-icon>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+      <nb-card @enterLeftAnimation>
+        <nb-card-header>
+          Sobre mim
+        </nb-card-header>
+        <nb-card-body>
+          <div class="row">
+            <div class="col-12">
+              <p class="highlight">
+                Como profissional na área de TI adquiri experiência em desenvolvimento de software e sistemas em
+                linguagens Java, PHP, Python, JavaScript/Typescript, Dart, C++, VBScript, Pascal, Banco de dados – Oracle,
+                MySQL, MSSql, SQLite, Firebase, Node, desenvolvimento de aplicativos Android, experiencia em framework:
+                laravel 5.8+, yii2, php-slim, zend2, angular6+, vue, ionic, react, frameworks visuais bootstrap 4-3, materialize,
+                component pack primeng, primefaces, nebular.
+              </p>
+            </div>
+          </div>
         </nb-card-body>
       </nb-card>
     </div>
@@ -100,9 +116,11 @@
           Conhecimentos adicionais
         </nb-card-header>
         <nb-card-body>
-          Outros conhecimentos e informações: GSuite, Social Login (facebook, google, git), telegram, Totvs RM api
-          soap e estrutura de banco, SpCom api, sendgrid api, zabbix api, pusher, sockets, upload, sistemas legados
-          em delphi e C#, DB2, java.
+          <p class="highlight">
+            Outros conhecimentos e informações: GSuite, Social Login (facebook, google, git), telegram, Totvs RM api
+            soap e estrutura de banco, SpCom api, sendgrid api, zabbix api, pusher, sockets, upload, sistemas legados
+            em delphi e C#, DB2, java.
+          </p>
         </nb-card-body>
       </nb-card>
 
@@ -121,6 +139,15 @@
               <li *ngFor="let item of experiencia.itens">{{item}}</li>
             </ul>
           </ul>
+        </nb-card-body>
+      </nb-card>
+
+      <nb-card @enterRightAnimation>
+        <nb-card-header>
+          Contato:
+        </nb-card-header>
+        <nb-card-body>
+
         </nb-card-body>
       </nb-card>
     </div>
