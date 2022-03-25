@@ -8,6 +8,7 @@ import {NbButtonModule, NbCardModule, NbIconModule, NbLayoutModule, NbThemeModul
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {HomeComponent} from './home/home.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {BarRatingModule} from 'ngx-bar-rating';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     NbUserModule,
     NbButtonModule,
     NbIconModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BarRatingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

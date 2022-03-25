@@ -39,12 +39,25 @@
 
       <nb-card @enterLeftAnimation>
         <nb-card-header>
-          Sobre mim
+          Auto Avaliação
         </nb-card-header>
         <nb-card-body>
-          <div class="row">
-            <div class="col-12">
-              <fa-icon *ngFor="let f of frameworks" [icon]="f"></fa-icon>
+          <div class="row py-1" *ngFor="let f of frameworks">
+            <div class="col text-center" style="max-width: 64px;">
+              <fa-icon [icon]="f.icon" size="lg" style="font-size: 1.4rem; color:{{f.iconColor}};"></fa-icon>
+            </div>
+            <div class="col d-flex align-content-center" style="padding-top: 3px;">
+              <bar-rating [rate]="f.rate" [max]="10" [readOnly]="true">
+                <ng-template ratingInactive>
+                  <fa-icon [icon]="icons.star" [fixedWidth]="true" size="lg" style="color: #d2d2d2"></fa-icon>
+                </ng-template>
+                <ng-template ratingActive>
+                  <fa-icon [icon]="icons.star" [fixedWidth]="true" size="lg" style="color: #FECE00"></fa-icon>
+                </ng-template>
+                <ng-template ratingFraction>
+                  <fa-icon [icon]="icons.fractionStar" [fixedWidth]="true" size="lg" style="color: #FECE00"></fa-icon>
+                </ng-template>
+              </bar-rating>
             </div>
           </div>
         </nb-card-body>
@@ -58,9 +71,11 @@
             <div class="col-12">
               <p class="highlight">
                 Como profissional na área de TI adquiri experiência em desenvolvimento de software e sistemas em
-                linguagens Java, PHP, Python, JavaScript/Typescript, Dart, C++, VBScript, Pascal, Banco de dados – Oracle,
+                linguagens Java, PHP, Python, JavaScript/Typescript, Dart, C++, VBScript, Pascal, Banco de dados –
+                Oracle,
                 MySQL, MSSql, SQLite, Firebase, Node, desenvolvimento de aplicativos Android, experiencia em framework:
-                laravel 5.8+, yii2, php-slim, zend2, angular6+, vue, ionic, react, frameworks visuais bootstrap 4-3, materialize,
+                laravel 5.8+, yii2, php-slim, zend2, angular6+, vue, ionic, react, frameworks visuais bootstrap 4-3,
+                materialize,
                 component pack primeng, primefaces, nebular.
               </p>
             </div>
@@ -107,7 +122,8 @@
         </nb-card-header>
         <nb-card-body>
           <ul>
-            <li *ngFor="let capacitacoes of listaOutrasCapacitacoes">{{capacitacoes.nome}} - {{capacitacoes.empresa}}</li>
+            <li *ngFor="let capacitacoes of listaOutrasCapacitacoes">{{capacitacoes.nome}}
+              - {{capacitacoes.empresa}}</li>
           </ul>
         </nb-card-body>
       </nb-card>

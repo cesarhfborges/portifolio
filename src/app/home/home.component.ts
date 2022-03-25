@@ -1,6 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {faAngular, faGithub, faJava, faLinkedin, faPhp, faReact, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
-import {faAt, faBuilding, faEarthAmericas, faPhone} from '@fortawesome/free-solid-svg-icons';
+import {
+  faAndroid,
+  faAngular,
+  faGithub,
+  faJava,
+  faLinkedin, faNode,
+  faPhp,
+  faPython,
+  faReact,
+  faWhatsapp
+} from '@fortawesome/free-brands-svg-icons';
+import {faAt, faBuilding, faEarthAmericas, faPhone, faStar, faStarHalf} from '@fortawesome/free-solid-svg-icons';
 import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -10,31 +20,31 @@ import {animate, style, transition, trigger} from '@angular/animations';
   animations: [
     trigger('enterLeftAnimation', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(-200px)' }),
+        style({opacity: 0, transform: 'translateX(-200px)'}),
         animate(
           '450ms ease-in',
-          style({ opacity: 1, transform: 'translateX(0)' })
+          style({opacity: 1, transform: 'translateX(0)'})
         ),
       ]),
       transition(':leave', [
         animate(
           '450ms ease-in',
-          style({ opacity: 0, transform: 'translateX(-200px)' })
+          style({opacity: 0, transform: 'translateX(-200px)'})
         ),
       ]),
     ]),
     trigger('enterRightAnimation', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(200px)' }),
+        style({opacity: 0, transform: 'translateX(200px)'}),
         animate(
           '450ms ease-in',
-          style({ opacity: 1, transform: 'translateX(0)' })
+          style({opacity: 1, transform: 'translateX(0)'})
         ),
       ]),
       transition(':leave', [
         animate(
           '450ms ease-in',
-          style({ opacity: 0, transform: 'translateX(200px)' })
+          style({opacity: 0, transform: 'translateX(200px)'})
         ),
       ]),
     ]),
@@ -47,14 +57,59 @@ export class HomeComponent implements OnInit {
     phone: faPhone,
     email: faAt,
     trabalho: faBuilding,
+    star: faStar,
+    fractionStar: faStarHalf
   };
 
-  frameworks: Array<any> = [
-    faAngular,
-  faPhp,
-  faJava,
-  faReact
-  ]
+  frameworks: Array<{
+    label: string;
+    icon: any;
+    iconColor: string;
+    rate: number;
+  }> = [
+    {
+      label: 'Angular',
+      icon: faAngular,
+      iconColor: '#AF2B2D',
+      rate: 9
+    },
+    {
+      label: 'PHP',
+      icon: faPhp,
+      iconColor: '#334280',
+      rate: 8
+    },
+    {
+      label: 'Node',
+      icon: faNode  ,
+      iconColor: '#3B7F3A',
+      rate: 8.5
+    },
+    {
+      label: 'Java',
+      icon: faJava,
+      iconColor: '#027396',
+      rate: 7.5
+    },
+    {
+      label: 'React',
+      icon: faReact,
+      iconColor: '#3D4DB8',
+      rate: 6
+    },
+    {
+      label: 'Android',
+      icon: faAndroid,
+      iconColor: '#8DB646',
+      rate: 5.5
+    },
+    {
+      label: 'Python',
+      icon: faPython,
+      iconColor: '#EEC855',
+      rate: 5
+    },
+  ];
 
   links: Array<{ label: string, url: string, icon: any }> = [
     {
