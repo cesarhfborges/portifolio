@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {
   faAndroid,
   faAngular,
@@ -15,6 +15,13 @@ import {faAt, faBuilding, faEarthAmericas, faPhone, faStar, faStarHalfStroke} fr
 import {animate, style, transition, trigger} from '@angular/animations';
 import {parse, parseISO} from 'date-fns';
 
+interface Framework {
+  label: string;
+  icon: any;
+  iconColor: string;
+  rate: number;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -24,13 +31,13 @@ import {parse, parseISO} from 'date-fns';
       transition(':enter', [
         style({opacity: 0, transform: 'translateX(-200px)'}),
         animate(
-          '450ms ease-in',
+          '550ms ease-in',
           style({opacity: 1, transform: 'translateX(0)'})
         ),
       ]),
       transition(':leave', [
         animate(
-          '450ms ease-in',
+          '550ms ease-in',
           style({opacity: 0, transform: 'translateX(-200px)'})
         ),
       ]),
@@ -39,13 +46,13 @@ import {parse, parseISO} from 'date-fns';
       transition(':enter', [
         style({opacity: 0, transform: 'translateX(200px)'}),
         animate(
-          '450ms ease-in',
+          '550ms ease-in',
           style({opacity: 1, transform: 'translateX(0)'})
         ),
       ]),
       transition(':leave', [
         animate(
-          '450ms ease-in',
+          '550ms ease-in',
           style({opacity: 0, transform: 'translateX(200px)'})
         ),
       ]),
@@ -63,12 +70,7 @@ export class HomeComponent implements OnInit {
     fractionStar: faStarHalfStroke
   };
 
-  frameworks: Array<{
-    label: string;
-    icon: any;
-    iconColor: string;
-    rate: number;
-  }> = [
+  frameworks: Array<Framework> = [
     {
       label: 'Angular',
       icon: faAngular,
@@ -356,10 +358,32 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor() {
+  constructor(
+    private renderer: Renderer2
+  ) {
   }
 
   ngOnInit(): void {
   }
 
+  getSortedFrameWorks(): Array<Framework> {
+    return this.frameworks.sort((a, b) => {
+      if (a.rate > b.rate) {
+        return -1;
+      }
+      if (b.rate > a.rate) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  downloadPDF() {
+    const link = this.renderer.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'assets/curriculo.pdf');
+    link.setAttribute('download', `curriculo.pdf`);
+    link.click();
+    link.remove();
+  }
 }

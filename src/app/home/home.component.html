@@ -5,14 +5,14 @@
         <nb-card-header>
           Informações Pessoais:
         </nb-card-header>
-        <nb-card-body>
-          <div class="row">
+        <nb-card-body class="p-2">
+          <div class="row p-0 m-0">
             <div class="col-12 col-lg-3 col-xl-4 d-flex justify-content-center align-self-start p-0 m-0">
 
               <img src="assets/imgs/perfil.jpg" class="profile" alt="Foto">
 
             </div>
-            <div class="col-12 col-lg-9 col-xl-8 mt-3 mt-lg-0">
+            <div class="col-12 col-lg-9 col-xl-8 mt-3 mt-lg-0 p-1">
               <p class="p-0 m-0">
                 <b>César Henrique</b>
               </p>
@@ -24,7 +24,7 @@
                 <fa-icon [icon]="link.icon"></fa-icon>&nbsp;<a target="_blank" [href]="link.url">{{link.label}}</a>
               </p>
 
-              <button class="mt-4" nbButton status="info" fullWidth>
+              <button class="mt-4" (click)="downloadPDF()" nbButton status="info" fullWidth>
                 <nb-icon icon="download-outline"></nb-icon>&nbsp;Currículo
               </button>
             </div>
@@ -36,13 +36,13 @@
         <nb-card-header>
           Auto Avaliação:
         </nb-card-header>
-        <nb-card-body>
-          <div class="row py-1" *ngFor="let f of frameworks">
+        <nb-card-body class="p-2">
+          <div class="row m-0 p-0 py-1" *ngFor="let f of getSortedFrameWorks()">
             <div class="col text-center" style="max-width: 64px;">
               <fa-icon [icon]="f.icon" size="lg" style="font-size: 1.3rem; color:{{f.iconColor}};"></fa-icon>
             </div>
             <div class="col d-flex align-content-center" style="padding-top: 3px;">
-              <bar-rating [rate]="f.rate" [max]="10" [readOnly]="true">
+              <bar-rating [rate]="f.rate / 2" [max]="5" [readOnly]="true">
                 <ng-template ratingInactive>
                   <fa-icon [icon]="icons.star" [fixedWidth]="true" size="lg" style="color: #d2d2d2"></fa-icon>
                 </ng-template>
