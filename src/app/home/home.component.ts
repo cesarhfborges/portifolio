@@ -13,6 +13,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import {faAt, faBuilding, faEarthAmericas, faPhone, faStar, faStarHalfStroke} from '@fortawesome/free-solid-svg-icons';
 import {animate, style, transition, trigger} from '@angular/animations';
+import {parse, parseISO} from 'date-fns';
 
 @Component({
   selector: 'app-home',
@@ -135,7 +136,20 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  listaEducacao: Array<any> = ['Cursando Sistema da Informação – Estácio Facitec 8º Semestre'];
+  listaEducacao: Array<{ instituicao: string; curso: string; status: 'cursando' | 'concluido'; conclusao: Date; }> = [
+    {
+      instituicao: 'CEPED',
+      curso: 'Ensino Médio',
+      status: 'concluido',
+      conclusao: parse('05/10/2017', 'dd/MM/yyyy', new Date())
+    },
+    {
+      instituicao: 'Estácio de sá',
+      curso: 'Sistemas de Informação (8º semestre)',
+      status: 'cursando',
+      conclusao: parse('01/01/2022', 'dd/MM/yyyy', new Date())
+    }
+  ];
 
   listaFormacao: Array<{
     curso: string,

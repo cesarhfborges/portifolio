@@ -84,7 +84,14 @@
           Educação
         </nb-card-header>
         <nb-card-body>
-          <p class="p-0 m-0" *ngFor="let educacao of listaEducacao">{{educacao}}</p>
+          <ul class="px-3" *ngFor="let educacao of listaEducacao">
+            <li><b>Instituição:&nbsp;</b>{{educacao.instituicao}}</li>
+            <ul class="px-3">
+              <li><b>Curso:&nbsp;</b>{{educacao.curso}}</li>
+              <li><b>Status:&nbsp;</b>{{educacao.status | titlecase}}</li>
+              <li><b>Conclusão:&nbsp;</b>{{educacao.conclusao | date : 'MM/yyyy'}}</li>
+            </ul>
+          </ul>
         </nb-card-body>
       </nb-card>
       <nb-card @enterRightAnimation>

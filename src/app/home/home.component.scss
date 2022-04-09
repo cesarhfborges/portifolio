@@ -19,25 +19,26 @@
 }
 
 .links {
+  color: var(--bs-primary);
   a {
     &:link {
       text-decoration: none;
-      color: black;
+      color: var(--bs-primary);
     }
 
     &:visited {
       text-decoration: none;
-      color: black;
+      color: var(--bs-primary);
     }
 
     &:hover {
       text-decoration: underline;
-      color: black;
+      color: var(--bs-primary);
     }
 
     &:active {
       text-decoration: underline;
-      color: black;
+      color: var(--bs-primary);
     }
   }
 }
