@@ -1,9 +1,5 @@
 <nb-layout>
 
-<!--  <nb-layout-header fixed>-->
-<!--  &lt;!&ndash; Insert header here &ndash;&gt;-->
-<!--  </nb-layout-header>-->
-
   <nb-layout-column class="p-0 area">
 
     <ul class="circles">
@@ -23,8 +19,14 @@
 
   </nb-layout-column>
 
-<!--  <nb-layout-footer fixed>-->
-<!--  &lt;!&ndash; Insert footer here &ndash;&gt;-->
-<!--  </nb-layout-footer>-->
+  <nb-layout-footer *ngIf="!production" fixed>
+    <span class="mx-1">Size:</span>
+    <span class="d-flex d-sm-none d-md-none d-lg-none d-xl-none d-xxl-none">MOB</span>
+    <span class="d-none d-sm-flex d-md-none d-lg-none d-xl-none d-xxl-none">SM</span>
+    <span class="d-none d-sm-none d-md-flex d-lg-none d-xl-none d-xxl-none">MD</span>
+    <span class="d-none d-sm-none d-md-none d-lg-flex d-xl-none d-xxl-none">LG</span>
+    <span class="d-none d-sm-none d-md-none d-lg-none d-xl-flex d-xxl-none">XL</span>
+    <span class="d-none d-sm-none d-md-none d-lg-none d-xl-none d-xxl-flex">XXL</span>
+  </nb-layout-footer>
 
 </nb-layout>

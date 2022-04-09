@@ -4,13 +4,14 @@ import {
   faAngular,
   faGithub,
   faJava,
-  faLinkedin, faNode,
+  faLinkedin,
+  faNode,
   faPhp,
   faPython,
   faReact,
   faWhatsapp
 } from '@fortawesome/free-brands-svg-icons';
-import {faAt, faBuilding, faEarthAmericas, faPhone, faStar, faStarHalf} from '@fortawesome/free-solid-svg-icons';
+import {faAt, faBuilding, faEarthAmericas, faPhone, faStar, faStarHalfStroke} from '@fortawesome/free-solid-svg-icons';
 import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -58,7 +59,7 @@ export class HomeComponent implements OnInit {
     email: faAt,
     trabalho: faBuilding,
     star: faStar,
-    fractionStar: faStarHalf
+    fractionStar: faStarHalfStroke
   };
 
   frameworks: Array<{
@@ -81,7 +82,7 @@ export class HomeComponent implements OnInit {
     },
     {
       label: 'Node',
-      icon: faNode  ,
+      icon: faNode,
       iconColor: '#3B7F3A',
       rate: 8.5
     },

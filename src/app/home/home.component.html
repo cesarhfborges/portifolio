@@ -12,7 +12,7 @@
               <img src="assets/imgs/perfil.jpg" class="profile" alt="Foto">
 
             </div>
-            <div class="col-12 col-lg-9 col-xl-8">
+            <div class="col-12 col-lg-9 col-xl-8 mt-3 mt-lg-0">
               <p class="p-0 m-0">
                 <b>César Henrique</b>
               </p>
@@ -34,12 +34,12 @@
 
       <nb-card @enterLeftAnimation>
         <nb-card-header>
-          Auto Avaliação
+          Auto Avaliação:
         </nb-card-header>
         <nb-card-body>
           <div class="row py-1" *ngFor="let f of frameworks">
             <div class="col text-center" style="max-width: 64px;">
-              <fa-icon [icon]="f.icon" size="lg" style="font-size: 1.4rem; color:{{f.iconColor}};"></fa-icon>
+              <fa-icon [icon]="f.icon" size="lg" style="font-size: 1.3rem; color:{{f.iconColor}};"></fa-icon>
             </div>
             <div class="col d-flex align-content-center" style="padding-top: 3px;">
               <bar-rating [rate]="f.rate" [max]="10" [readOnly]="true">
@@ -92,9 +92,9 @@
           Formação Técnica
         </nb-card-header>
         <nb-card-body>
-          <ul *ngFor="let formacao of listaFormacao">
+          <ul class="px-3" *ngFor="let formacao of listaFormacao">
             <li class="fw-bold">{{formacao.curso}} - {{formacao.instituicao}}</li>
-            <ul *ngIf="formacao.itens.length > 0">
+            <ul class="px-3" *ngIf="formacao.itens.length > 0">
               <li *ngFor="let item of formacao.itens">{{item}}</li>
             </ul>
           </ul>
@@ -105,7 +105,7 @@
           Certificações
         </nb-card-header>
         <nb-card-body>
-          <ul>
+          <ul class="px-3">
             <li *ngFor="let certificacao of listaCertificacoes">{{certificacao}}</li>
           </ul>
         </nb-card-body>
@@ -116,7 +116,7 @@
           Outras capacitações:
         </nb-card-header>
         <nb-card-body>
-          <ul>
+          <ul class="px-3">
             <li *ngFor="let capacitacoes of listaOutrasCapacitacoes">{{capacitacoes.nome}}
               - {{capacitacoes.empresa}}</li>
           </ul>
@@ -140,13 +140,13 @@
           Experiência Profissional:
         </nb-card-header>
         <nb-card-body>
-          <ul *ngFor="let experiencia of listaDeExperiencias" style="list-style-type: none">
+          <ul class="px-3" *ngFor="let experiencia of listaDeExperiencias" style="list-style-type: disc;">
             <li class="fw-bold">
               <p class="p-0 m-0"><b>EMPRESA:</b>&nbsp;{{experiencia.empresa}}</p>
               <p class="p-0 m-0"><b>FUNÇÃO:</b>&nbsp;{{experiencia.funcao}}</p>
               <p class="p-0 m-0"><b>PERÍODO:</b>&nbsp;{{experiencia.periodo}}</p>
             </li>
-            <ul *ngIf="experiencia.itens.length > 0">
+            <ul class="px-4" *ngIf="experiencia.itens.length > 0">
               <li *ngFor="let item of experiencia.itens">{{item}}</li>
             </ul>
           </ul>
