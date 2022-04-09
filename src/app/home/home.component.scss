@@ -10,3 +10,24 @@
     background-size: 100% 100%
   }
 }
+
+.links {
+  a {
+    &:link {
+      text-decoration: none;
+      color: black;
+    }
+    &:visited {
+      text-decoration: none;
+      color: black;
+    }
+    &:hover {
+      text-decoration: underline;
+      color: black;
+    }
+    &:active {
+      text-decoration: underline;
+      color: black;
+    }
+  }
+}

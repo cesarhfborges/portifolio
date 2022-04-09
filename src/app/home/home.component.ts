@@ -118,17 +118,17 @@ export class HomeComponent implements OnInit {
       icon: faAt,
     },
     {
-      label: 'GitHub',
+      label: 'cesarhfborges',
       url: 'https://github.com/cesarhfborges',
       icon: faGithub,
     },
     {
       label: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/c%C3%A9sar-henrique-ferreira-borges-04274994/',
+      url: 'https://www.linkedin.com/in/cesar-henrique-ferreira-borges/',
       icon: faLinkedin,
     },
     {
-      label: 'Whatsapp',
+      label: '(61) 99150-8973',
       url: 'https://api.whatsapp.com/send?phone=61991508973&text=Ola,%20teste',
       icon: faWhatsapp,
     }

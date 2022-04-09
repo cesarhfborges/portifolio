@@ -20,7 +20,7 @@
               <p class="p-0 m-0 mb-2">
                 Brasília, DF, Brasil
               </p>
-              <p class="p-0 m-0" *ngFor="let link of links">
+              <p class="links p-0 m-0" *ngFor="let link of links">
                 <fa-icon [icon]="link.icon"></fa-icon>&nbsp;<a target="_blank" [href]="link.url">{{link.label}}</a>
               </p>
 
@@ -150,15 +150,6 @@
               <li *ngFor="let item of experiencia.itens">{{item}}</li>
             </ul>
           </ul>
-        </nb-card-body>
-      </nb-card>
-
-      <nb-card @enterRightAnimation>
-        <nb-card-header>
-          Contato:
-        </nb-card-header>
-        <nb-card-body>
-
         </nb-card-body>
       </nb-card>
     </div>
