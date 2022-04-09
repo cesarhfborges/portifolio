@@ -11,20 +11,30 @@
   }
 }
 
+.profile {
+  width: 100%;
+  max-width: 180px;
+  display: block;
+  border-radius: 100%;
+}
+
 .links {
   a {
     &:link {
       text-decoration: none;
       color: black;
     }
+
     &:visited {
       text-decoration: none;
       color: black;
     }
+
     &:hover {
       text-decoration: underline;
       color: black;
     }
+
     &:active {
       text-decoration: underline;
       color: black;
