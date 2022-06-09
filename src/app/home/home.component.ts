@@ -315,9 +315,20 @@ export class HomeComponent implements OnInit {
       ]
     },
     {
+      empresa: 'Brasal',
+      funcao: 'Programador Pleno',
+      periodo: '08/2020 - 12/2020',
+      itens: [
+        'Linguagens: PHP 5 a 7.4 (Laravel, Lumen), Typescript (Angular, Vue, Ionic, React native), Javascript/Jquery, Node',
+        'Api/WebService: Rest/RestFull, SOAP, Json',
+        'Frameworks visuais: Bootstrap, Material, PrimeNG, Nebular, Argon, Paper.',
+        'DB: SqlServer, MySql, Oracle.',
+      ]
+    },
+    {
       empresa: 'Campanha Nacional das Escolas da Comunidade - CNEC',
       funcao: 'Programador Pleno',
-      periodo: '01/2020 - 06/2020',
+      periodo: '01/2019 - 08/2020',
       itens: [
         'Linguagens: PHP 5, 7.4 (Laravel, Yii2), Typescript (Angular, Vue, Ionic), Javascript/Jquery, python.',
         'Api/WebService: Rest, SOAP, integração (TOTVS, Cielo, SPCOM, Google)',
@@ -328,7 +339,7 @@ export class HomeComponent implements OnInit {
     {
       empresa: 'Sebrae DF',
       funcao: 'Programador Pleno',
-      periodo: '07/2019 - 12/2019',
+      periodo: '10/2019 - 12/2019',
       itens: [
         'Linguagens: PHP 5 (Laravel, PHPSlim), Javascript/Jquery',
         'Api/WebService: Rest, SOAP, integração (TOTVS, LDAP)',
@@ -348,7 +359,7 @@ export class HomeComponent implements OnInit {
     {
       empresa: 'Recopeças Industrial LTDA (PLATOFLEX)',
       funcao: 'Programador',
-      periodo: '03/2014 - 07/2018',
+      periodo: '03/2011 - 07/2018',
       itens: [
         'Linguagens: PHP 5+ (PHPSlim, Yii2), Typescript (Angular), Javascript/Jquery.',
         'Api/WebService: Rest, SOAP, integração (Cigam ERP)',
