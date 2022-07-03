@@ -8,19 +8,15 @@
         <nb-card-body class="p-2">
           <div class="row p-0 m-0">
             <div class="col-12 col-lg-3 col-xl-4 d-flex justify-content-center align-self-start p-0 m-0">
-
-              <img src="assets/imgs/perfil.jpg" class="profile" alt="Foto">
-
+              <img [src]="curriculo.foto" class="profile" [alt]="curriculo.nome">
             </div>
             <div class="col-12 col-lg-9 col-xl-8 mt-3 mt-lg-0 p-1">
               <p class="p-0 m-0">
-                <b>César Henrique</b>
+                <b>{{curriculo.nome}}</b>
               </p>
-              <p class="p-0 m-0">Programador Sênior</p>
-              <p class="p-0 m-0 mb-2">
-                Brasília, DF, Brasil
-              </p>
-              <p class="links p-0 m-0" *ngFor="let link of links">
+              <p class="p-0 m-0">{{curriculo.titulo}}</p>
+              <p class="p-0 m-0 mb-2">{{curriculo.residencia}}</p>
+              <p class="links p-0 m-0" *ngFor="let link of curriculo.links">
                 <fa-icon [icon]="link.icon"></fa-icon>&nbsp;<a target="_blank" [href]="link.url">{{link.label}}</a>
               </p>
 
@@ -37,9 +33,9 @@
           Auto Avaliação:
         </nb-card-header>
         <nb-card-body class="p-2">
-          <div class="row m-0 p-0 py-1" *ngFor="let f of getSortedFrameWorks()">
+          <div class="row m-0 p-0 py-1" *ngFor="let f of curriculo.frameworks">
             <div class="col text-center" style="max-width: 64px;">
-              <fa-icon [icon]="f.icon" size="lg" style="font-size: 1.3rem; color:{{f.iconColor}};"></fa-icon>
+              <fa-icon [icon]="f.icon" size="lg" [style.color]="f.iconColor" style="font-size: 1.3rem;"></fa-icon>
             </div>
             <div class="col d-flex align-content-center" style="padding-top: 3px;">
               <bar-rating [rate]="f.rate / 2" [max]="5" [readOnly]="true">
@@ -64,15 +60,7 @@
         <nb-card-body>
           <div class="row">
             <div class="col-12">
-              <p class="highlight">
-                Como profissional na área de TI adquiri experiência em desenvolvimento de software e sistemas em
-                linguagens Java, PHP, Python, JavaScript/Typescript, Dart, C++, VBScript, Pascal, Banco de dados –
-                Oracle,
-                MySQL, MSSql, SQLite, Firebase, Node, desenvolvimento de aplicativos Android, experiencia em framework:
-                laravel 5.8+, yii2, php-slim, zend2, angular6+, vue, ionic, react, frameworks visuais bootstrap 4-3,
-                materialize,
-                component pack primeng, primefaces, nebular.
-              </p>
+              <p class="highlight">{{curriculo.sobre}}</p>
             </div>
           </div>
         </nb-card-body>
@@ -84,11 +72,11 @@
           Educação
         </nb-card-header>
         <nb-card-body>
-          <ul class="px-3" *ngFor="let educacao of listaEducacao">
+          <ul class="px-3" *ngFor="let educacao of curriculo.educacao">
             <li><b>Instituição:&nbsp;</b>{{educacao.instituicao}}</li>
             <ul class="px-3">
               <li><b>Curso:&nbsp;</b>{{educacao.curso}}</li>
-              <li><b>Status:&nbsp;</b>{{educacao.status | titlecase}}</li>
+              <li><b>Status:&nbsp;</b>{{educacao.getStatus() | titlecase}}</li>
               <li><b>Conclusão:&nbsp;</b>{{educacao.conclusao | date : 'MM/yyyy'}}</li>
             </ul>
           </ul>
@@ -99,7 +87,7 @@
           Formação Técnica
         </nb-card-header>
         <nb-card-body>
-          <ul class="px-3" *ngFor="let formacao of listaFormacao">
+          <ul class="px-3" *ngFor="let formacao of curriculo.formacao">
             <li class="fw-bold">{{formacao.curso}} - {{formacao.instituicao}}</li>
             <ul class="px-3" *ngIf="formacao.itens.length > 0">
               <li *ngFor="let item of formacao.itens">{{item}}</li>
@@ -113,7 +101,9 @@
         </nb-card-header>
         <nb-card-body>
           <ul class="px-3">
-            <li *ngFor="let certificacao of listaCertificacoes">{{certificacao}}</li>
+            <li *ngFor="let certificacao of this.curriculo.certificacoes">
+              {{certificacao.data|date: 'MM/yyyy'}} - {{certificacao.nome}} - {{certificacao.instituicao}}
+            </li>
           </ul>
         </nb-card-body>
       </nb-card>
@@ -124,8 +114,9 @@
         </nb-card-header>
         <nb-card-body>
           <ul class="px-3">
-            <li *ngFor="let capacitacoes of listaOutrasCapacitacoes">{{capacitacoes.nome}}
-              - {{capacitacoes.empresa}}</li>
+            <li *ngFor="let capacitacoes of curriculo.outrasCapacitacoes">
+              {{capacitacoes.nome}} - {{capacitacoes.empresa}}
+            </li>
           </ul>
         </nb-card-body>
       </nb-card>
@@ -134,11 +125,7 @@
           Conhecimentos adicionais
         </nb-card-header>
         <nb-card-body>
-          <p class="highlight">
-            Outros conhecimentos e informações: GSuite, Social Login (facebook, google, git), telegram, Totvs RM api
-            soap e estrutura de banco, SpCom api, sendgrid api, zabbix api, pusher, sockets, upload, sistemas legados
-            em delphi e C#, DB2, java.
-          </p>
+          <p class="highlight">{{curriculo.conhecimentosAdicionais}}</p>
         </nb-card-body>
       </nb-card>
 
@@ -147,7 +134,7 @@
           Experiência Profissional:
         </nb-card-header>
         <nb-card-body>
-          <ul class="px-3" *ngFor="let experiencia of listaDeExperiencias" style="list-style-type: disc;">
+          <ul class="px-3" *ngFor="let experiencia of curriculo.experiencias" style="list-style-type: disc;">
             <li class="fw-bold">
               <p class="p-0 m-0"><b>EMPRESA:</b>&nbsp;{{experiencia.empresa}}</p>
               <p class="p-0 m-0"><b>FUNÇÃO:</b>&nbsp;{{experiencia.funcao}}</p>
