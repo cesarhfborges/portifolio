@@ -22,12 +22,13 @@ import {Formacao} from '../models/formacao';
 import {Certificacao} from '../models/certificacao';
 import {Capacitacao} from '../models/capacitacao';
 import {Experiencia} from '../models/experiencia';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogService, NbGlobalPhysicalPosition, NbToastrService} from '@nebular/theme';
 import {DomSanitizer} from '@angular/platform-browser';
 
 import * as pdfmake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import {TDocumentDefinitions} from 'pdfmake/interfaces';
+import {ptBR} from 'date-fns/locale';
 
 (<any>pdfmake).vfs = pdfFonts.pdfMake.vfs;
 
@@ -71,6 +72,7 @@ import {TDocumentDefinitions} from 'pdfmake/interfaces';
 export class HomeComponent implements AfterViewInit {
 
   @ViewChild('dialog') dialog: any;
+  @ViewChild('loadingPDF') loadingPDF: any;
 
   curriculo: Curriculo = new Curriculo({
     nome: 'César Henrique',
@@ -93,7 +95,8 @@ export class HomeComponent implements AfterViewInit {
   constructor(
     private renderer: Renderer2,
     private dialogService: NbDialogService,
-    protected _sanitizer: DomSanitizer
+    protected _sanitizer: DomSanitizer,
+    private toastrService: NbToastrService
   ) {
     this.initialize();
   }
@@ -111,6 +114,7 @@ export class HomeComponent implements AfterViewInit {
   }
 
   generateCurriculo(): void {
+    const dialog = this.dialogService.open(this.loadingPDF);
     const docDefinition: TDocumentDefinitions = {
       info: {
         author: this.curriculo.nome,
@@ -125,7 +129,7 @@ export class HomeComponent implements AfterViewInit {
       pageSize: 'A4',
       content: [
         {text: 'Currículo', style: 'header'},
-        {image: this.curriculo.tempFoto, style: 'foto', width: 72, height: 72, relativePosition: {x: -20, y: 16}},
+        {image: this.curriculo.tempFoto, style: 'foto', width: 84, height: 84, relativePosition: {x: -20, y: 40}},
         {text: 'Informações pessoais:', style: 'subheader'},
         {text: `Nome: ${this.curriculo.nome} ${this.curriculo.sobrenome}`, style: 'text'},
         {text: `Sexo: ${this.curriculo.sexo}`, style: 'text'},
@@ -185,31 +189,40 @@ export class HomeComponent implements AfterViewInit {
           decorationStyle: 'wavy',
           decorationColor: '#e30000',
         },
+        {
+          text: format(new Date(), 'dd \'de\' MMMM \'de\' yyyy', {locale: ptBR}) + ` - ${this.curriculo.residencia}`,
+          style: 'rodape'
+        },
       ],
       styles: {
         header: {
-          fontSize: 26,
+          fontSize: 32,
           bold: false,
           alignment: 'center',
-          margin: [0, 0, 0, 8]
+          margin: [0, 12, 0, 8]
         },
         subheader: {
-          fontSize: 12,
+          fontSize: 16,
           bold: true,
-          margin: [16, 8, 0, 4]
+          margin: [16, 20, 0, 4]
         },
         text: {
-          fontSize: 9,
+          fontSize: 12,
           bold: false,
           margin: [16, 0, 16, 2]
         },
         subText: {
-          fontSize: 9,
+          fontSize: 12,
           bold: false,
-          margin: [6, 0, 0, 0],
+          margin: [6, 3, 0, 0],
         },
         foto: {
           alignment: 'right',
+        },
+        rodape: {
+          alignment: 'center',
+          fontSize: 8,
+          margin: [0, 32, 0, 0]
         },
         tableExample: {
           margin: [0, 0, 0, 0]
@@ -219,7 +232,18 @@ export class HomeComponent implements AfterViewInit {
     // pdfmake.createPdf(docDefinition).getDataUrl((data) => {
     //   this.dialogService.open(this.dialog, {context: this._sanitizer.bypassSecurityTrustResourceUrl(data + '#toolbar=1&view=fitH')});
     // });
-    pdfmake.createPdf(docDefinition).download(`${this.curriculo.nome} - ${this.curriculo.titulo}.pdf`);
+    setTimeout(() => {
+      dialog.close();
+      this.toastrService.show('Successo', `PDF gerado com sucesso.`, {
+        status: 'success',
+        preventDuplicates: true,
+        icon: 'checkmark-outline',
+        hasIcon: true,
+        destroyByClick: true,
+        duration: 5000
+      });
+      pdfmake.createPdf(docDefinition).download(`${this.curriculo.nome} - ${this.curriculo.titulo}.pdf`);
+    }, 800);
   }
 
   ngAfterViewInit(): void {

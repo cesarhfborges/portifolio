@@ -10,7 +10,7 @@ import {
   NbDialogModule,
   NbIconModule,
   NbLayoutModule,
-  NbThemeModule,
+  NbThemeModule, NbToastrModule,
   NbUserModule
 } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
@@ -33,6 +33,7 @@ registerLocaleData(ptBr);
     BrowserAnimationsModule,
     NbThemeModule.forRoot({name: 'default'}),
     NbDialogModule.forRoot(),
+    NbToastrModule.forRoot(),
     NbLayoutModule,
     NbEvaIconsModule,
     NbCardModule,
