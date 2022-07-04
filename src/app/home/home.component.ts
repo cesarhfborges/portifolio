@@ -1,4 +1,4 @@
-import {Component, OnInit, Renderer2} from '@angular/core';
+import {AfterViewInit, Component, Renderer2, ViewChild} from '@angular/core';
 import {
   faAndroid,
   faAngular,
@@ -13,7 +13,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import {faAt, faStar, faStarHalfStroke} from '@fortawesome/free-solid-svg-icons';
 import {animate, style, transition, trigger} from '@angular/animations';
-import {parse} from 'date-fns';
+import {format, parse} from 'date-fns';
 import {Curriculo} from '../models/curriculo';
 import {Educacao} from '../models/educacao';
 import {Link} from '../models/link';
@@ -22,6 +22,14 @@ import {Formacao} from '../models/formacao';
 import {Certificacao} from '../models/certificacao';
 import {Capacitacao} from '../models/capacitacao';
 import {Experiencia} from '../models/experiencia';
+import {NbDialogService} from '@nebular/theme';
+import {DomSanitizer} from '@angular/platform-browser';
+
+import * as pdfmake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import {TDocumentDefinitions} from 'pdfmake/interfaces';
+
+(<any>pdfmake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-home',
@@ -60,26 +68,20 @@ import {Experiencia} from '../models/experiencia';
     ]),
   ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements AfterViewInit {
+
+  @ViewChild('dialog') dialog: any;
 
   curriculo: Curriculo = new Curriculo({
     nome: 'César Henrique',
+    sobrenome: 'Ferreira Borges',
     titulo: 'Programador Sênior',
+    civil: 'Solteiro',
+    sexo: 'Masculino',
     residencia: 'Brasília, DF, Brasil',
-    sobre: `
-    Como profissional na área de TI adquiri experiência em desenvolvimento de software e sistemas em
-    linguagens Java, PHP, Python, JavaScript/Typescript, Dart, C++, VBScript, Pascal, Banco de dados –
-    Oracle,
-    MySQL, MSSql, SQLite, Firebase, Node, desenvolvimento de aplicativos Android, experiencia em framework:
-    laravel 5.8+, yii2, php-slim, zend2, angular6+, vue, ionic, react, frameworks visuais bootstrap 4-3,
-    materialize,
-    component pack primeng, primefaces, nebular.
-    `,
-    conhecimentosAdicionais: `
-    Outros conhecimentos e informações: GSuite, Social Login (facebook, google, git), telegram, Totvs RM api
-    soap e estrutura de banco, SpCom api, sendgrid api, zabbix api, pusher, sockets, upload, sistemas legados
-    em delphi e C#, DB2, java.
-    `,
+    dataNasc: parse('22/07/1990', 'dd/MM/yyyy', new Date()),
+    sobre: 'Como profissional na área de TI adquiri experiência em desenvolvimento de software e sistemas em linguagens Java, PHP, Python, JavaScript/Typescript, Dart, C++, VBScript, Pascal, Banco de dados – Oracle, MySQL, MSSql, SQLite, Firebase, Node, desenvolvimento de aplicativos Android, experiencia em framework: laravel 5.8+, yii2, php-slim, zend2, angular6+, vue, ionic, react, frameworks visuais bootstrap 4-3, materialize, component pack primeng, primefaces, nebular.',
+    conhecimentosAdicionais: 'Outros conhecimentos e informações: GSuite, Social Login (facebook, google, git), telegram, Totvs RM api soap e estrutura de banco, SpCom api, sendgrid api, zabbix api, pusher, sockets, upload, sistemas legados em delphi e C#, DB2, java.',
     foto: 'assets/imgs/perfil.jpg'
   });
 
@@ -89,7 +91,9 @@ export class HomeComponent implements OnInit {
   };
 
   constructor(
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private dialogService: NbDialogService,
+    protected _sanitizer: DomSanitizer
   ) {
     this.initialize();
   }
@@ -106,27 +110,147 @@ export class HomeComponent implements OnInit {
     link.remove();
   }
 
+  generateCurriculo(): void {
+    const docDefinition: TDocumentDefinitions = {
+      info: {
+        author: this.curriculo.nome,
+        creator: this.curriculo.nome,
+        title: 'Currículo',
+        keywords: 'curriculo, cv, curriculum, personal, resume, pdf, print',
+        modDate: new Date(),
+        subject: 'Currículo',
+      },
+      pageOrientation: 'portrait',
+      pageMargins: [16, 12],
+      pageSize: 'A4',
+      content: [
+        {text: 'Currículo', style: 'header'},
+        {image: this.curriculo.tempFoto, style: 'foto', width: 72, height: 72, absolutePosition: {x: 0, y: 78}},
+        {text: 'Informações pessoais:', style: 'subheader'},
+        {text: `Nome: ${this.curriculo.nome} ${this.curriculo.sobrenome}`, style: 'text'},
+        {text: `Sexo: ${this.curriculo.sexo}`, style: 'text'},
+        {text: `Data de nascimento: ${format(this.curriculo.dataNasc, 'dd/MM/yyyy')}`, style: 'text'},
+        {
+          text: `Telefones: ${this.curriculo.links.filter(l => l.type === 'telefone').map(l => l.label).join(' / ')}`,
+          style: 'text'
+        },
+        {
+          text: `E-Mail: ${this.curriculo.links.filter(l => l.type === 'email').map(l => l.label).join(' / ')}`,
+          style: 'text'
+        },
+        {
+          text: `GitHub: ${this.curriculo.links.filter(l => l.type === 'link' && l.url.includes('github')).map(l => l.url.substring('https://'.length)).join(' / ')}`,
+          style: 'text'
+        },
+        {
+          text: `LinkedIn: ${this.curriculo.links.filter(l => l.type === 'link' && l.url.includes('linkedin')).map(l => l.url.substring('https://'.length)).join(' / ')}`,
+          style: 'text'
+        },
+        {text: this.curriculo.sobre, style: 'text', margin: [0, 28, 0, 16]},
+        {text: 'Formação acadêmica:', style: 'subheader'},
+        {
+          ul: this.curriculo.educacao.map(i => ({text: i.curso + ' - ' + i.instituicao})),
+          style: 'text',
+        },
+        {text: 'Formação técnica:', style: 'subheader'},
+        {
+          ul: this.curriculo.formacao.map(i => [
+            {text: i.curso + ' - ' + i.instituicao},
+            ...i.itens.map(j => ({text: '- ' + j, type: 'none', style: 'subText'}))
+          ]),
+          headlineLevel: 10,
+          style: 'text',
+          decorationStyle: 'wavy',
+          decorationColor: '#e30000',
+        },
+        {text: 'Certificações:', style: 'subheader'},
+        {ul: this.curriculo.certificacoes.map(i => ({text: i.nome + ' - ' + i.instituicao})), style: 'text'},
+        {text: 'Outras capacitações:', style: 'subheader'},
+        {ul: this.curriculo.outrasCapacitacoes.map(i => ({text: i.nome + ' - ' + i.empresa})), style: 'text'},
+        {text: this.curriculo.conhecimentosAdicionais, style: 'text', margin: [0, 8, 0, 8]},
+        {text: 'Experiência profissional:', style: 'subheader'},
+        {
+          ul: this.curriculo.experiencias.map(i => [
+            {text: 'EMPRESA: ' + i.empresa, type: 'square', margin: [0, 8, 0, 0]},
+            {text: 'FUNÇÃO: ' + i.funcao, type: 'square'},
+            {
+              text: 'PERÍODO: ' + format(i.periodoStart, 'MM/yyyy') + ' - ' + (i.periodoEnd ? format(i.periodoEnd, 'MM/yyyy') : 'atual'),
+              type: 'square'
+            },
+            ...i.itens.map(j => ({text: '- ' + j, type: 'none', style: 'subText'})),
+          ]),
+          headlineLevel: 0,
+          style: 'text',
+          type: 'none',
+          decorationStyle: 'wavy',
+          decorationColor: '#e30000',
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 26,
+          bold: false,
+          alignment: 'center',
+          margin: [0, 0, 0, 8]
+        },
+        subheader: {
+          fontSize: 12,
+          bold: true,
+          margin: [0, 8, 0, 4]
+        },
+        text: {
+          fontSize: 9,
+          bold: false,
+          margin: [0, 0, 0, 0]
+        },
+        subText: {
+          fontSize: 9,
+          bold: false,
+          margin: [6, 0, 0, 0],
+        },
+        foto: {
+          alignment: 'right',
+        },
+        tableExample: {
+          margin: [0, 0, 0, 0]
+        }
+      }
+    };
+    // pdfmake.createPdf(docDefinition).getDataUrl((data) => {
+    //   this.dialogService.open(this.dialog, {context: this._sanitizer.bypassSecurityTrustResourceUrl(data + '#toolbar=1&view=fitH')});
+    // });
+    pdfmake.createPdf(docDefinition).download(`${this.curriculo.nome} - ${this.curriculo.titulo}.pdf`);
+  }
+
+  ngAfterViewInit(): void {
+    // this.generateCurriculo();
+  }
+
   private initialize(): void {
     this.curriculo.links = [
       new Link({
         label: 'cesarhfborges@gmail.com',
         url: 'mailto:cesarhfborges@gmail.com',
         icon: faAt,
+        type: 'email'
       }),
       new Link({
         label: 'cesarhfborges',
         url: 'https://github.com/cesarhfborges',
         icon: faGithub,
+        type: 'link'
       }),
       new Link({
         label: 'LinkedIn',
-        url: 'https://www.linkedin.com/in/cesar-henrique-ferreira-borges/',
+        url: 'https://www.linkedin.com/in/cesar-henrique-ferreira-borges',
         icon: faLinkedin,
+        type: 'link'
       }),
       new Link({
         label: '(61) 99150-8973',
         url: 'https://api.whatsapp.com/send?phone=61991508973&text=Ola,%20teste',
         icon: faWhatsapp,
+        type: 'telefone'
       })
     ];
 

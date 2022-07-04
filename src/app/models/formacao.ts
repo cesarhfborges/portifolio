@@ -3,9 +3,13 @@ export class Formacao {
   instituicao: string;
   itens: Array<string>;
 
-  constructor(options: {curso: string, instituicao: string, itens: Array<string>}) {
+  constructor(options: { curso: string, instituicao: string, itens: Array<string> }) {
     this.curso = options.curso;
     this.instituicao = options.instituicao;
     this.itens = options.itens;
+  }
+
+  flatten(): Array<any> {
+    return [this.curso + ' - ' + this.instituicao, ...this.itens];
   }
 }

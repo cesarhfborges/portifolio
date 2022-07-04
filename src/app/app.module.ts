@@ -4,7 +4,15 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NbButtonModule, NbCardModule, NbIconModule, NbLayoutModule, NbThemeModule, NbUserModule} from '@nebular/theme';
+import {
+  NbButtonModule,
+  NbCardModule,
+  NbDialogModule,
+  NbIconModule,
+  NbLayoutModule,
+  NbThemeModule,
+  NbUserModule
+} from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {HomeComponent} from './home/home.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -24,6 +32,7 @@ registerLocaleData(ptBr);
     AppRoutingModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({name: 'default'}),
+    NbDialogModule.forRoot(),
     NbLayoutModule,
     NbEvaIconsModule,
     NbCardModule,
@@ -31,7 +40,7 @@ registerLocaleData(ptBr);
     NbButtonModule,
     NbIconModule,
     FontAwesomeModule,
-    BarRatingModule,
+    BarRatingModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'}
