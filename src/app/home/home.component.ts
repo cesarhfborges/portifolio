@@ -125,7 +125,7 @@ export class HomeComponent implements AfterViewInit {
       pageSize: 'A4',
       content: [
         {text: 'Currículo', style: 'header'},
-        {image: this.curriculo.tempFoto, style: 'foto', width: 72, height: 72, absolutePosition: {x: 0, y: 78}},
+        {image: this.curriculo.tempFoto, style: 'foto', width: 72, height: 72, relativePosition: {x: -20, y: 16}},
         {text: 'Informações pessoais:', style: 'subheader'},
         {text: `Nome: ${this.curriculo.nome} ${this.curriculo.sobrenome}`, style: 'text'},
         {text: `Sexo: ${this.curriculo.sexo}`, style: 'text'},
@@ -146,7 +146,7 @@ export class HomeComponent implements AfterViewInit {
           text: `LinkedIn: ${this.curriculo.links.filter(l => l.type === 'link' && l.url.includes('linkedin')).map(l => l.url.substring('https://'.length)).join(' / ')}`,
           style: 'text'
         },
-        {text: this.curriculo.sobre, style: 'text', margin: [0, 28, 0, 16]},
+        {text: this.curriculo.sobre, style: 'text', margin: [16, 28, 16, 16]},
         {text: 'Formação acadêmica:', style: 'subheader'},
         {
           ul: this.curriculo.educacao.map(i => ({text: i.curso + ' - ' + i.instituicao})),
@@ -167,7 +167,7 @@ export class HomeComponent implements AfterViewInit {
         {ul: this.curriculo.certificacoes.map(i => ({text: i.nome + ' - ' + i.instituicao})), style: 'text'},
         {text: 'Outras capacitações:', style: 'subheader'},
         {ul: this.curriculo.outrasCapacitacoes.map(i => ({text: i.nome + ' - ' + i.empresa})), style: 'text'},
-        {text: this.curriculo.conhecimentosAdicionais, style: 'text', margin: [0, 8, 0, 8]},
+        {text: this.curriculo.conhecimentosAdicionais, style: 'text', margin: [16, 8, 16, 8]},
         {text: 'Experiência profissional:', style: 'subheader'},
         {
           ul: this.curriculo.experiencias.map(i => [
@@ -196,12 +196,12 @@ export class HomeComponent implements AfterViewInit {
         subheader: {
           fontSize: 12,
           bold: true,
-          margin: [0, 8, 0, 4]
+          margin: [16, 8, 0, 4]
         },
         text: {
           fontSize: 9,
           bold: false,
-          margin: [0, 0, 0, 0]
+          margin: [16, 0, 16, 2]
         },
         subText: {
           fontSize: 9,
