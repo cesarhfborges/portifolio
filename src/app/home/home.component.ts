@@ -115,135 +115,148 @@ export class HomeComponent implements AfterViewInit {
 
   generateCurriculo(): void {
     const dialog = this.dialogService.open(this.loadingPDF);
-    const docDefinition: TDocumentDefinitions = {
-      info: {
-        author: this.curriculo.nome,
-        creator: this.curriculo.nome,
-        title: 'Currículo',
-        keywords: 'curriculo, cv, curriculum, personal, resume, pdf, print',
-        modDate: new Date(),
-        subject: 'Currículo',
-      },
-      pageOrientation: 'portrait',
-      pageMargins: [16, 12],
-      pageSize: 'A4',
-      content: [
-        {text: 'Currículo', style: 'header'},
-        {image: this.curriculo.tempFoto, style: 'foto', width: 84, height: 84, relativePosition: {x: -20, y: 40}},
-        {text: 'Informações pessoais:', style: 'subheader'},
-        {text: `Nome: ${this.curriculo.nome} ${this.curriculo.sobrenome}`, style: 'text'},
-        {text: `Sexo: ${this.curriculo.sexo}`, style: 'text'},
-        {text: `Data de nascimento: ${format(this.curriculo.dataNasc, 'dd/MM/yyyy')}`, style: 'text'},
-        {
-          text: `Telefones: ${this.curriculo.links.filter(l => l.type === 'telefone').map(l => l.label).join(' / ')}`,
-          style: 'text'
+    try {
+      // throw new Error('Method not implemented.');
+      const docDefinition: TDocumentDefinitions = {
+        info: {
+          author: this.curriculo.nome,
+          creator: this.curriculo.nome,
+          title: 'Currículo',
+          keywords: 'curriculo, cv, curriculum, personal, resume, pdf, print',
+          modDate: new Date(),
+          subject: 'Currículo',
         },
-        {
-          text: `E-Mail: ${this.curriculo.links.filter(l => l.type === 'email').map(l => l.label).join(' / ')}`,
-          style: 'text'
-        },
-        {
-          text: `GitHub: ${this.curriculo.links.filter(l => l.type === 'link' && l.url.includes('github')).map(l => l.url.substring('https://'.length)).join(' / ')}`,
-          style: 'text'
-        },
-        {
-          text: `LinkedIn: ${this.curriculo.links.filter(l => l.type === 'link' && l.url.includes('linkedin')).map(l => l.url.substring('https://'.length)).join(' / ')}`,
-          style: 'text'
-        },
-        {text: this.curriculo.sobre, style: 'text', margin: [16, 28, 16, 16]},
-        {text: 'Formação acadêmica:', style: 'subheader'},
-        {
-          ul: this.curriculo.educacao.map(i => ({text: i.curso + ' - ' + i.instituicao})),
-          style: 'text',
-        },
-        {text: 'Formação técnica:', style: 'subheader'},
-        {
-          ul: this.curriculo.formacao.map(i => [
-            {text: i.curso + ' - ' + i.instituicao},
-            ...i.itens.map(j => ({text: '- ' + j, type: 'none', style: 'subText'}))
-          ]),
-          headlineLevel: 10,
-          style: 'text',
-          decorationStyle: 'wavy',
-          decorationColor: '#e30000',
-        },
-        {text: 'Certificações:', style: 'subheader'},
-        {ul: this.curriculo.certificacoes.map(i => ({text: i.nome + ' - ' + i.instituicao})), style: 'text'},
-        {text: 'Outras capacitações:', style: 'subheader'},
-        {ul: this.curriculo.outrasCapacitacoes.map(i => ({text: i.nome + ' - ' + i.empresa})), style: 'text'},
-        {text: this.curriculo.conhecimentosAdicionais, style: 'text', margin: [16, 8, 16, 8]},
-        {text: 'Experiência profissional:', style: 'subheader'},
-        {
-          ul: this.curriculo.experiencias.map(i => [
-            {text: 'EMPRESA: ' + i.empresa, type: 'square', margin: [0, 8, 0, 0]},
-            {text: 'FUNÇÃO: ' + i.funcao, type: 'square'},
-            {
-              text: 'PERÍODO: ' + format(i.periodoStart, 'MM/yyyy') + ' - ' + (i.periodoEnd ? format(i.periodoEnd, 'MM/yyyy') : 'atual'),
-              type: 'square'
-            },
-            ...i.itens.map(j => ({text: '- ' + j, type: 'none', style: 'subText'})),
-          ]),
-          headlineLevel: 0,
-          style: 'text',
-          type: 'none',
-          decorationStyle: 'wavy',
-          decorationColor: '#e30000',
-        },
-        {
-          text: format(new Date(), 'dd \'de\' MMMM \'de\' yyyy', {locale: ptBR}) + ` - ${this.curriculo.residencia}`,
-          style: 'rodape'
-        },
-      ],
-      styles: {
-        header: {
-          fontSize: 32,
-          bold: false,
-          alignment: 'center',
-          margin: [0, 12, 0, 8]
-        },
-        subheader: {
-          fontSize: 16,
-          bold: true,
-          margin: [16, 20, 0, 4]
-        },
-        text: {
-          fontSize: 12,
-          bold: false,
-          margin: [16, 0, 16, 2]
-        },
-        subText: {
-          fontSize: 12,
-          bold: false,
-          margin: [6, 3, 0, 0],
-        },
-        foto: {
-          alignment: 'right',
-        },
-        rodape: {
-          alignment: 'center',
-          fontSize: 8,
-          margin: [0, 32, 0, 0]
-        },
-        tableExample: {
-          margin: [0, 0, 0, 0]
+        pageOrientation: 'portrait',
+        pageMargins: [16, 12],
+        pageSize: 'A4',
+        content: [
+          {text: 'Currículo', style: 'header'},
+          {image: this.curriculo.tempFoto, style: 'foto', width: 84, height: 84, relativePosition: {x: -20, y: 40}},
+          {text: 'Informações pessoais:', style: 'subheader'},
+          {text: `Nome: ${this.curriculo.nome} ${this.curriculo.sobrenome}`, style: 'text'},
+          {text: `Sexo: ${this.curriculo.sexo}`, style: 'text'},
+          {text: `Data de nascimento: ${format(this.curriculo.dataNasc, 'dd/MM/yyyy')}`, style: 'text'},
+          {
+            text: `Telefones: ${this.curriculo.links.filter(l => l.type === 'telefone').map(l => l.label).join(' / ')}`,
+            style: 'text'
+          },
+          {
+            text: `E-Mail: ${this.curriculo.links.filter(l => l.type === 'email').map(l => l.label).join(' / ')}`,
+            style: 'text'
+          },
+          {
+            text: `GitHub: ${this.curriculo.links.filter(l => l.type === 'link' && l.url.includes('github')).map(l => l.url.substring('https://'.length)).join(' / ')}`,
+            style: 'text'
+          },
+          {
+            text: `LinkedIn: ${this.curriculo.links.filter(l => l.type === 'link' && l.url.includes('linkedin')).map(l => l.url.substring('https://'.length)).join(' / ')}`,
+            style: 'text'
+          },
+          {text: this.curriculo.sobre, style: 'text', margin: [16, 28, 16, 16]},
+          {text: 'Formação acadêmica:', style: 'subheader'},
+          {
+            ul: this.curriculo.educacao.map(i => ({text: i.curso + ' - ' + i.instituicao})),
+            style: 'text',
+          },
+          {text: 'Formação técnica:', style: 'subheader'},
+          {
+            ul: this.curriculo.formacao.map(i => [
+              {text: i.curso + ' - ' + i.instituicao},
+              ...i.itens.map(j => ({text: '- ' + j, type: 'none', style: 'subText'}))
+            ]),
+            headlineLevel: 10,
+            style: 'text',
+            decorationStyle: 'wavy',
+            decorationColor: '#e30000',
+          },
+          {text: 'Certificações:', style: 'subheader'},
+          {ul: this.curriculo.certificacoes.map(i => ({text: i.nome + ' - ' + i.instituicao})), style: 'text'},
+          {text: 'Outras capacitações:', style: 'subheader'},
+          {ul: this.curriculo.outrasCapacitacoes.map(i => ({text: i.nome + ' - ' + i.empresa})), style: 'text'},
+          {text: this.curriculo.conhecimentosAdicionais, style: 'text', margin: [16, 8, 16, 8]},
+          {text: 'Experiência profissional:', style: 'subheader'},
+          {
+            ul: this.curriculo.experiencias.map(i => [
+              {text: 'EMPRESA: ' + i.empresa, type: 'square', margin: [0, 8, 0, 0]},
+              {text: 'FUNÇÃO: ' + i.funcao, type: 'square'},
+              {
+                text: 'PERÍODO: ' + format(i.periodoStart, 'MM/yyyy') + ' - ' + (i.periodoEnd ? format(i.periodoEnd, 'MM/yyyy') : 'atual'),
+                type: 'square'
+              },
+              ...i.itens.map(j => ({text: '- ' + j, type: 'none', style: 'subText'})),
+            ]),
+            headlineLevel: 0,
+            style: 'text',
+            type: 'none',
+            decorationStyle: 'wavy',
+            decorationColor: '#e30000',
+          },
+          {
+            text: format(new Date(), 'dd \'de\' MMMM \'de\' yyyy', {locale: ptBR}) + ` - ${this.curriculo.residencia}`,
+            style: 'rodape'
+          },
+        ],
+        styles: {
+          header: {
+            fontSize: 32,
+            bold: false,
+            alignment: 'center',
+            margin: [0, 12, 0, 8]
+          },
+          subheader: {
+            fontSize: 16,
+            bold: true,
+            margin: [16, 20, 0, 4]
+          },
+          text: {
+            fontSize: 12,
+            bold: false,
+            margin: [16, 0, 16, 2]
+          },
+          subText: {
+            fontSize: 12,
+            bold: false,
+            margin: [6, 3, 0, 0],
+          },
+          foto: {
+            alignment: 'right',
+          },
+          rodape: {
+            alignment: 'center',
+            fontSize: 8,
+            margin: [0, 32, 0, 0]
+          },
+          tableExample: {
+            margin: [0, 0, 0, 0]
+          }
         }
-      }
-    };
-    // pdfmake.createPdf(docDefinition).getDataUrl((data) => {
-    //   this.dialogService.open(this.dialog, {context: this._sanitizer.bypassSecurityTrustResourceUrl(data + '#toolbar=1&view=fitH')});
-    // });
-    setTimeout(() => {
+      };
+      // pdfmake.createPdf(docDefinition).getDataUrl((data) => {
+      //   this.dialogService.open(this.dialog, {context: this._sanitizer.bypassSecurityTrustResourceUrl(data + '#toolbar=1&view=fitH')});
+      // });
+      setTimeout(() => {
+        dialog.close();
+        this.toastrService.show('PDF gerado com sucesso.', `:)`, {
+          status: 'success',
+          preventDuplicates: true,
+          icon: 'checkmark-outline',
+          hasIcon: true,
+          destroyByClick: true,
+          duration: 5000
+        });
+        pdfmake.createPdf(docDefinition).download(`${this.curriculo.nome} - ${this.curriculo.titulo}.pdf`);
+      }, 800);
+    } catch (e) {
       dialog.close();
-      this.toastrService.show('Successo', `PDF gerado com sucesso.`, {
-        status: 'success',
+      this.toastrService.show('Parece que alguma coisa não deu certo, já registrei aqui e logo que possível vou ajustar.', `:(`, {
+        status: 'warning',
         preventDuplicates: true,
         icon: 'checkmark-outline',
         hasIcon: true,
         destroyByClick: true,
         duration: 5000
       });
-      pdfmake.createPdf(docDefinition).download(`${this.curriculo.nome} - ${this.curriculo.titulo}.pdf`);
-    }, 800);
+    }
   }
 
   ngAfterViewInit(): void {
