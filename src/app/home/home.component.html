@@ -1,16 +1,16 @@
-<div class="container">
+<div class="container-fluid container-xxl">
   <div class="row">
-    <div class="col-12 col-md-5 col-lg-4 sticky-md-top h-100 pt-3">
+    <div class="col-12 col-md-5 col-lg-5 sticky-md-top h-100 pt-3">
       <nb-card @enterLeftAnimation>
         <nb-card-header>
           Informações Pessoais:
         </nb-card-header>
-        <nb-card-body class="p-2">
+        <nb-card-body class="px-4 py-3">
           <div class="row p-0 m-0">
-            <div class="col-12 col-lg-3 col-xl-4 d-flex justify-content-center align-self-start p-0 m-0">
+            <div class="col-12 col-xl-4 d-flex justify-content-center align-self-start p-0 m-0">
               <img [src]="curriculo.foto" class="profile" [alt]="curriculo.nome">
             </div>
-            <div class="col-12 col-lg-9 col-xl-8 mt-3 mt-lg-0 p-1">
+            <div class="col-12 col-xl-8 mt-3 mt-xl-0 p-1 ps-lg-4">
               <p class="p-0 m-0">
                 <b>{{curriculo.nome}}</b>
               </p>
@@ -32,21 +32,21 @@
         <nb-card-header>
           Auto Avaliação:
         </nb-card-header>
-        <nb-card-body class="p-2">
-          <div class="row m-0 p-0 py-1" *ngFor="let f of curriculo.frameworks">
-            <div class="col text-center" style="max-width: 64px;">
-              <fa-icon [icon]="f.icon" size="lg" [style.color]="f.iconColor" style="font-size: 1.3rem;"></fa-icon>
+        <nb-card-body class="px-2 py-4">
+          <div class="row justify-content-around justify-content-md-evenly m-0 p-0 py-1" *ngFor="let f of curriculo.frameworks">
+            <div class="col text-center align-self-center" style="max-width: 64px;">
+              <fa-icon [icon]="f.icon" size="lg" [style.color]="f.iconColor" style="font-size: 1.8rem;"></fa-icon>
             </div>
-            <div class="col d-flex align-content-center" style="padding-top: 3px;">
+            <div class="col d-flex align-self-center" style="padding-top: 3px; max-width: 220px;">
               <bar-rating [rate]="f.rate / 2" [max]="5" [readOnly]="true">
                 <ng-template ratingInactive>
-                  <fa-icon [icon]="icons.star" [fixedWidth]="true" size="lg" style="color: #d2d2d2"></fa-icon>
+                  <fa-icon [icon]="icons.star" [fixedWidth]="true" size="lg" style="color: #d2d2d2; font-size: 1.5rem;"></fa-icon>
                 </ng-template>
                 <ng-template ratingActive>
-                  <fa-icon [icon]="icons.star" [fixedWidth]="true" size="lg" style="color: #FECE00"></fa-icon>
+                  <fa-icon [icon]="icons.star" [fixedWidth]="true" size="lg" style="color: #FECE00; font-size: 1.5rem;"></fa-icon>
                 </ng-template>
                 <ng-template ratingFraction>
-                  <fa-icon [icon]="icons.fractionStar" [fixedWidth]="true" size="lg" style="color: #FECE00"></fa-icon>
+                  <fa-icon [icon]="icons.fractionStar" [fixedWidth]="true" size="lg" style="color: #FECE00; font-size: 1.5rem;"></fa-icon>
                 </ng-template>
               </bar-rating>
             </div>
@@ -66,7 +66,7 @@
         </nb-card-body>
       </nb-card>
     </div>
-    <div class="col-12 col-md-7 col-lg-8 pt-3">
+    <div class="col-12 col-md-7 col-lg-7 pt-3">
       <nb-card @enterRightAnimation>
         <nb-card-header>
           Educação
