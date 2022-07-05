@@ -33,20 +33,24 @@
           Auto Avaliação:
         </nb-card-header>
         <nb-card-body class="px-2 py-4">
-          <div class="row justify-content-around justify-content-md-evenly m-0 p-0 py-1" *ngFor="let f of curriculo.frameworks">
+          <div class="row justify-content-around justify-content-md-evenly m-0 p-0 py-1"
+               *ngFor="let f of curriculo.frameworks">
             <div class="col text-center align-self-center" style="max-width: 64px;">
               <fa-icon [icon]="f.icon" size="lg" [style.color]="f.iconColor" style="font-size: 1.8rem;"></fa-icon>
             </div>
             <div class="col d-flex align-self-center" style="padding-top: 3px; max-width: 220px;">
               <bar-rating [rate]="f.rate / 2" [max]="5" [readOnly]="true">
                 <ng-template ratingInactive>
-                  <fa-icon [icon]="icons.star" [fixedWidth]="true" size="lg" style="color: #d2d2d2; font-size: 1.5rem;"></fa-icon>
+                  <fa-icon [icon]="icons.star" [fixedWidth]="true" size="lg"
+                           style="color: #d2d2d2; font-size: 1.5rem;"></fa-icon>
                 </ng-template>
                 <ng-template ratingActive>
-                  <fa-icon [icon]="icons.star" [fixedWidth]="true" size="lg" style="color: #FECE00; font-size: 1.5rem;"></fa-icon>
+                  <fa-icon [icon]="icons.star" [fixedWidth]="true" size="lg"
+                           style="color: #FECE00; font-size: 1.5rem;"></fa-icon>
                 </ng-template>
                 <ng-template ratingFraction>
-                  <fa-icon [icon]="icons.fractionStar" [fixedWidth]="true" size="lg" style="color: #FECE00; font-size: 1.5rem;"></fa-icon>
+                  <fa-icon [icon]="icons.fractionStar" [fixedWidth]="true" size="lg"
+                           style="color: #FECE00; font-size: 1.5rem;"></fa-icon>
                 </ng-template>
               </bar-rating>
             </div>
@@ -162,7 +166,11 @@
 </ng-template>
 
 <ng-template #loadingPDF>
-  <nb-card>
-    <nb-card-body>Aguarde gerando pdf....</nb-card-body>
+  <nb-card
+    [nbSpinner]="true"
+    nbSpinnerStatus="primary"
+    nbSpinnerSize="large"
+    nbSpinnerMessage="Aguarde gerando pdf...">
+    <nb-card-body style="min-width: 280px; min-height: 60px;">&nbsp;</nb-card-body>
   </nb-card>
 </ng-template>

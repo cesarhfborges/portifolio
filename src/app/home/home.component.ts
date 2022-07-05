@@ -245,7 +245,7 @@ export class HomeComponent implements AfterViewInit {
           duration: 5000
         });
         pdfmake.createPdf(docDefinition).download(`${this.curriculo.nome} - ${this.curriculo.titulo}.pdf`);
-      }, 800);
+      }, 1100);
     } catch (e) {
       dialog.close();
       this.toastrService.show('Parece que alguma coisa não deu certo, já registrei aqui e logo que possível vou ajustar.', `:(`, {
