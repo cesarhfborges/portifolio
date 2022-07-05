@@ -195,6 +195,7 @@ export class HomeComponent implements AfterViewInit {
             text: format(new Date(), 'dd \'de\' MMMM \'de\' yyyy', {locale: ptBR}) + ` - ${this.curriculo.residencia}`,
             style: 'rodape'
           },
+          { text: 'Baixar versão atualizada', link: 'https://portifolio.chfb.com.br', style: 'link' }
         ],
         styles: {
           header: {
@@ -225,6 +226,11 @@ export class HomeComponent implements AfterViewInit {
             alignment: 'center',
             fontSize: 8,
             margin: [0, 32, 0, 0]
+          },
+          link: {
+            alignment: 'center',
+            fontSize: 8,
+            margin: [0, 4, 0, 0]
           },
           tableExample: {
             margin: [0, 0, 0, 0]
