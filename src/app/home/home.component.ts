@@ -22,7 +22,7 @@ import {Formacao} from '../models/formacao';
 import {Certificacao} from '../models/certificacao';
 import {Capacitacao} from '../models/capacitacao';
 import {Experiencia} from '../models/experiencia';
-import {NbDialogService, NbGlobalPhysicalPosition, NbToastrService} from '@nebular/theme';
+import {NbDialogService, NbToastrService} from '@nebular/theme';
 import {DomSanitizer} from '@angular/platform-browser';
 
 import * as pdfmake from 'pdfmake/build/pdfmake';
@@ -82,7 +82,7 @@ export class HomeComponent implements AfterViewInit {
     sexo: 'Masculino',
     residencia: 'Brasília, DF, Brasil',
     dataNasc: parse('22/07/1990', 'dd/MM/yyyy', new Date()),
-    sobre: 'Como profissional na área de TI adquiri experiência em desenvolvimento de software e sistemas em linguagens Java, PHP, Python, JavaScript/Typescript, Dart, C++, VBScript, Pascal, Banco de dados – Oracle, MySQL, MSSql, SQLite, Firebase, Node, desenvolvimento de aplicativos Android, experiencia em framework: laravel 5.8+, yii2, php-slim, zend2, angular6+, vue, ionic, react, frameworks visuais bootstrap 4-3, materialize, component pack primeng, primefaces, nebular.',
+    sobre: 'Como profissional na área de TI adquiri experiência em desenvolvimento de software e sistemas em linguagens Java, PHP, Python, JavaScript/Typescript, Dart, C++, VBScript, Pascal, Banco de dados – Oracle, MySQL, MSSql, SQLite, Firebase, Node, desenvolvimento de aplicativos Android, experiencia em framework: laravel 5.8+, yii2, php-slim, zend2, angular6+, vue, ionic, react, frameworks visuais bootstrap 4-3, materialize, component pack primeng, primefaces, nebular, além de conhecimento e experiencia usando responsividade.',
     conhecimentosAdicionais: 'Outros conhecimentos e informações: GSuite, Social Login (facebook, google, git), telegram, Totvs RM api soap e estrutura de banco, SpCom api, sendgrid api, zabbix api, pusher, sockets, upload, sistemas legados em delphi e C#, DB2, java.',
     foto: 'assets/imgs/perfil.jpg'
   });
@@ -195,7 +195,7 @@ export class HomeComponent implements AfterViewInit {
             text: format(new Date(), 'dd \'de\' MMMM \'de\' yyyy', {locale: ptBR}) + ` - ${this.curriculo.residencia}`,
             style: 'rodape'
           },
-          { text: 'Baixar versão atualizada', link: 'https://portifolio.chfb.com.br', style: 'link' }
+          {text: 'Baixar versão atualizada', link: 'https://portifolio.chfb.com.br', style: 'link'}
         ],
         styles: {
           header: {
@@ -478,6 +478,29 @@ export class HomeComponent implements AfterViewInit {
           'Interface',
           'WebPack',
           'Interceptor',
+        ]
+      }),
+      new Formacao({
+        curso: 'Quarkus 3 - Java',
+        instituicao: 'Udemy',
+        itens: [
+          'Panache Entity',
+          'Databases, JDBC, SQL',
+          'Followers, Verbos HTTP, request e response',
+          'Swagger',
+          'Entity Relations',
+          'Testes Automatizados',
+        ]
+      }),
+      new Formacao({
+        curso: 'Spring Boot Expert: JPA, RESTFul API, Security, JWT - Java',
+        instituicao: 'Udemy',
+        itens: [
+          'Persistência Usando JPA',
+          'Beans e Validators',
+          'Security e JWT',
+          'Swagger',
+          'Build e Deploy'
         ]
       })
     ];
