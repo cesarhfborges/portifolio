@@ -1,9 +1,18 @@
 # Stage 1: Build the Angular application
 FROM node:lts-alpine AS build
 WORKDIR /app
-COPY package.json package-lock.json ./
+
+# Instalar dependências de build (caso precise compilar algo nativo)
+RUN apk add --no-cache python3 make g++
+
+# Copiar arquivos do Node
+COPY package*.json ./
 RUN npm install
+
+# Copiar resto do código
 COPY . .
+
+# Build de produção
 RUN npm run build --prod
 
 # Stage 2: Serve the application with Nginx
