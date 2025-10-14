@@ -57,159 +57,159 @@ export const skillsImage = (skill: string): string => {
   const skillID = skill.toLowerCase();
   switch (skillID) {
     case 'adobe xd':
-      return `/assets/svg/skills/adobe-xd.svg`;
+      return `assets/svg/skills/adobe-xd.svg`;
     case 'adobe audition':
-      return `/assets/svg/skills/adobeaudition.svg`;
+      return `assets/svg/skills/adobeaudition.svg`;
     case 'after effects':
-      return `/assets/svg/skills/after-effects.svg`;
+      return `assets/svg/skills/after-effects.svg`;
     case 'angular':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'android':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'spring-boot':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'aws':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'azure':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'blender':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'bootstrap':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'bulma':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'c':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'canva':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'capacitorjs':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'coffeescript':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'cplusplus':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'csharp':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'css':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'dart':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'deno':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'django':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'docker':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'fastify':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'figma':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'firebase':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'flutter':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'gcp':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'gimp':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'git':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'go':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'graphql':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'haxe':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'html':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'illustrator':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'ionic':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'java':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'javascript':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'julia':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'kotlin':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'lightroom':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'markdown':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'materialui':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'matlab':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'memsql':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'microsoftoffice':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'mongodb':
-      return `/assets/svg/skills/mongoDB.svg`;
+      return `assets/svg/skills/mongoDB.svg`;
     case 'mysql':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'nextjs':
-      return `/assets/svg/skills/nextjs.svg`;
+      return `assets/svg/skills/nextjs.svg`;
     case 'nginx':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'numpy':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'nuxtjs':
-      return `/assets/svg/skills/nuxtJS.svg`;
+      return `assets/svg/skills/nuxtJS.svg`;
     case 'opencv':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'photoshop':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'php':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'picsart':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'postgresql':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'premierepro':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'python':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'pytorch':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'react':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'ruby':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'selenium':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'sketch':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'strapi':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'svelte':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'swift':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'tailwind':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'tensorflow':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'typescript':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'unity':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'vitejs':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'vue':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'vuetifyjs':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'wolframalpha':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'node':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     case 'react native':
-      return `/assets/svg/skills/react.svg`;
+      return `assets/svg/skills/react.svg`;
     case 'sass':
-      return `/assets/svg/skills/${skillID}.svg`;
+      return `assets/svg/skills/${skillID}.svg`;
     default:
       return '';
   }
