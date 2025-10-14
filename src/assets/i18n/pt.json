@@ -31,6 +31,15 @@
     },
     "projects": {
       "title": "Projetos"
+    },
+    "academic": {
+      "title": "Formação acadêmica",
+      "duration": "Duração",
+      "institution": "Instituição",
+      "topics": "Tópicos"
+    },
+    "contact": {
+      "title": "Contato"
     }
   }
 }

@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="p-6 flex flex-col gap-4">
-    <div class="flex items-center gap-4">
+    <div class="flex items-center gap-2">
       <div class="text-gray-400">const</div>
       <div class="text-[#e5a663]">project</div>
       <div class="text-gray-400">=</div>
@@ -15,26 +15,26 @@
 
     <div class="flex flex-col gap-2 ml-8">
       <div>
-        <span class="text-[#e87d88]">name:</span>
+        <span class="text-[#e87d88]">name: </span>
         <span class="text-[#5ba0fc]">"{{project.name}}"</span>
         <span class="text-gray-400">,</span>
       </div>
       <div>
-        <span class="text-[#e87d88]">tools:</span>
+        <span class="text-[#e87d88]">tools: </span>
         <span class="text-[#5ba0fc]">[</span>
         <span *ngFor="let tool of project.tools; let last = last" class="text-[#5ba0fc]">
-                    "{{tool}}"{{!last ? ', ' : ''}}
-                </span>
+          "{{tool}}"{{!last ? ', ' : ''}}
+        </span>
         <span class="text-[#5ba0fc]">]</span>
         <span class="text-gray-400">,</span>
       </div>
       <div>
-        <span class="text-[#e87d88]">role:</span>
+        <span class="text-[#e87d88]">role: </span>
         <span class="text-[#5ba0fc]">"{{project.role}}"</span>
         <span class="text-gray-400">,</span>
       </div>
       <div>
-        <span class="text-[#e87d88]">description:</span>
+        <span class="text-[#e87d88]">description: </span>
         <span class="text-[#5ba0fc]">"{{project.description}}"</span>
       </div>
     </div>

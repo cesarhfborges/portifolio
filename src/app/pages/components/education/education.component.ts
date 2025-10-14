@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {educations} from '../../../../utils/data/educations';
-import {faGraduationCap} from '@fortawesome/free-solid-svg-icons';
+import {faBriefcase, faGraduationCap} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-education',
@@ -15,9 +15,11 @@ export class EducationComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      this.lottieFile = await fetch('assets/lottie/education.json').then(res => res.json());
+      this.lottieFile = await fetch('assets/lottie/programmer.json').then(res => res.json());
     } catch (error) {
       console.error('Error loading Lottie animation:', error);
     }
   }
+
+  protected readonly workIcon = faBriefcase;
 }

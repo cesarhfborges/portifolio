@@ -8,6 +8,9 @@ import {faCodeFork, faStar} from '@fortawesome/free-solid-svg-icons';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
+
+  now: Date = new Date();
+
   starIcon = faStar;
   forkIcon = faCodeFork;
 }

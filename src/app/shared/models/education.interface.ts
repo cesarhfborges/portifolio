@@ -3,4 +3,5 @@ export interface Education {
   duration: string;
   title: string;
   institution: string;
+  topics: string[];
 }
