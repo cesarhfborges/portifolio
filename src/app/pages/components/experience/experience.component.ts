@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {faBriefcase} from '@fortawesome/free-solid-svg-icons';
 import { experiences } from "../../../shared/data/experience.data";
 
@@ -8,12 +8,16 @@ import { experiences } from "../../../shared/data/experience.data";
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss'
 })
-export class ExperienceComponent {
+export class ExperienceComponent implements OnInit {
   experiences = experiences;
   workIcon = faBriefcase;
   lottieFile: any;
 
-  async ngOnInit() {
+  ngOnInit() {
+    void this.init();
+  }
+
+  async init(): Promise<void> {
     try {
       this.lottieFile = await fetch('assets/lottie/code.json').then(res => res.json());
     } catch (error) {

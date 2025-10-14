@@ -20,3 +20,8 @@
 .glow-card:hover::before {
   transform: rotate(180deg);
 }
+
+.parent-scroll-container {
+  /* Define a altura máxima para criar a barra de rolagem interna */
+  max-height: 90vh;
+}

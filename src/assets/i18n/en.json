@@ -1,0 +1,30 @@
+{
+  "app": {
+    "menu": {
+      "about": "About",
+      "experiences": "Experience",
+      "skills": "Skills",
+      "education": "education",
+      "projects": "Projects",
+      "language": "Language"
+    },
+    "heroSection": {
+      "designation": "Software Developer",
+      "text": "Welcome!\n to %USERNAME% portfolio! I am a professional %DESIGNATION%.",
+      "contact_me": "Contact me",
+      "get_resume": "Get Resume"
+    },
+    "about": {
+      "name": "About me",
+      "title": "Who I am?",
+      "text": "Hi, I'm César, a professional web and mobile systems developer with over 8 years of experience, specializing in creating APIs, graphical interfaces, and responsive, efficient, and integrated applications. My expertise spans front-end and back-end, enabling me to develop cross-platform mobile applications and dynamic web interfaces that deliver exceptional user experiences. With a solid foundation in Laravel, Node, Spring Boot, PostgreSQL, Mongo, MariaDB, and other back-end technologies, I have a holistic approach to building scalable, end-to-end solutions. My passion for innovation drives me to constantly learn and master new technologies, including IONIC and React Native Multiplatform, while striving to stay ahead of the ever-evolving technology landscape. From working on socket server utilities for real-time applications to custom systems, I've gained a deep understanding of the challenges and possibilities of modern application development. I'm a self-motivated problem-solver who thrives on bringing ideas to life through clean, efficient, and maintainable code. Let's build something amazing together!"
+    },
+    "experiences": {
+      "title": "Experiences",
+      "from": "From",
+      "to": "To",
+      "present": "Present",
+      "position": "Position"
+    }
+  }
+}

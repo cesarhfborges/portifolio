@@ -1,0 +1,30 @@
+{
+  "app": {
+    "menu": {
+      "about": "Sobre",
+      "experiences": "Experiências",
+      "skills": "Habilidades",
+      "education": "Educação",
+      "projects": "Projetos",
+      "language": "Idioma"
+    },
+    "heroSection": {
+      "designation": "Desenvolvedor de software",
+      "text": "Bem vindo!\n ao portifólio de %USERNAME%, e eu sou um %DESIGNATION% profissional.",
+      "contact_me": "Entrar em contato",
+      "get_resume": "Baixar curriculo"
+    },
+    "about": {
+      "name": "Sobre",
+      "title": "Quem sou eu?",
+      "text": "Olá, sou César, profissional desenvolvedor de sistemas web e mobile com mais de 8 anos de experiência, especializado na criação de APIs, interfaces gráficas, aplicações responsivas, eficientes e integradas. Minha expertise abrange front-end e back-end, permitindo-me desenvolver aplicativos mobile multiplataforma e interfaces web dinâmicas que proporcionam experiências excepcionais ao usuário. Com uma base sólida em Laravel, Node, Spring Boot, PostgreSQL, Mongo, MariaDB e outras tecnologias de back-end, tenho uma abordagem holística para a construção de soluções escaláveis e de ponta a ponta. Minha paixão por inovação me leva a aprender e dominar constantemente novas tecnologias, incluindo IONIC e React Native Multiplatform, enquanto me esforço para me manter à frente no cenário tecnológico em constante evolução. Desde trabalhar em utilitários de servidor de soket para aplicativos em tempo real até sistemas personalizados, adquiri um profundo conhecimento dos desafios e possibilidades do desenvolvimento de aplicativos modernos. Sou um solucionador de problemas automotivado que prospera em dar vida a ideias por meio de código limpo, eficiente e sustentável. Vamos construir algo incrível juntos!"
+    },
+    "experiences": {
+      "title": "Experiências profissionais",
+      "from": "Início",
+      "to": "Fim",
+      "present": "Atual",
+      "position": "Cargo"
+    }
+  }
+}

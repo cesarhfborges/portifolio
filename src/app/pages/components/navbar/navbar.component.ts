@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, HostListener, inject} from '@angular/core';
+import {Language, TranslationService} from '../../../shared/services/translation.service';
+import {faGithub} from '@fortawesome/free-brands-svg-icons';
+import {faGlobe} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -7,12 +10,42 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+
+  public isDropdownOpen: boolean = false;
+
+  public _translationService = inject(TranslationService);
+
   navItems = [
-    { path: '/#about', label: 'ABOUT' },
-    { path: '/#experience', label: 'EXPERIENCE' },
-    { path: '/#skills', label: 'SKILLS' },
-    { path: '/#education', label: 'EDUCATION' },
-    { path: '/blog', label: 'BLOGS' },
-    { path: '/#projects', label: 'PROJECTS' }
+    {path: '/#about', label: 'app.menu.about'},
+    {path: '/#experience', label: 'app.menu.experiences'},
+    {path: '/#skills', label: 'app.menu.skills'},
+    {path: '/#education', label: 'app.menu.education'},
+    // {path: '/blog', label: 'BLOGS'},
+    {path: '/#projects', label: 'app.menu.projects'}
   ];
+
+  faGithub = faGithub;
+  faGlobe = faGlobe;
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClick(event: Event) {
+    const targetElement = event.target as HTMLElement;
+    const dropdownToggle = document.getElementById('dropdownToggle');
+
+    if (this.isDropdownOpen && dropdownToggle && !dropdownToggle.contains(targetElement)) {
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      if (!dropdownMenu || !dropdownMenu.contains(targetElement)) {
+        this.isDropdownOpen = false;
+      }
+    }
+  }
+
+  setLang(value: Language) {
+    this._translationService.currentLang = value;
+    this.isDropdownOpen = false;
+  }
 }
