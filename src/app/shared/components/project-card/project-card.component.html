@@ -1,0 +1,44 @@
+<div
+  class="w-full h-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
+  <div class="flex -translate-y-[1px] justify-center">
+    <div class="w-3/4">
+      <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent"></div>
+    </div>
+  </div>
+  <div class="p-6 flex flex-col gap-4">
+    <div class="flex items-center gap-4">
+      <div class="text-gray-400">const</div>
+      <div class="text-[#e5a663]">project</div>
+      <div class="text-gray-400">=</div>
+      <div class="text-gray-400">&#123;</div>
+    </div>
+
+    <div class="flex flex-col gap-2 ml-8">
+      <div>
+        <span class="text-[#e87d88]">name:</span>
+        <span class="text-[#5ba0fc]">"{{project.name}}"</span>
+        <span class="text-gray-400">,</span>
+      </div>
+      <div>
+        <span class="text-[#e87d88]">tools:</span>
+        <span class="text-[#5ba0fc]">[</span>
+        <span *ngFor="let tool of project.tools; let last = last" class="text-[#5ba0fc]">
+                    "{{tool}}"{{!last ? ', ' : ''}}
+                </span>
+        <span class="text-[#5ba0fc]">]</span>
+        <span class="text-gray-400">,</span>
+      </div>
+      <div>
+        <span class="text-[#e87d88]">role:</span>
+        <span class="text-[#5ba0fc]">"{{project.role}}"</span>
+        <span class="text-gray-400">,</span>
+      </div>
+      <div>
+        <span class="text-[#e87d88]">description:</span>
+        <span class="text-[#5ba0fc]">"{{project.description}}"</span>
+      </div>
+    </div>
+
+    <div><span class="text-gray-400">&#125;;</span></div>
+  </div>
+</div>

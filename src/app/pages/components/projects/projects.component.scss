@@ -1,0 +1,24 @@
+:host {
+  display: block;
+}
+
+.sticky-card {
+  position: sticky;
+  top: 20vh;
+}
+
+.sticky-card:nth-child(1) {
+  top: 15vh;
+}
+
+.sticky-card:nth-child(2) {
+  top: 25vh;
+}
+
+.sticky-card:nth-child(3) {
+  top: 35vh;
+}
+
+.sticky-card:nth-child(4) {
+  top: 45vh;
+}

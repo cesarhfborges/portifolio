@@ -1,0 +1,52 @@
+<div id="experience" class="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+  <img src="assets/section.svg" alt="Hero" class="absolute top-0 -z-10 w-full">
+
+  <div class="flex justify-center my-5 lg:py-8">
+    <div class="flex items-center">
+      <span class="w-24 h-[2px] bg-[#1a1443]"></span>
+      <span class="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
+                Experiences
+            </span>
+      <span class="w-24 h-[2px] bg-[#1a1443]"></span>
+    </div>
+  </div>
+
+  <div class="py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+      <div class="flex justify-center items-start">
+        <div class="w-full h-full">
+          <app-animation-lottie [animationPath]="lottieFile"></app-animation-lottie>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex flex-col gap-6">
+          <div *ngFor="let experience of experiences" class="glow-card"
+               [attr.data-identifier]="'experience-' + experience.id">
+            <div class="p-3 relative">
+              <img src="assets/blur-23.svg" alt="Hero" class="absolute bottom-0 opacity-80" fill>
+              <div class="flex justify-center">
+                <p class="text-xs sm:text-sm text-[#16f2b3]">
+                  {{ experience.duration }}
+                </p>
+              </div>
+              <div class="flex items-center gap-x-8 px-3 py-5">
+                <div class="text-violet-500 transition-all duration-300 hover:scale-125">
+                  <fa-icon [icon]="workIcon" size="2x"></fa-icon>
+                </div>
+                <div>
+                  <p class="text-base sm:text-xl mb-2 font-medium uppercase">
+                    {{ experience.title }}
+                  </p>
+                  <p class="text-sm sm:text-base text-white">
+                    {{ experience.company }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

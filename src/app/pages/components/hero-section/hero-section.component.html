@@ -4,9 +4,9 @@
   <div class="grid grid-cols-1 items-start lg:grid-cols-2 lg:gap-12 gap-y-8">
     <div class="order-2 lg:order-1 flex flex-col items-start justify-center p-2 pb-20 md:pb-10 lg:pt-10">
       <h1 class="text-3xl font-bold leading-10 text-white md:font-extrabold lg:text-[2.6rem] lg:leading-[3.5rem]">
-        Hello, <br>
-        This is <span class="text-pink-500">{{personalData.name}}</span>,
-        I'm a Professional <span class="text-[#16f2b3]">{{personalData.designation}}</span>.
+        Seja bem vindo, <br>
+        ao portifólio profissional de <span class="text-pink-500">{{ personalData.name }}</span>,
+        sou <span class="text-[#16f2b3]">{{ personalData.designation }}</span> profissional.
       </h1>
 
       <div class="my-12 flex items-center gap-5">
@@ -18,14 +18,26 @@
            class="transition-all text-pink-500 hover:scale-125 duration-300">
           <fa-icon [icon]="faLinkedin" size="2x"></fa-icon>
         </a>
-        <a [href]="personalData.facebook" target="_blank"
+        <a [href]="'mailto:' + personalData.email" target="_blank"
            class="transition-all text-pink-500 hover:scale-125 duration-300">
-          <fa-icon [icon]="faFacebook" size="2x"></fa-icon>
+          <fa-icon [icon]="faEnvelope" size="2x"></fa-icon>
         </a>
-        <a [href]="personalData.twitter" target="_blank"
+        <a [href]="whatsappLink" target="_blank"
            class="transition-all text-pink-500 hover:scale-125 duration-300">
-          <fa-icon [icon]="faTwitter" size="2x"></fa-icon>
+          <fa-icon [icon]="faWhatsapp" size="2x"></fa-icon>
         </a>
+        <a [href]="telegramLink" target="_blank"
+           class="transition-all text-pink-500 hover:scale-125 duration-300">
+          <fa-icon [icon]="faTelegram" size="2x"></fa-icon>
+        </a>
+<!--        <a [href]="personalData.facebook" target="_blank"-->
+<!--           class="transition-all text-pink-500 hover:scale-125 duration-300">-->
+<!--          <fa-icon [icon]="faFacebook" size="2x"></fa-icon>-->
+<!--        </a>-->
+<!--        <a [href]="personalData.twitter" target="_blank"-->
+<!--           class="transition-all text-pink-500 hover:scale-125 duration-300">-->
+<!--          <fa-icon [icon]="faTwitter" size="2x"></fa-icon>-->
+<!--        </a>-->
       </div>
 
       <div class="flex items-center gap-3">
@@ -61,40 +73,73 @@
       </div>
       <div class="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
         <code class="font-mono text-xs md:text-sm lg:text-base">
-          <div class="blink">
+          <div>
             <span class="mr-2 text-pink-500">const</span>
             <span class="mr-2 text-white">coder</span>
             <span class="mr-2 text-pink-500">=</span>
-            <span class="text-gray-400">{{'{'}}</span>
+            <span class="text-gray-400">{{ '{' }}</span>
           </div>
           <div>
             <span class="ml-4 lg:ml-8 mr-2 text-white">name:</span>
             <span class="text-gray-400">'</span>
-            <span class="text-amber-300">{{personalData.name}}</span>
+            <span class="text-amber-300">{{ personalData.name }}</span>
             <span class="text-gray-400">',</span>
           </div>
-          <div class="ml-4 lg:ml-8 mr-2">
-            <span class="text-white">skills:</span>
-            <span class="text-gray-400">['</span>
-            <span class="text-amber-300">Flutter</span>
-            <span class="text-gray-400">', '</span>
-            <span class="text-amber-300">Android</span>
-            <span class="text-gray-400">', '</span>
-            <span class="text-amber-300">Spring Boot</span>
-            <span class="text-gray-400">', '</span>
-            <span class="text-amber-300">Angular</span>
-            <span class="text-gray-400">', '</span>
-            <span class="text-amber-300">Kotlin</span>
-            <span class="text-gray-400">', '</span>
-            <span class="text-amber-300">PostGreSQL</span>
-            <span class="text-gray-400">', '</span>
-            <span class="text-amber-300">MongoDB</span>
-            <span class="text-gray-400">', '</span>
-            <span class="text-amber-300">Docker</span>
-            <span class="text-gray-400">', '</span>
-            <span class="text-amber-300">AWS</span>
-            <span class="text-gray-400">'],</span>
+          <div class="ml-4 lg:ml-8 mr-2 flex flex-wrap">
+            <span class="text-white">coding: </span>
+            <span class="text-gray-400">[</span>
+            <ng-template ngFor [ngForOf]="personalData.details.codings" let-code let-index="index">
+              <span class="text-gray-400">'</span>
+              <span class="text-amber-300">{{ code }}</span>
+              <span class="text-gray-400">'</span>
+              <span *ngIf="(index + 1) < personalData.details.codings.length" class="text-gray-400">,</span>
+            </ng-template>
+            <span class="text-gray-400">],</span>
           </div>
+          <div class="ml-4 lg:ml-8 mr-2 flex flex-wrap">
+            <span class="text-white">frameworks: </span>
+            <span class="text-gray-400">[</span>
+            <ng-template ngFor [ngForOf]="personalData.details.frameWorks" let-framework let-index="index">
+              <span class="text-gray-400">'</span>
+              <span class="text-amber-300">{{ framework }}</span>
+              <span class="text-gray-400">'</span>
+              <span *ngIf="(index + 1) < personalData.details.frameWorks.length" class="text-gray-400">,</span>
+            </ng-template>
+            <span class="text-gray-400">],</span>
+          </div>
+          <div class="ml-4 lg:ml-8 mr-2 flex flex-wrap">
+            <span class="text-white">databases: </span>
+            <span class="text-gray-400">[</span>
+            <ng-template ngFor [ngForOf]="personalData.details.databases" let-database let-index="index">
+              <span class="text-gray-400">'</span>
+              <span class="text-amber-300">{{ database }}</span>
+              <span class="text-gray-400">'</span>
+              <span *ngIf="(index + 1) < personalData.details.databases.length" class="text-gray-400">,</span>
+            </ng-template>
+            <span class="text-gray-400">],</span>
+          </div>
+<!--          <div class="ml-4 lg:ml-8 mr-2">-->
+<!--            <span class="text-white">skills:</span>-->
+<!--            <span class="text-gray-400">['</span>-->
+<!--            <span class="text-amber-300">Flutter</span>-->
+<!--            <span class="text-gray-400">', '</span>-->
+<!--            <span class="text-amber-300">Android</span>-->
+<!--            <span class="text-gray-400">', '</span>-->
+<!--            <span class="text-amber-300">Spring Boot</span>-->
+<!--            <span class="text-gray-400">', '</span>-->
+<!--            <span class="text-amber-300">Angular</span>-->
+<!--            <span class="text-gray-400">', '</span>-->
+<!--            <span class="text-amber-300">Kotlin</span>-->
+<!--            <span class="text-gray-400">', '</span>-->
+<!--            <span class="text-amber-300">PostGreSQL</span>-->
+<!--            <span class="text-gray-400">', '</span>-->
+<!--            <span class="text-amber-300">MongoDB</span>-->
+<!--            <span class="text-gray-400">', '</span>-->
+<!--            <span class="text-amber-300">Docker</span>-->
+<!--            <span class="text-gray-400">', '</span>-->
+<!--            <span class="text-amber-300">AWS</span>-->
+<!--            <span class="text-gray-400">'],</span>-->
+<!--          </div>-->
           <div>
             <span class="ml-4 lg:ml-8 mr-2 text-white">hardWorker:</span>
             <span class="text-orange-400">true</span>
@@ -113,7 +158,7 @@
           <div>
             <span class="ml-4 lg:ml-8 mr-2 text-green-400">hireable:</span>
             <span class="text-orange-400">function</span>
-            <span class="text-gray-400">() {{'{'}}</span>
+            <span class="text-gray-400">() {{ '{' }}</span>
           </div>
           <div>
             <span class="ml-8 lg:ml-16 mr-2 text-orange-400">return</span>
