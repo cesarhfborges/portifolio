@@ -8,13 +8,15 @@ import {HomeComponent} from './pages/home/home.component';
 import {HeroSectionComponent} from './pages/components/hero-section/hero-section.component';
 import {NavbarComponent} from './pages/components/navbar/navbar.component';
 import {NgOptimizedImage} from "@angular/common";
+import { FooterComponent } from './pages/components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeroSectionComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
     imports: [
         BrowserModule,
