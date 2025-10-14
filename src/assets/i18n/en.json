@@ -25,6 +25,9 @@
       "to": "To",
       "present": "Present",
       "position": "Position"
+    },
+    "skills": {
+      "title": "Skills"
     }
   }
 }

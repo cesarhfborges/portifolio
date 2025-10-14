@@ -25,6 +25,9 @@
       "to": "Fim",
       "present": "Atual",
       "position": "Cargo"
+    },
+    "skills": {
+      "title": "Habilidades"
     }
   }
 }
