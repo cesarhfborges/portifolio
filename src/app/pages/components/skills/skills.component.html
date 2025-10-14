@@ -20,11 +20,11 @@
     </div>
   </div>
 
-  <div class="w-full my-12">
+  <div class="w-full my-12 px-4 md:px-0">
     <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
       <div
         *ngFor="let skill of skills; let id = index"
-        class="w-full h-full h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer z-10 hover:z-50"
+        class="w-full h-full h-fit flex flex-col items-center justify-center transition-all duration-500 rounded-lg group relative md:hover:scale-[1.15] cursor-pointer z-10 hover:z-50 origin-center"
       >
         <div
           class="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
@@ -45,7 +45,7 @@
                 class="h-full w-auto rounded-lg"
               >
             </div>
-            <p class="text-white text-sm sm:text-lg">
+            <p class="text-white text-sm sm:text-lg text-center">
               {{ skill }}
             </p>
           </div>
