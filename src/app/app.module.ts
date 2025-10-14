@@ -7,6 +7,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HomeComponent} from './pages/home/home.component';
 import {HeroSectionComponent} from './pages/components/hero-section/hero-section.component';
 import {NavbarComponent} from './pages/components/navbar/navbar.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -15,11 +16,12 @@ import {NavbarComponent} from './pages/components/navbar/navbar.component';
     HeroSectionComponent,
     NavbarComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FontAwesomeModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FontAwesomeModule,
+        NgOptimizedImage
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
