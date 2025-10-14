@@ -39,6 +39,7 @@ export type Skill =
   | 'php'
   | 'python'
   | 'react'
+  | 'react native'
   | 'ruby'
   | 'strapi'
   | 'svelte'
@@ -202,6 +203,12 @@ export const skillsImage = (skill: string): string => {
     case 'vuetifyjs':
       return `/assets/svg/skills/${skillID}.svg`;
     case 'wolframalpha':
+      return `/assets/svg/skills/${skillID}.svg`;
+    case 'node':
+      return `/assets/svg/skills/${skillID}.svg`;
+    case 'react native':
+      return `/assets/svg/skills/react.svg`;
+    case 'sass':
       return `/assets/svg/skills/${skillID}.svg`;
     default:
       return '';

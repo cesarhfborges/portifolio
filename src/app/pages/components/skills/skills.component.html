@@ -20,58 +20,98 @@
   </div>
 
   <div class="w-full my-12">
-    <div class="marquee-container">
-      <div class="marquee-content">
-        <div class="flex">
-          <div *ngFor="let skill of skills; let id = index"
-               class="w-36 min-w-fit h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer">
-            <div
-              class="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
-              <div class="flex -translate-y-[1px] justify-center">
-                <div class="w-3/4">
-                  <div
-                    class="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent">
-                  </div>
-                </div>
-              </div>
-              <div class="flex flex-col items-center justify-center gap-3 p-6">
-                <div class="h-8 sm:h-10">
-                  <img [src]="getSkillImage(skill)" [alt]="skill" width="40" height="40"
-                       class="h-full w-auto rounded-lg">
-                </div>
-                <p class="text-white text-sm sm:text-lg">
-                  {{ skill }}
-                </p>
+    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+      <div
+        *ngFor="let skill of skills; let id = index"
+        class="w-full h-full h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer z-10 hover:z-50"
+      >
+        <div
+          class="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
+          <div class="flex -translate-y-[1px] justify-center">
+            <div class="w-3/4">
+              <div
+                class="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent">
               </div>
             </div>
           </div>
-        </div>
-        <!-- Duplicate for seamless scrolling -->
-        <div class="flex">
-          <div *ngFor="let skill of skills; let id = index"
-               class="w-36 min-w-fit h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer">
-            <div
-              class="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
-              <div class="flex -translate-y-[1px] justify-center">
-                <div class="w-3/4">
-                  <div
-                    class="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent">
-                  </div>
-                </div>
-              </div>
-              <div class="flex flex-col items-center justify-center gap-3 p-6">
-                <div class="h-8 sm:h-10">
-                  <img [src]="getSkillImage(skill)" [alt]="skill" width="40" height="40"
-                       class="h-full w-auto rounded-lg">
-                </div>
-                <p class="text-white text-sm sm:text-lg">
-                  {{ skill }}
-                </p>
-              </div>
+          <div class="h-full flex flex-col items-center justify-center gap-3 p-6">
+            <div class="h-8 sm:h-10">
+              <img
+                [src]="getSkillImage(skill)"
+                [alt]="skill"
+                width="40"
+                height="40"
+                class="h-full w-auto rounded-lg"
+              >
             </div>
+            <p class="text-white text-sm sm:text-lg">
+              {{ skill }}
+            </p>
           </div>
         </div>
       </div>
     </div>
+
+
+<!--    <div class="marquee-container">-->
+<!--      <div class="marquee-content">-->
+<!--        <div class="flex">-->
+<!--          <div -->
+<!--            *ngFor="let skill of skills; let id = index" -->
+<!--            class="w-36 min-w-fit h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer"-->
+<!--          >-->
+<!--            <div-->
+<!--              class="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">-->
+<!--              <div class="flex -translate-y-[1px] justify-center">-->
+<!--                <div class="w-3/4">-->
+<!--                  <div-->
+<!--                    class="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent">-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="flex flex-col items-center justify-center gap-3 p-6">-->
+<!--                <div class="h-8 sm:h-10">-->
+<!--                  <img-->
+<!--                    [src]="getSkillImage(skill)"-->
+<!--                    [alt]="skill"-->
+<!--                    width="40"-->
+<!--                    height="40"-->
+<!--                    class="h-full w-auto rounded-lg"-->
+<!--                  >-->
+<!--                </div>-->
+<!--                <p class="text-white text-sm sm:text-lg">-->
+<!--                  {{ skill }}-->
+<!--                </p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Duplicate for seamless scrolling &ndash;&gt;-->
+<!--        <div class="flex">-->
+<!--          <div *ngFor="let skill of skills; let id = index"-->
+<!--               class="w-36 min-w-fit h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer">-->
+<!--            <div-->
+<!--              class="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">-->
+<!--              <div class="flex -translate-y-[1px] justify-center">-->
+<!--                <div class="w-3/4">-->
+<!--                  <div-->
+<!--                    class="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent">-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="flex flex-col items-center justify-center gap-3 p-6">-->
+<!--                <div class="h-8 sm:h-10">-->
+<!--                  <img [src]="getSkillImage(skill)" [alt]="skill" width="40" height="40"-->
+<!--                       class="h-full w-auto rounded-lg">-->
+<!--                </div>-->
+<!--                <p class="text-white text-sm sm:text-lg">-->
+<!--                  {{ skill }}-->
+<!--                </p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </div>
