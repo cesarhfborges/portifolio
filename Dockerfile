@@ -1,5 +1,5 @@
 # Stage 1: Build da aplicação Angular com Node 14
-FROM node:14-alpine AS build
+FROM node:18-alpine AS build
 
 # Diretório de trabalho
 WORKDIR /app
