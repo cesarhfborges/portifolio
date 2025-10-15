@@ -39,7 +39,7 @@ export const experiences: Experience[] = [
     }
   },
   {
-    id: 3,
+    id: 5,
     company: "SdRedes",
     title: 'Programador Pleno / Coordenador de Desenvolvimento',
     duration: {
@@ -48,7 +48,7 @@ export const experiences: Experience[] = [
     }
   },
   {
-    id: 4,
+    id: 6,
     company: "PlatoFlex Embreagens",
     title: 'Programador',
     duration: {
