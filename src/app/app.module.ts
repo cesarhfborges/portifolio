@@ -5,7 +5,7 @@ import {
   provideAppInitializer,
   provideZoneChangeDetection
 } from '@angular/core';
-import {DATE_PIPE_DEFAULT_OPTIONS, NgOptimizedImage, registerLocaleData} from "@angular/common";
+import {CommonModule, DATE_PIPE_DEFAULT_OPTIONS, NgOptimizedImage, registerLocaleData} from "@angular/common";
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
@@ -54,6 +54,7 @@ registerLocaleData(localeEn, 'en');
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FontAwesomeModule,
