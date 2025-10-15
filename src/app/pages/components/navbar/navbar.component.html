@@ -1,8 +1,16 @@
 <nav class="bg-transparent">
-  <div class="flex items-center justify-between py-5">
+  <div class="flex items-center justify-center md:justify-between py-5">
     <div class="flex flex-shrink-0 items-center visible md:hidden lg:flex">
-      <a routerLink="/" class="text-[#16f2b3] text-3xl font-bold">
-        César
+      <img
+        ngSrc="assets/icons/android-chrome-192x192.png"
+        class="h-6 mr-3 sm:h-9"
+        alt="App logo"
+        [priority]="true"
+        [height]="32"
+        [width]="32"
+      />
+      <a routerLink="/" class="text-[#0065CF] text-3xl font-bold">
+        César<span class="pl-2 visible lg:invisible xl:visible">Borges</span>
       </a>
     </div>
     <ul
@@ -20,7 +28,7 @@
         <a
           href="javascript:void(0)"
           id="dropdownToggle"
-          class="flex px-4 py-2 no-underline outline-none hover:text-pink-600 hover:no-underline relative"
+          class="flex px-4 py-2 no-underline outline-none transition-colors duration-300 hover:text-pink-600 hover:no-underline relative"
           [class.text-pink-600]="isDropdownOpen"
           data-dropdown-toggle="dropdownMenu"
           (click)="toggleDropdown()"
