@@ -5,11 +5,6 @@ import {TranslateService} from '@ngx-translate/core';
 export async function initializeAppConfig(): Promise<void> {
   const translationService = inject(TranslationService);
   const _translateService = inject(TranslateService);
-  const a = _translateService.getBrowserCultureLang();
-
-  if (a !== undefined) {
-    translationService.currentLang = <"en" | "pt-BR">a;
-  }
-
+  translationService.currentLang = _translateService.getBrowserLang();
   return Promise.resolve();
 }
