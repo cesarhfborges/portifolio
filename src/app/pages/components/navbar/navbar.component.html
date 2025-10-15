@@ -1,13 +1,12 @@
 <nav class="bg-transparent">
   <div class="flex items-center justify-between py-5">
-    <div class="flex flex-shrink-0 items-center">
+    <div class="flex flex-shrink-0 items-center visible md:hidden lg:flex">
       <a routerLink="/" class="text-[#16f2b3] text-3xl font-bold">
-        César Borges
+        César
       </a>
     </div>
-
     <ul
-      class="mt-4 flex h-screen max-h-0 w-full flex-col items-start text-sm opacity-0 md:mt-0 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-1 md:border-0 md:opacity-100"
+      class="mt-4 hidden h-screen max-h-0 w-full flex-col items-start text-sm md:mt-0 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-1 md:border-0 md:flex"
       id="navbar-default"
     >
       <li *ngFor="let item of navItems">
@@ -21,7 +20,7 @@
         <a
           href="javascript:void(0)"
           id="dropdownToggle"
-          class="block px-4 py-2 no-underline outline-none hover:no-underline relative"
+          class="flex px-4 py-2 no-underline outline-none hover:no-underline relative"
           data-dropdown-toggle="dropdownMenu"
           (click)="toggleDropdown()"
         >

@@ -11,8 +11,8 @@
     "heroSection": {
       "designation": "Software Developer",
       "text": "Welcome!\n to %USERNAME% portfolio! I am a professional %DESIGNATION%.",
-      "contact_me": "Contact me",
-      "get_resume": "Get Resume"
+      "contact_me": "Contact",
+      "get_resume": "Resume"
     },
     "about": {
       "name": "About me",

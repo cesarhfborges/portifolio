@@ -11,8 +11,8 @@
     "heroSection": {
       "designation": "Desenvolvedor de software",
       "text": "Bem vindo!\n ao portifólio de %USERNAME%, e eu sou um %DESIGNATION% profissional.",
-      "contact_me": "Entrar em contato",
-      "get_resume": "Baixar curriculo"
+      "contact_me": "Contato",
+      "get_resume": "Curriculo"
     },
     "about": {
       "name": "Sobre",
