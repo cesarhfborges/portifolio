@@ -1,24 +1,67 @@
-.glow-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.5rem;
+//.glow-card {
+//  position: relative;
+//  overflow: hidden;
+//  border-radius: 0.5rem;
+//}
+//
+//.glow-card::before {
+//  content: '';
+//  position: absolute;
+//  width: 200%;
+//  height: 200%;
+//  top: -50%;
+//  left: -50%;
+//  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+//  transform: rotate(0deg);
+//  transition: transform 0.5s;
+//  pointer-events: none;
+//}
+//
+//.glow-card:hover::before {
+//  transform: rotate(180deg);
+//}
+
+.glow-container {
+  transition: all 300ms ease-in-out;
+  /* Seu background/borda original para o cartão é definido no .glow-card */
 }
 
-.glow-card::before {
-  content: '';
+.blob {
+  filter: blur(40px);
   position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-  transform: rotate(0deg);
-  transition: transform 0.5s;
-  pointer-events: none;
+  /* Z-index 0, atrás do cartão (z-index 1) mas dentro do contêiner */
+  z-index: 0;
+  top: 0;
+  opacity: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.5); /* Cor do Glow (Violeta) */
+  transition: opacity 300ms ease-in-out; /* Apenas transição de opacidade via CSS */
+  pointer-events: none; /* Não bloquear cliques no cartão */
 }
 
-.glow-card:hover::before {
-  transform: rotate(180deg);
+/* O fakeblob é usado apenas para obter as dimensões e a posição do contêiner */
+.fakeblob {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0; /* Invisível */
+}
+
+/* Garante que o cartão de conteúdo fique acima do glow */
+.glow-card {
+  z-index: 1;
+  position: relative;
+  background: #101123; /* Garante que o fundo do cartão oculte o glow no centro */
+  /* backdrop-filter: blur(80px); - Pode ser omitido se for apenas um fundo sólido */
 }
 
 .parent-scroll-container {
