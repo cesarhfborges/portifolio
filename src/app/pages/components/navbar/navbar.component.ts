@@ -12,6 +12,7 @@ import {faGlobe} from '@fortawesome/free-solid-svg-icons';
 export class NavbarComponent {
 
   public isDropdownOpen: boolean = false;
+  isMobileMenuOpen: boolean = false;
 
   public _translationService = inject(TranslationService);
 
@@ -29,6 +30,10 @@ export class NavbarComponent {
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
   @HostListener('document:click', ['$event'])
