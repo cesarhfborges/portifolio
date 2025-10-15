@@ -1,8 +1,9 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, Renderer2, RendererFactory2} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {BehaviorSubject, Subject} from 'rxjs';
+import {DOCUMENT} from '@angular/common';
 
-export type Language = 'en' | 'pt';
+export type Language = 'en' | 'pt-BR';
 
 interface Translation {
   icon: string;
@@ -23,17 +24,20 @@ export class TranslationService {
     },
     {
       label: 'Português',
-      value: 'pt',
+      value: 'pt-BR',
       icon: 'https://flagsapi.com/BR/shiny/64.png',
     }
   ];
 
 
   private _language = new BehaviorSubject<Language>('en');
-
   private _translate = inject(TranslateService);
+  private _rendererFactory = inject(RendererFactory2);
+  private _document = inject(DOCUMENT);
+  private _renderer: Renderer2;
 
   constructor() {
+    this._renderer = this._rendererFactory.createRenderer(null, null);
   }
 
   get langs(): Translation[] {
@@ -46,6 +50,7 @@ export class TranslationService {
 
   set currentLang(value: Language) {
     this._translate.use(value);
+    this._renderer.setAttribute(this._document.documentElement, 'lang', value);
     this._language.next(value);
   }
 }
