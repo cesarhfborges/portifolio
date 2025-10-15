@@ -32,13 +32,18 @@
       <div>
         <div class="flex flex-col gap-6">
           <div
+            #cardRef
             *ngFor="let education of educations"
-            class="glow-container-experience-1 glow-container"
             [attr.data-identifier]="'education-' + education.id"
+            (mouseenter)="onCardMouseEnter(cardRef)"
+            (mouseleave)="onCardMouseLeave(cardRef)"
+            (mousemove)="onCardMouseMove(cardRef, $event)"
+            class="glow-container-experience-1 glow-container relative overflow-hidden p-[3px] rounded-xl"
           >
-            <div
-              class="glow-card glow-card-experience-1 h-fit cursor-pointer border border-[#2a2e5a] transition-all duration-300 relative bg-[#101123] text-gray-200 rounded-xl hover:border-transparent w-full">
-              <img src="assets/blur-23.svg" alt="Hero" class="absolute bottom-0 opacity-80">
+            <div class="blob"></div>
+            <div class="fakeblob"></div>
+            <div class="glow-card glow-card-experience-1 h-fit cursor-pointer border border-[#2a2e5a] transition-all duration-300 relative bg-[#101123] text-gray-200 rounded-xl hover:border-transparent w-full">
+              <img ngSrc="assets/blur-23.svg" alt="Hero" class="absolute bottom-0 opacity-80" fill [priority]="false">
               <div class="flex items-center gap-x-8 px-6 py-5">
 
                 <div class="text-violet-500 transition-all duration-300 hover:scale-125">
