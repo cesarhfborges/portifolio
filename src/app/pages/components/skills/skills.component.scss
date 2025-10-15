@@ -2,6 +2,49 @@
   display: block;
 }
 
+.glow-container {
+  transition: all 300ms ease-in-out;
+}
+
+.blob {
+  filter: blur(40px);
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  opacity: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.5);
+  transition: opacity 300ms ease-in-out;
+  pointer-events: none;
+}
+
+.fakeblob {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.glow-card {
+  z-index: 1;
+  position: relative;
+  background: #101123;
+  /* backdrop-filter: blur(80px); - Pode ser omitido se for apenas um fundo sólido */
+}
+
+.parent-scroll-container {
+  max-height: 90vh;
+}
+
 .marquee-container {
   width: 100%;
   overflow: hidden;
