@@ -34,7 +34,7 @@ export class NavbarComponent {
   faGithub = faGithub;
   faGlobe = faGlobe;
   isScrolled: boolean = false;
-  private readonly SCROLL_THRESHOLD = 50;
+  private readonly SCROLL_THRESHOLD = 1;
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
