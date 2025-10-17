@@ -1,63 +1,209 @@
-<nav class="bg-transparent">
-  <div class="flex items-center justify-center md:justify-between py-5">
-    <div class="flex flex-shrink-0 items-center visible md:hidden lg:flex" @rightToLeft>
-      <img
-        ngSrc="assets/icons/android-chrome-192x192.png"
-        class="h-6 mr-3 sm:h-9"
-        alt="App logo"
-        [priority]="true"
-        [height]="32"
-        [width]="32"
-      />
-      <a routerLink="/" class="text-[#0065CF] text-3xl font-bold">
-        César<span class="pl-2 visible lg:invisible xl:visible">Borges</span>
-      </a>
-    </div>
-    <ul
-      class="mt-4 hidden h-screen max-h-0 w-full flex-col items-start text-sm md:mt-0 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-1 md:border-0 md:flex"
-      id="navbar-default"
-      @leftToRight
-    >
-      <li *ngFor="let item of navItems">
-        <a href="{{item.path}}" class="block px-4 py-2 no-underline outline-none hover:no-underline">
-          <div class="text-sm text-white transition-colors duration-300 hover:text-pink-600">
-            {{ (item.label | translate) | uppercase }}
-          </div>
-        </a>
-      </li>
-      <li>
-        <a
-          href="javascript:void(0)"
-          id="dropdownToggle"
-          class="flex px-4 py-2 no-underline outline-none transition-colors duration-300 hover:text-pink-600 hover:no-underline relative"
-          [class.text-pink-600]="isDropdownOpen"
-          data-dropdown-toggle="dropdownMenu"
-          (click)="toggleDropdown()"
-        >
-          {{('app.menu.language' | translate) | uppercase}}
-          <fa-icon [icon]="faGlobe" size="1x" [style.padding-left.px]="8"></fa-icon>
-        </a>
+<header
+  class="w-full"
+  [ngClass]="{
+    'left-0': isScrolled || isMenuOpen,
+    'right-0': isScrolled || isMenuOpen,
+    'bg-gray-900/80': isScrolled || isMenuOpen,
+    'backdrop-blur-sm': isScrolled || isMenuOpen,
+    'fixed': isScrolled || isMenuOpen,
+    'px-6': isScrolled || isMenuOpen,
+  }"
+  [style.z-index]="9999999999"
+>
+  <nav class="container mx-auto px-4">
+    <div class="flex items-center justify-between py-5">
 
-        <div
-          id="dropdownMenu"
-          class="absolute right-0 mt-2 w-48 rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-gray-900/5 ring-opacity-5 z-50"
-          [class.hidden]="!isDropdownOpen"
-        >
-          <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdownToggle">
-            <a
-              *ngFor="let lang of _translationService.langs"
-              href="javascript:void(0)"
-              class="flex gap-2 content-center px-4 py-2 text-sm text-light-700 dark:hover:bg-gray-700"
-              role="menuitem"
-              (click)="setLang(lang.value)"
-            >
-              <img [ngSrc]="lang.icon" [alt]="lang.label" [height]="20" [width]="20">
-              {{ lang.label }}
-            </a>
+      <div class="flex flex-shrink-0 items-center" @rightToLeft>
+        <img
+          ngSrc="assets/icons/android-chrome-192x192.png"
+          class="h-6 mr-3 sm:h-9"
+          alt="App logo"
+          [priority]="true"
+          [height]="32"
+          [width]="32"
+        />
+        <a routerLink="/" class="text-[#0065CF] text-3xl font-bold">
+          César<span class="pl-2 visible lg:invisible xl:visible">Borges</span>
+        </a>
+      </div>
+
+      <button
+        type="button"
+        class="text-white md:hidden p-2 rounded-lg hover:text-pink-600 focus:outline-none"
+        (click)="toggleMenu()"
+        [ngClass]="{
+           'mr-3': isMenuOpen,
+        }"
+      >
+        <fa-icon [icon]="isMenuOpen ? faTimes : faBars" size="2x"></fa-icon>
+      </button>
+
+
+      <ul
+        class="hidden md:flex flex-row space-x-1"
+        @leftToRight
+      >
+        <li *ngFor="let item of navItems">
+          <a href="{{item.path}}" class="block px-4 py-2 no-underline outline-none hover:no-underline">
+            <div class="text-sm text-white transition-colors duration-300 hover:text-pink-600">
+              {{ (item.label | translate) | uppercase }}
+            </div>
+          </a>
+        </li>
+
+        <li class="relative">
+          <a
+            href="javascript:void(0)"
+            id="dropdownToggle"
+            class="flex px-4 py-2 no-underline outline-none transition-colors duration-300 hover:text-pink-600 hover:no-underline"
+            [class.text-pink-600]="isDropdownOpen"
+            (click)="toggleDropdown()"
+          >
+            {{ ('app.menu.language' | translate) | uppercase }}
+            <fa-icon [icon]="faGlobe" size="1x" [style.padding-left.px]="8"></fa-icon>
+          </a>
+
+          <div
+            id="dropdownMenu"
+            class="absolute right-0 mt-2 w-48 rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-gray-900/5 ring-opacity-5 z-50"
+            [class.hidden]="!isDropdownOpen"
+          >
+            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdownToggle">
+              <a
+                *ngFor="let lang of _translationService.langs"
+                href="javascript:void(0)"
+                class="flex gap-2 content-center px-4 py-2 text-sm text-light-700 dark:hover:bg-gray-700"
+                role="menuitem"
+                (click)="setLang(lang.value)"
+              >
+                <img [ngSrc]="lang.icon" [alt]="lang.label" [height]="20" [width]="20">
+                {{ lang.label }}
+              </a>
+            </div>
           </div>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+<div
+  class="
+    fixed top-[80px] left-0 w-full h-full bg-gray-900/95 flex flex-col items-center pt-8 z-40
+    transition-transform duration-300 ease-in-out md:hidden
+  "
+  [style.z-index]="9999999999"
+  [class.-translate-x-full]="!isMenuOpen"
+  [class.translate-x-0]="isMenuOpen"
+>
+  <ul class="flex flex-col items-center space-y-4">
+
+    <li *ngFor="let item of navItems">
+      <a
+        href="{{item.path}}"
+        class="block px-4 py-2 text-xl no-underline outline-none hover:no-underline"
+        (click)="toggleMenu()"
+      >
+        <div class="text-white transition-colors duration-300 hover:text-pink-600">
+          {{ (item.label | translate) | uppercase }}
         </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+      </a>
+    </li>
+
+    <li class="relative">
+      <a
+        href="javascript:void(0)"
+        id="dropdownToggleMobile"
+        class="flex px-4 py-2 text-xl no-underline outline-none transition-colors duration-300 hover:text-pink-600 hover:no-underline"
+        [class.text-pink-600]="isDropdownOpen"
+        (click)="toggleDropdown()"
+      >
+        {{ ('app.menu.language' | translate) | uppercase }}
+        <fa-icon [icon]="faGlobe" size="1x" [style.padding-left.px]="8"></fa-icon>
+      </a>
+
+      <div
+        class="absolute mt-2 w-48 rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-gray-900/5 ring-opacity-5 z-50 left-1/2 transform -translate-x-1/2"
+        [class.hidden]="!isDropdownOpen"
+      >
+        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdownToggleMobile">
+          <a
+            *ngFor="let lang of _translationService.langs"
+            href="javascript:void(0)"
+            class="flex gap-2 content-center px-4 py-2 text-sm text-light-700 dark:hover:bg-gray-700"
+            role="menuitem"
+            (click)="setLang(lang.value)"
+          >
+            <img [ngSrc]="lang.icon" [alt]="lang.label" [height]="20" [width]="20">
+            {{ lang.label }}
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!--<nav class="bg-transparent">-->
+<!--  <div class="flex items-center justify-center md:justify-between py-5">-->
+<!--    <div class="flex flex-shrink-0 items-center visible md:hidden lg:flex">-->
+<!--      <img-->
+<!--        ngSrc="assets/icons/android-chrome-192x192.png"-->
+<!--        class="h-6 mr-3 sm:h-9"-->
+<!--        alt="App logo"-->
+<!--        [priority]="true"-->
+<!--        [height]="32"-->
+<!--        [width]="32"-->
+<!--      />-->
+<!--      <a routerLink="/" class="text-[#0065CF] text-3xl font-bold">-->
+<!--        César<span class="pl-2 visible lg:invisible xl:visible">Borges</span>-->
+<!--      </a>-->
+<!--    </div>-->
+<!--    <ul-->
+<!--      class="mt-4 hidden h-screen max-h-0 w-full flex-col items-start text-sm md:mt-0 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-1 md:border-0 md:flex"-->
+<!--      id="navbar-default"-->
+<!--    >-->
+<!--      <li *ngFor="let item of navItems">-->
+<!--        <a href="{{item.path}}" class="block px-4 py-2 no-underline outline-none hover:no-underline">-->
+<!--          <div class="text-sm text-white transition-colors duration-300 hover:text-pink-600">-->
+<!--            {{ (item.label | translate) | uppercase }}-->
+<!--          </div>-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <a-->
+<!--          href="javascript:void(0)"-->
+<!--          id="dropdownToggle"-->
+<!--          class="flex px-4 py-2 no-underline outline-none transition-colors duration-300 hover:text-pink-600 hover:no-underline relative"-->
+<!--          [class.text-pink-600]="isDropdownOpen"-->
+<!--          data-dropdown-toggle="dropdownMenu"-->
+<!--          (click)="toggleDropdown()"-->
+<!--        >-->
+<!--          {{('app.menu.language' | translate) | uppercase}}-->
+<!--          <fa-icon [icon]="faGlobe" size="1x" [style.padding-left.px]="8"></fa-icon>-->
+<!--        </a>-->
+
+<!--        <div-->
+<!--          id="dropdownMenu"-->
+<!--          class="absolute right-0 mt-2 w-48 rounded-md shadow-lg dark:bg-gray-800 ring-1 ring-gray-900/5 ring-opacity-5 z-50"-->
+<!--          [class.hidden]="!isDropdownOpen"-->
+<!--        >-->
+<!--          <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="dropdownToggle">-->
+<!--            <a-->
+<!--              *ngFor="let lang of _translationService.langs"-->
+<!--              href="javascript:void(0)"-->
+<!--              class="flex gap-2 content-center px-4 py-2 text-sm text-light-700 dark:hover:bg-gray-700"-->
+<!--              role="menuitem"-->
+<!--              (click)="setLang(lang.value)"-->
+<!--            >-->
+<!--              <img [ngSrc]="lang.icon" [alt]="lang.label" [height]="20" [width]="20">-->
+<!--              {{ lang.label }}-->
+<!--            </a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</nav>-->
 
