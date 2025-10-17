@@ -2,12 +2,14 @@ import {Component, HostListener, inject} from '@angular/core';
 import {Language, TranslationService} from '../../../shared/services/translation.service';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
 import {faGlobe} from '@fortawesome/free-solid-svg-icons';
+import animations from '../../../shared/animations/animations';
 
 @Component({
   selector: 'app-navbar',
   standalone: false,
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
+  animations: animations
 })
 export class NavbarComponent {
 

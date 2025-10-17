@@ -33,6 +33,7 @@ import localePt from '@angular/common/locales/pt';
 import localeEn from '@angular/common/locales/en';
 import player from 'lottie-web';
 import { ScrollToTopComponent } from './shared/components/scroll-to-top/scroll-to-top.component';
+import { AnimateOnScrollDirective } from './shared/directives/animate-on-scroll.directive';
 
 registerLocaleData(localePt, 'pt');
 registerLocaleData(localeEn, 'en');
@@ -52,7 +53,8 @@ registerLocaleData(localeEn, 'en');
     EducationComponent,
     ContactComponent,
     ProjectCardComponent,
-    ScrollToTopComponent
+    ScrollToTopComponent,
+    AnimateOnScrollDirective
   ],
   imports: [
     BrowserModule,

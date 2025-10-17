@@ -11,12 +11,15 @@ import {
 import {faEnvelope} from '@fortawesome/free-regular-svg-icons';
 import {personalData} from '../../../shared/data/personal.data';
 import {TranslateService} from '@ngx-translate/core';
+import {animate, style, transition, trigger} from '@angular/animations';
+import animations from '../../../shared/animations/animations';
 
 @Component({
   selector: 'app-hero-section',
   standalone: false,
   templateUrl: './hero-section.component.html',
-  styleUrl: './hero-section.component.scss'
+  styleUrl: './hero-section.component.scss',
+  animations: animations
 })
 export class HeroSectionComponent {
 

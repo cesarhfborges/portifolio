@@ -1,6 +1,6 @@
 <nav class="bg-transparent">
   <div class="flex items-center justify-center md:justify-between py-5">
-    <div class="flex flex-shrink-0 items-center visible md:hidden lg:flex">
+    <div class="flex flex-shrink-0 items-center visible md:hidden lg:flex" @rightToLeft>
       <img
         ngSrc="assets/icons/android-chrome-192x192.png"
         class="h-6 mr-3 sm:h-9"
@@ -16,6 +16,7 @@
     <ul
       class="mt-4 hidden h-screen max-h-0 w-full flex-col items-start text-sm md:mt-0 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-1 md:border-0 md:flex"
       id="navbar-default"
+      @leftToRight
     >
       <li *ngFor="let item of navItems">
         <a href="{{item.path}}" class="block px-4 py-2 no-underline outline-none hover:no-underline">
