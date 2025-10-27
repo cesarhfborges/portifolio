@@ -5,7 +5,7 @@ FROM node:18-alpine AS build
 WORKDIR /app
 
 # Instala dependências nativas necessárias para compilação de pacotes
-RUN apk add --no-cache python3 make g++
+RUN apk add --no-cache g++ make python3
 
 # Copia package.json e package-lock.json
 COPY package*.json ./
