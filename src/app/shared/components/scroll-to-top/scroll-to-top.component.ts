@@ -6,7 +6,7 @@ import {animate, style, transition, trigger} from '@angular/animations';
   selector: 'app-scroll-to-top',
   standalone: false,
   templateUrl: './scroll-to-top.component.html',
-  styleUrl: './scroll-to-top.component.scss',
+  styleUrl: './scroll-to-top.component.css',
   animations: [
     trigger('fadeAnimation', [
       transition(':enter', [

@@ -5,7 +5,7 @@ import {faCodeFork, faStar} from '@fortawesome/free-solid-svg-icons';
   selector: 'app-footer',
   standalone: false,
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  styleUrl: './footer.component.css'
 })
 export class FooterComponent {
 

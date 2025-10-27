@@ -5,7 +5,7 @@ import { projects } from "../../../shared/data/projects.data";
   selector: 'app-projects',
   standalone: false,
   templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss'
+  styleUrl: './projects.component.css'
 })
 export class ProjectsComponent {
   projects = projects.slice(0, 4);

@@ -6,7 +6,7 @@ import {faGraduationCap} from '@fortawesome/free-solid-svg-icons';
   selector: 'app-education',
   standalone: false,
   templateUrl: './education.component.html',
-  styleUrl: './education.component.scss'
+  styleUrl: './education.component.css'
 })
 export class EducationComponent implements OnInit {
   educations = educations;

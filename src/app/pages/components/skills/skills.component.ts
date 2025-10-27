@@ -6,7 +6,7 @@ import skillsImage from '../../../../utils/helpers/skill-image';
   selector: 'app-skills',
   standalone: false,
   templateUrl: './skills.component.html',
-  styleUrl: './skills.component.scss'
+  styleUrl: './skills.component.css'
 })
 export class SkillsComponent {
   skills = skillsData;
