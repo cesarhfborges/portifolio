@@ -1,5 +1,6 @@
 # NgDevFolio - Modern Angular Portfolio Website
 [![Quality Gate Status](https://sonar.chfb.com.br/api/project_badges/measure?project=cesarhfborges_portifolio_887f3016-6aea-4ddc-834f-7584abeef090&metric=alert_status&token=sqb_4e33c28f396bfa399dc96bcda2789d9c65940d69)](https://sonar.chfb.com.br/dashboard?id=cesarhfborges_portifolio_887f3016-6aea-4ddc-834f-7584abeef090)
+[![Build](https://github.com/cesarhfborges/portifolio/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/cesarhfborges/portifolio/actions/workflows/build.yml)
 
 > This is an Angular adaptation of the excellent [Developer Portfolio](https://github.com/cesarhfborges) project originally created by [César Borges](https://github.com/said7388) in Next.js.
 
