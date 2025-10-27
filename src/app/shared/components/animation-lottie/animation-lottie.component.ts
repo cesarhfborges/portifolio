@@ -11,7 +11,7 @@ export function playerFactory() {
   selector: 'app-animation-lottie',
   standalone: false,
   templateUrl: './animation-lottie.component.html',
-  styleUrl: './animation-lottie.component.scss'
+  styleUrl: './animation-lottie.component.css'
 })
 export class AnimationLottieComponent {
   @Input() set animationPath(value: any) {

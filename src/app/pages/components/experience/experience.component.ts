@@ -6,7 +6,7 @@ import {experiences} from "../../../shared/data/experience.data";
   selector: 'app-experience',
   standalone: false,
   templateUrl: './experience.component.html',
-  styleUrl: './experience.component.scss'
+  styleUrl: './experience.component.css'
 })
 export class ExperienceComponent implements OnInit {
   experiences = experiences;

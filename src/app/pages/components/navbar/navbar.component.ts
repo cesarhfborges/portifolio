@@ -8,7 +8,7 @@ import animations from '../../../shared/animations/animations';
   selector: 'app-navbar',
   standalone: false,
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+  styleUrl: './navbar.component.css',
   animations: animations
 })
 export class NavbarComponent {

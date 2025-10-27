@@ -17,7 +17,7 @@ import {
   selector: 'app-contact',
   standalone: false,
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+  styleUrl: './contact.component.css'
 })
 export class ContactComponent {
   personalData = personalData;

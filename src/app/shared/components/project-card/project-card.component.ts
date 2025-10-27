@@ -5,7 +5,7 @@ import {ProjectCard} from '../../models/project-card.interface';
   selector: 'app-project-card',
   standalone: false,
   templateUrl: './project-card.component.html',
-  styleUrl: './project-card.component.scss'
+  styleUrl: './project-card.component.css'
 })
 export class ProjectCardComponent {
   @Input() project!: ProjectCard;
