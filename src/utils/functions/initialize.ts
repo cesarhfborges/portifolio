@@ -6,5 +6,4 @@ export async function initializeAppConfig(): Promise<void> {
   const translationService = inject(TranslationService);
   const _translateService = inject(TranslateService);
   translationService.currentLang = _translateService.getBrowserLang();
-  return;
 }
