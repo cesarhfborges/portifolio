@@ -45,6 +45,10 @@
           },
           "configurations": {
             "production": {
+              "aot": true,
+              "sourceMap": false,
+              "optimization": true,
+              "namedChunks": false,
               "budgets": [
                 {
                   "type": "initial",
@@ -68,6 +72,7 @@
             },
             "development": {
               "optimization": false,
+              "namedChunks": true,
               "extractLicenses": false,
               "sourceMap": true
             }
@@ -87,7 +92,9 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -97,7 +104,7 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "karmaConfig": "./karma.conf.js",
             "codeCoverage": true,
             "inlineStyleLanguage": "css",
             "assets": [

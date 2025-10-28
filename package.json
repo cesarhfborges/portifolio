@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build --base-href ./",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --no-watch --code-coverage",
+    "test": "ng test --watch=false --browsers=ChromeHeadlessNoSandbox --code-coverage",
     "lint": "ng lint"
   },
   "private": true,
@@ -44,13 +44,17 @@
     "@angular/compiler-cli": "~19.2.0",
     "@types/jasmine": "~5.1.0",
     "angular-eslint": "~19.8.1",
+    "@eslint/js": "^9.38.0",
     "eslint": "~9.37.0",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~3.0.3",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "karma-sonarqube-reporter": "^1.4.0",
+    "puppeteer": "^24.26.1",
     "typescript": "~5.7.2",
     "typescript-eslint": "8.46.0"
   }
