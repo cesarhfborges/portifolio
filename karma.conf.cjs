@@ -18,7 +18,7 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, './coverage'),
       reporters: [
         {type: 'html', subdir: 'report-html'},
-        {type: 'lcov', subdir: 'report-lcov'},
+        {type: 'lcovonly', subdir: 'report-lcov'},
         {type: 'text'},
       ],
       fixWebpackSourcePaths: true,
@@ -44,7 +44,7 @@ module.exports = function (config) {
         base: 'ChromeHeadless',
         flags: ['--no-sandbox', '--headless', '--disable-gpu', '--remote-debugging-port=9222'],
       },
-      Chrome: {
+      ChromeLiveTest: {
         base: 'Chrome',
         flags: ['--no-sandbox'],
       },

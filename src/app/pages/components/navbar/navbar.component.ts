@@ -1,6 +1,5 @@
 import {Component, HostListener, inject} from '@angular/core';
 import {Language, TranslationService} from '../../../shared/services/translation.service';
-import {faGithub} from '@fortawesome/free-brands-svg-icons';
 import {faBars, faGlobe, faTimes} from '@fortawesome/free-solid-svg-icons';
 import animations from '../../../shared/animations/animations';
 
@@ -31,7 +30,6 @@ export class NavbarComponent {
     {path: '/#projects', label: 'app.menu.projects'}
   ];
 
-  faGithub = faGithub;
   faGlobe = faGlobe;
   isScrolled: boolean = false;
   private readonly SCROLL_THRESHOLD = 1;

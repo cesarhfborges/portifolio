@@ -7,6 +7,7 @@
     "build": "ng build --base-href ./",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --source-map=true --browsers=ChromeHeadlessNoSandbox --code-coverage=true",
+    "test:live": "ng test --watch=true --source-map=true --browsers=ChromeLiveTest --code-coverage=true",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix"
   },
