@@ -26,6 +26,13 @@ jobs:
       - name: Install Puppeteer (for headless Chrome)
         run: npm install puppeteer --save-dev
 
+      - name: Run SonarQube Scan
+        run: npx @sonar/scan \
+          -Dsonar.projectKey=cesarhfborges_portifolio_f21b5bb6-40c9-476d-9371-b9661598ab86 \
+#          -Dsonar.organization=your_organization_key \
+          -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
       - name: Run Angular unit tests
         run: npm test -- --watch=false --browsers=ChromeHeadless
 
