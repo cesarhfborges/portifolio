@@ -17,8 +17,8 @@ export class NavbarComponent {
   faTimes = faTimes;
 
   public isDropdownOpen: boolean = false;
-  isMenuOpen: boolean = false; // Controla o menu responsivo
-  isMobile: boolean = false; // Flag para saber se está em tela pequena
+  isMenuOpen: boolean = false;
+  isMobile: boolean = false;
 
   public _translationService = inject(TranslationService);
 
@@ -60,10 +60,7 @@ export class NavbarComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    // window.scrollY é a posição vertical de rolagem em pixels
     const scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
-
-    // Atualiza a variável de estado
     this.isScrolled = scrollPosition > this.SCROLL_THRESHOLD;
   }
 
@@ -74,10 +71,7 @@ export class NavbarComponent {
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    // Opcional: Fechar o dropdown ao abrir/fechar o menu principal
     this.isDropdownOpen = false;
-
-    // TRUQUE PARA BLOQUEAR O SCROLL DO CORPO DA PÁGINA QUANDO O MENU ESTÁ ABERTO
     if (this.isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -86,10 +80,7 @@ export class NavbarComponent {
   }
 
   private checkScreenSize(): void {
-    // O breakpoint md (768px) é o padrão do Tailwind, usamos ele aqui.
     this.isMobile = window.innerWidth < 768;
-
-    // Se o menu estava aberto no mobile e a tela for redimensionada para desktop, feche o menu (para evitar overlay no desktop)
     if (!this.isMobile) {
       this.isMenuOpen = false;
     }
