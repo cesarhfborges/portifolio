@@ -5,8 +5,5 @@ export default {
     extend: {},
   },
   plugins: [
-    // require("postcss"),
-    // require("tailwindcss"),
-    // // require("autoprefixer"),
   ],
 }

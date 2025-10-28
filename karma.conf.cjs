@@ -1,6 +1,6 @@
 process.env.CHROME_BIN = process.env.CHROME_BIN || require('puppeteer').executablePath();
 
-module.exports = function (config){
+module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
@@ -9,7 +9,6 @@ module.exports = function (config){
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      // require('karma-coverage-istanbul-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
@@ -18,9 +17,9 @@ module.exports = function (config){
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage'),
       reporters: [
-        { type: 'html', subdir: 'report-html' },
-        { type: 'lcov', subdir: 'report-lcov'},
-        { type: 'text'},
+        {type: 'html', subdir: 'report-html'},
+        {type: 'lcov', subdir: 'report-lcov'},
+        {type: 'text'},
       ],
       fixWebpackSourcePaths: true,
       check: {
@@ -51,6 +50,10 @@ module.exports = function (config){
       },
     },
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    browserNoActivityTimeout: 120000,
+    captureTimeout: 120000,
+    browserDisconnectTimeout: 120000,
+    browserDisconnectTolerance: 2,
   });
 };
