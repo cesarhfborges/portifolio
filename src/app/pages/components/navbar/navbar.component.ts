@@ -52,7 +52,7 @@ export class NavbarComponent {
 
     if (this.isDropdownOpen && dropdownToggle && !dropdownToggle.contains(targetElement)) {
       const dropdownMenu = document.getElementById('dropdownMenu');
-      if (!dropdownMenu || !dropdownMenu.contains(targetElement)) {
+      if (!dropdownMenu?.contains(targetElement)) {
         this.isDropdownOpen = false;
       }
     }
