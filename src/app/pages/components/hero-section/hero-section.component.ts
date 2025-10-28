@@ -1,13 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {faFileDownload} from '@fortawesome/free-solid-svg-icons';
-import {
-  faFacebookSquare,
-  faGithub,
-  faLinkedin,
-  faTelegram,
-  faTwitterSquare,
-  faWhatsapp
-} from '@fortawesome/free-brands-svg-icons';
+import {faGithub, faLinkedin, faTelegram, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
 import {faEnvelope} from '@fortawesome/free-regular-svg-icons';
 import {personalData} from '../../../shared/data/personal.data';
 import {TranslateService} from '@ngx-translate/core';
