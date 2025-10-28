@@ -117,6 +117,9 @@
             ],
             "styles": [],
             "scripts": [],
+            "codeCoverageExclude": [
+              "src/utils/**/*"
+            ],
             "karmaConfig": "./karma.conf.cjs"
           }
         },
