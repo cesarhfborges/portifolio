@@ -11,16 +11,12 @@ import {faGraduationCap} from '@fortawesome/free-solid-svg-icons';
 export class EducationComponent implements OnInit {
   educations = educations;
   workspaceIcon = faGraduationCap;
-  lottieFile: any;
+  lottieFile: any = null;
 
   private animationFrameId: number | null = null;
 
-  async ngOnInit() {
-    try {
-      this.lottieFile = await fetch('assets/lottie/programmer.json').then(res => res.json());
-    } catch (error) {
-      console.error('Error loading Lottie animation:', error);
-    }
+  ngOnInit() {
+    void this._load();
   }
 
   public onCardMouseEnter(container: HTMLElement): void {
@@ -43,6 +39,14 @@ export class EducationComponent implements OnInit {
 
   public onCardMouseMove(container: HTMLElement, event: MouseEvent): void {
     this.updateBlobPosition(container, event);
+  }
+
+  private async _load(): Promise<void> {
+    try {
+      this.lottieFile = await fetch('assets/lottie/programmer.json').then(res => res.json());
+    } catch (error) {
+      console.error('Error loading Lottie animation:', error);
+    }
   }
 
   private updateBlobPosition(container: HTMLElement, mouseEvent: MouseEvent): void {

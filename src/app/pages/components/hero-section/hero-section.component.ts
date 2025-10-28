@@ -22,7 +22,7 @@ export class HeroSectionComponent {
   faEnvelope = faEnvelope;
   faWhatsapp = faWhatsapp;
   faTelegram = faTelegram;
-  private _service = inject(TranslateService);
+  private readonly _service = inject(TranslateService);
 
   get whatsappLink(): string {
     return `https://wa.me/${personalData.phone}?text=Hello`;
