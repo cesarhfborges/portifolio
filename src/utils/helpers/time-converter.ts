@@ -1,5 +1,5 @@
 export function timeConverter(isoTime: string | number | Date) {
-  const currentTime = new Date().getTime();
+  const currentTime = Date.now();
   const pastTime = new Date(isoTime).getTime();
   const timeDifference = currentTime - pastTime;
 
