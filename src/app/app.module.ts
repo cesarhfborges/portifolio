@@ -98,10 +98,6 @@ registerLocaleData(localeEn, 'en');
         prefix: './assets/i18n/',
         suffix: '.json'
       }),
-      // loader: provideTranslateLoader(CustomLoader),
-      // compiler: provideTranslateCompiler(CustomCompiler),
-      // parser: provideTranslateParser(CustomParser),
-      // missingTranslationHandler: provideMissingTranslationHandler(CustomMissingTranslationHandler),
     }),
     provideAppInitializer(initializeAppConfig)
   ],
