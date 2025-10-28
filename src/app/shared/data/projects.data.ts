@@ -1,8 +1,3 @@
-// import crefin from '../../assets/images/crefin.png';
-// import travel from '../../assets/images/travel.png';
-// import realEstate from '../../assets/images/realEstate.png';
-// import ayla from '../../assets/images/ayla.png';
-
 interface Project {
   id: number;
   name: string;

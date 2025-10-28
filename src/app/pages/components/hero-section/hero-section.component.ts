@@ -25,8 +25,6 @@ export class HeroSectionComponent {
   personalData = personalData;
   faGithub = faGithub;
   faLinkedin = faLinkedin;
-  faFacebook = faFacebookSquare;
-  faTwitter = faTwitterSquare;
   faDownload = faFileDownload;
   faEnvelope = faEnvelope;
   faWhatsapp = faWhatsapp;
@@ -44,7 +42,8 @@ export class HeroSectionComponent {
   getInstantTranslation() {
     let text: string = this._service.instant('app.heroSection.text');
     const nameSpan = `<span class="text-pink-500">${this.personalData.name}</span>`;
-    const designationSpan = `<span class="text-[#16f2b3]">${this._service.instant('app.heroSection.designation')}</span>`;
+    const txt = this._service.instant('app.heroSection.designation');
+    const designationSpan = `<span class="text-[#16f2b3]">${txt}</span>`;
     text = text.replace('%USERNAME%', nameSpan);
     text = text.replace('%USERNAME%', nameSpan);
     text = text.replace('%DESIGNATION%', designationSpan);

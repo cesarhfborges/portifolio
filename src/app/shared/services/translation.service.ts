@@ -17,7 +17,7 @@ interface Translation {
 })
 export class TranslationService {
 
-  private _translations: Translation[] = [
+  private readonly _translations: Translation[] = [
     {
       label: 'English',
       code: 'en',
@@ -33,11 +33,11 @@ export class TranslationService {
   ];
 
 
-  private _language = new BehaviorSubject<Language>('en');
-  private _translate = inject(TranslateService);
-  private _rendererFactory = inject(RendererFactory2);
-  private _document = inject(DOCUMENT);
-  private _renderer: Renderer2;
+  private readonly _language = new BehaviorSubject<Language>('en');
+  private readonly _translate = inject(TranslateService);
+  private readonly _rendererFactory = inject(RendererFactory2);
+  private readonly _document = inject(DOCUMENT);
+  private readonly _renderer: Renderer2;
 
   constructor() {
     this._renderer = this._rendererFactory.createRenderer(null, null);
@@ -56,7 +56,7 @@ export class TranslationService {
       this._setLanguage(this._translations[0].value);
     }
     const l = this._translations.find(e => e.code === value || e.value === value);
-    if (l !== undefined) {
+    if (l) {
       this._setLanguage(l.value);
     } else {
       this._setLanguage(this._translations[0].value);

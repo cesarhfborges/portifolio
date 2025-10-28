@@ -1,5 +1,5 @@
 import {Experience} from '../models/experience.interface';
-import {format, parse} from 'date-fns';
+import {parse} from 'date-fns';
 
 export const experiences: Experience[] = [
   {

@@ -24,7 +24,6 @@ export type Skill =
   | 'java'
   | 'javascript'
   | 'julia'
-  | 'kotlin'
   | 'lightroom'
   | 'markdown'
   | 'materialui'
