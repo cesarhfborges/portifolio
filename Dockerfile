@@ -1,5 +1,5 @@
 # Stage 1: Build da aplicação Angular com Node 14
-FROM node:18-alpine AS build
+FROM node:20-alpine AS build
 
 # Diretório de trabalho
 WORKDIR /app
@@ -15,6 +15,9 @@ RUN npm install
 
 # Copia o restante do projeto
 COPY . .
+
+# Roda os testes unitarios
+RUN npm run test
 
 # Build de produção do Angular
 RUN npm run build

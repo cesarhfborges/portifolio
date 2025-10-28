@@ -99,22 +99,25 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "sourceMap": false,
             "polyfills": [
               "zone.js",
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "./karma.conf.js",
             "codeCoverage": true,
             "inlineStyleLanguage": "css",
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            "styles": [],
+            "scripts": [],
+            "karmaConfig": "./karma.conf.cjs"
           }
         },
         "lint": {
@@ -132,6 +135,7 @@
   "cli": {
     "schematicCollections": [
       "angular-eslint"
-    ]
+    ],
+    "analytics": false
   }
 }

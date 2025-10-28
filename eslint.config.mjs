@@ -1,15 +1,14 @@
-// @ts-check
-const eslint = require("@eslint/js");
-const tseslint = require("typescript-eslint");
-const angular = require("angular-eslint");
+import eslint from "@eslint/js";
+import lint from "typescript-eslint";
+import angular from "angular-eslint";
 
-module.exports = tseslint.config(
+export default lint.config(
   {
     files: ["**/*.ts"],
     extends: [
       eslint.configs.recommended,
-      ...tseslint.configs.recommended,
-      ...tseslint.configs.stylistic,
+      ...lint.configs.recommended,
+      ...lint.configs.stylistic,
       ...angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,
@@ -17,7 +16,11 @@ module.exports = tseslint.config(
       "@typescript-eslint/no-explicit-any": "off",
       "@angular-eslint/prefer-standalone": "off",
       "@typescript-eslint/no-inferrable-types": "off",
-      "max-len": ["error", { "code": 120 }],
+      "max-len": [
+        "error", {
+          "code": 120
+        }
+      ],
       "@angular-eslint/directive-selector": [
         "error",
         {
@@ -43,5 +46,11 @@ module.exports = tseslint.config(
       ...angular.configs.templateAccessibility,
     ],
     rules: {},
+  },
+  {
+    files: ["*.json", "**/*.data.ts"],
+    rules: {
+      "max-len": "off"
+    }
   }
 );

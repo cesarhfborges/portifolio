@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {educations} from '../../../../utils/data/educations';
+import {educationsData} from '../../../../utils/data/educations.data';
 import {faGraduationCap} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,7 +9,7 @@ import {faGraduationCap} from '@fortawesome/free-solid-svg-icons';
   styleUrl: './education.component.css'
 })
 export class EducationComponent implements OnInit {
-  educations = educations;
+  educations = educationsData;
   workspaceIcon = faGraduationCap;
   lottieFile: any = null;
 
