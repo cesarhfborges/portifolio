@@ -21,7 +21,9 @@ export class ExperienceComponent implements OnInit {
 
   async init(): Promise<void> {
     try {
-      this.lottieFile = await fetch('assets/lottie/code.json').then(res => res.json());
+      this.lottieFile = await fetch('assets/lottie/code.json').then(res => {
+        return res.json();
+      });
     } catch (error) {
       console.error('Error loading Lottie animation:', error);
     }

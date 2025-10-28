@@ -16,7 +16,7 @@ export class EducationComponent implements OnInit {
   private animationFrameId: number | null = null;
 
   ngOnInit() {
-    void this._load();
+    void this.init();
   }
 
   public onCardMouseEnter(container: HTMLElement): void {
@@ -41,9 +41,11 @@ export class EducationComponent implements OnInit {
     this.updateBlobPosition(container, event);
   }
 
-  private async _load(): Promise<void> {
+  async init(): Promise<void> {
     try {
-      this.lottieFile = await fetch('assets/lottie/programmer.json').then(res => res.json());
+      this.lottieFile = await fetch('assets/lottie/programmer.json').then(res => {
+        return res.json();
+      });
     } catch (error) {
       console.error('Error loading Lottie animation:', error);
     }
