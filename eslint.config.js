@@ -15,6 +15,7 @@ module.exports = tseslint.config(
     processor: angular.processInlineTemplates,
     rules: {
       "@angular-eslint/prefer-standalone": "off",
+      "@typescript-eslint/no-inferrable-types": "off",
       "max-len": ["error", { "code": 120 }],
       "@angular-eslint/directive-selector": [
         "error",
