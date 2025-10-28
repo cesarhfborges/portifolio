@@ -16,7 +16,11 @@ export default lint.config(
       "@typescript-eslint/no-explicit-any": "off",
       "@angular-eslint/prefer-standalone": "off",
       "@typescript-eslint/no-inferrable-types": "off",
-      "max-len": ["error", { "code": 120 }],
+      "max-len": [
+        "error", {
+          "code": 120
+        }
+      ],
       "@angular-eslint/directive-selector": [
         "error",
         {
@@ -42,5 +46,11 @@ export default lint.config(
       ...angular.configs.templateAccessibility,
     ],
     rules: {},
+  },
+  {
+    files: ["*.json", "**/*.data.ts"],
+    rules: {
+      "max-len": "off"
+    }
   }
 );

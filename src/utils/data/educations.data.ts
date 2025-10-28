@@ -1,7 +1,7 @@
 import {Education} from '../../app/shared/models/education.interface';
 
 
-export const educations: Education[] = [
+export const educationsData: Education[] = [
   {
     id: 1,
     title: "Curso Web Designer linguagem HTML5, CSS3 e Javascript",

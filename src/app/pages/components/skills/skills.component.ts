@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {skillsData} from '../../../../utils/data/skills';
+import {skillsData} from '../../../../utils/data/skills.data';
 import skillsImage from '../../../../utils/helpers/skill-image';
 
 @Component({
