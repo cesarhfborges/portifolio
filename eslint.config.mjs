@@ -1,15 +1,14 @@
-// @ts-check
-const eslint = require("@eslint/js");
-const tseslint = require("typescript-eslint");
-const angular = require("angular-eslint");
+import eslint from "@eslint/js";
+import lint from "typescript-eslint";
+import angular from "angular-eslint";
 
-module.exports = tseslint.config(
+export default lint.config(
   {
     files: ["**/*.ts"],
     extends: [
       eslint.configs.recommended,
-      ...tseslint.configs.recommended,
-      ...tseslint.configs.stylistic,
+      ...lint.configs.recommended,
+      ...lint.configs.stylistic,
       ...angular.configs.tsRecommended,
     ],
     processor: angular.processInlineTemplates,

@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build --base-href ./",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --watch=false --browsers=ChromeHeadlessNoSandbox --code-coverage",
+    "test": "ng test --watch=false --source-map=true --browsers=ChromeHeadlessNoSandbox --code-coverage=true",
     "lint": "ng lint"
   },
   "private": true,
