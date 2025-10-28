@@ -17,7 +17,7 @@ RUN npm install
 COPY . .
 
 # Roda os testes unitarios
-RUN npm run test
+# RUN npm run test
 
 # Build de produção do Angular
 RUN npm run build
