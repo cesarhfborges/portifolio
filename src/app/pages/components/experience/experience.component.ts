@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {faBriefcase} from '@fortawesome/free-solid-svg-icons';
 import {experiences} from "../../../shared/data/experience.data";
+import {formatDistance} from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 @Component({
   selector: 'app-experience',
@@ -45,6 +47,13 @@ export class ExperienceComponent implements OnInit {
       cancelAnimationFrame(this.animationFrameId);
       this.animationFrameId = null;
     }
+  }
+
+  public diffHumanized(init: Date, end?: Date): string {
+    return formatDistance(init, end ?? new Date(), {
+      addSuffix: false,
+      locale: ptBR
+    });
   }
 
   public onCardMouseMove(container: HTMLElement, event: MouseEvent): void {

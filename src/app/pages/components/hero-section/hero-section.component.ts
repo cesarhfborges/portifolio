@@ -1,10 +1,11 @@
 import {Component, inject} from '@angular/core';
-import {faFileDownload} from '@fortawesome/free-solid-svg-icons';
+import {faCode, faFileDownload} from '@fortawesome/free-solid-svg-icons';
 import {faGithub, faLinkedin, faTelegram, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
 import {faEnvelope} from '@fortawesome/free-regular-svg-icons';
 import {personalData} from '../../../shared/data/personal.data';
 import {TranslateService} from '@ngx-translate/core';
 import animations from '../../../shared/animations/animations';
+import {differenceInYears} from 'date-fns';
 
 @Component({
   selector: 'app-hero-section',
@@ -22,6 +23,7 @@ export class HeroSectionComponent {
   faEnvelope = faEnvelope;
   faWhatsapp = faWhatsapp;
   faTelegram = faTelegram;
+
   private readonly _service = inject(TranslateService);
 
   get whatsappLink(): string {
@@ -30,6 +32,68 @@ export class HeroSectionComponent {
 
   get telegramLink(): string {
     return `https://t.me/${personalData.telegram}`;
+  }
+
+  get codeString(): string {
+    let code = `const person: Coder = {
+  name: 'César Borges',
+  age: ${differenceInYears(new Date(), new Date('1990-07-22'))},
+  coding: [
+    'JavaScript', 'TypeScript', 'PHP', 'Java', 'Python'
+  ],
+  frameworks: [
+    'Angular', 'React', 'React Native', 'Vue', 'Laravel',
+    'Spring Boot', 'Quarkus', 'Node', 'Express',
+    'Next.js', 'NestJS', 'Socket'
+  ],
+  databases: [
+    'MySQL', 'MariaDB', 'MongoDB', 'PostgreSQL',
+    'Firebase', 'SQLServer', 'Oracle', 'SQLite'
+  ],
+  cache: [
+    'Redis', 'Memcached', 'Squid'
+  ],
+  tools: [
+    'Postman', 'Insomnia', 'SoapUI', 'Mockoon',
+    'Apache JMeter', 'Power BI', 'DBeaver', 'Appwrite',
+    'Supabase', 'PocketBase'
+  ],
+  hardWorker: true,
+  quickLearner: true,
+  problemSolver: true,
+  hireable: function () {
+    return (
+      this.hardWorker &&
+      this.problemSolver &&
+      this.coding.length >= 5
+    );
+  },
+};`;
+//
+//     `const person: Coder = {
+//   name: 'César Borges',
+//   coding: ['JavaScript', 'TypeScript', 'PHP', 'Java', 'Python'],
+//   frameworks: [
+//     'Angular', 'React Native', 'Vue', 'Laravel',
+//     'Spring Boot', 'Quarkus', 'Node', 'Express',
+//     'Next.js', 'NestJS', 'Socket'
+//   ],
+//   databases: [
+//     'MySQL', 'MariaDB', 'MongoDB', 'PostgreSQL',
+//     'Firebase', 'SQLServer', 'Oracle'
+//   ],
+//   hardWorker: true,
+//   quickLearner: true,
+//   problemSolver: true,
+//   hireable: function () {
+//     return (
+//       this.hardWorker &&
+//       this.problemSolver &&
+//       this.coding.length >= 5
+//     );
+//   }
+// };`
+    return code;
   }
 
   getInstantTranslation() {

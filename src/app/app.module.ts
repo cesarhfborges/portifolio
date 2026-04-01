@@ -33,6 +33,7 @@ import localePt from '@angular/common/locales/pt';
 import localeEn from '@angular/common/locales/en';
 import player from 'lottie-web';
 import {ScrollToTopComponent} from './shared/components/scroll-to-top/scroll-to-top.component';
+import {Highlight, provideHighlightOptions} from 'ngx-highlightjs';
 
 registerLocaleData(localePt, 'pt');
 registerLocaleData(localeEn, 'en');
@@ -66,6 +67,7 @@ registerLocaleData(localeEn, 'en');
       fallbackLang: 'pt'
     }),
     ToastrModule.forRoot({}),
+    Highlight,
   ],
   providers: [
     {
@@ -98,6 +100,10 @@ registerLocaleData(localeEn, 'en');
         prefix: './assets/i18n/',
         suffix: '.json'
       }),
+    }),
+    provideHighlightOptions({
+      fullLibraryLoader: () => import('highlight.js'),
+      themePath: 'highlight.js/styles/tokyo-night-dark.css'
     }),
     provideAppInitializer(initializeAppConfig)
   ],

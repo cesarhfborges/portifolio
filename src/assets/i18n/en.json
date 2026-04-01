@@ -24,7 +24,8 @@
       "from": "From",
       "to": "To",
       "present": "Present",
-      "position": "Position"
+      "position": "Position",
+      "time": "Time"
     },
     "skills": {
       "title": "Skills"

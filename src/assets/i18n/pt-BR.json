@@ -24,7 +24,8 @@
       "from": "Início",
       "to": "Fim",
       "present": "Atual",
-      "position": "Cargo"
+      "position": "Cargo",
+      "time": "Tempo"
     },
     "skills": {
       "title": "Habilidades"

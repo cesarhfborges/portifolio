@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
+/*@import 'highlight.js/styles/tokyo-night-dark.min.css';*/
+@import 'highlight.js/styles/monokai-sublime.css';
+/*@import 'highlight.js/styles/routeros.min.css';*/
 
 html,
 body {
@@ -11,6 +14,11 @@ body {
   font-family: 'Inter', sans-serif;
   color: rgb(var(--foreground-rgb));
   background-color: #0d1224;
+}
+
+pre code.hljs {
+  padding: 0;
+  background: unset;
 }
 
 :root {

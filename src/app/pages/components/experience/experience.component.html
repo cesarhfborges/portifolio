@@ -57,6 +57,10 @@
                         : ('app.experiences.present' | translate)
                     }}
                   </p>
+                    <p class="text-sm sm:text-base text-white">
+                      <span class="font-bold">{{ 'app.experiences.time' | translate }}: </span>
+                      {{diffHumanized(experience.duration.from, experience.duration.to) | titlecase}}
+                    </p>
                 </div>
               </div>
             </div>
