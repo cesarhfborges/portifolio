@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {faCode, faFileDownload} from '@fortawesome/free-solid-svg-icons';
+import {faFileDownload} from '@fortawesome/free-solid-svg-icons';
 import {faGithub, faLinkedin, faTelegram, faWhatsapp} from '@fortawesome/free-brands-svg-icons';
 import {faEnvelope} from '@fortawesome/free-regular-svg-icons';
 import {personalData} from '../../../shared/data/personal.data';
@@ -35,7 +35,7 @@ export class HeroSectionComponent {
   }
 
   get codeString(): string {
-    let code = `const person: Coder = {
+    return `const person: Coder = {
   name: 'César Borges',
   age: ${differenceInYears(new Date(), new Date('1990-07-22'))},
   coding: [
@@ -69,31 +69,6 @@ export class HeroSectionComponent {
     );
   },
 };`;
-//
-//     `const person: Coder = {
-//   name: 'César Borges',
-//   coding: ['JavaScript', 'TypeScript', 'PHP', 'Java', 'Python'],
-//   frameworks: [
-//     'Angular', 'React Native', 'Vue', 'Laravel',
-//     'Spring Boot', 'Quarkus', 'Node', 'Express',
-//     'Next.js', 'NestJS', 'Socket'
-//   ],
-//   databases: [
-//     'MySQL', 'MariaDB', 'MongoDB', 'PostgreSQL',
-//     'Firebase', 'SQLServer', 'Oracle'
-//   ],
-//   hardWorker: true,
-//   quickLearner: true,
-//   problemSolver: true,
-//   hireable: function () {
-//     return (
-//       this.hardWorker &&
-//       this.problemSolver &&
-//       this.coding.length >= 5
-//     );
-//   }
-// };`
-    return code;
   }
 
   getInstantTranslation() {
