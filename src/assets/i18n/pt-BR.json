@@ -41,7 +41,19 @@
       "topics": "Tópicos"
     },
     "contact": {
-      "title": "Contato"
+      "title": "Contato",
+      "eyebrow": "Fale comigo",
+      "heading": "Vamos construir algo juntos?",
+      "text": "Estou aberto a novas oportunidades, projetos freelance e boas conversas sobre tecnologia. Escolha o canal que preferir — costumo responder em até um dia.",
+      "available": "disponível para novos projetos",
+      "email": "e-mail",
+      "whatsapp": "whatsapp",
+      "telegram": "telegram",
+      "location": "localização",
+      "copy": "Copiar e-mail",
+      "copied": "copiado!",
+      "send": "Enviar e-mail",
+      "role": "Desenvolvedor de software"
     }
   }
 }

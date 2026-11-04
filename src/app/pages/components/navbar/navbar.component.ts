@@ -25,8 +25,6 @@ export class NavbarComponent {
   ];
 
   isScrolled: boolean = false;
-  /** 0 → 1, para a barra de progresso de leitura. */
-  scrollProgress: number = 0;
   activeSection: string | null = null;
   private readonly SCROLL_THRESHOLD = 16;
   /** Altura do header + folga: a seção conta como ativa quando o topo dela passa daqui. */
@@ -54,9 +52,6 @@ export class NavbarComponent {
   onWindowScroll() {
     const scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
     this.isScrolled = scrollPosition > this.SCROLL_THRESHOLD;
-
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    this.scrollProgress = max > 0 ? Math.min(1, Math.max(0, scrollPosition / max)) : 0;
 
     this.updateActiveSection();
   }

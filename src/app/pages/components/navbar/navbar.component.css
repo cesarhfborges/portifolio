@@ -128,24 +128,6 @@
   color: rgb(255 255 255 / 0.2);
 }
 
-/* ---------- Progresso de leitura ---------- */
-.nav-progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #ec4899, #8b5cf6);
-  transform-origin: left center;
-  opacity: 0;
-  transition: opacity 300ms ease;
-  pointer-events: none;
-}
-
-.nav-bar--scrolled .nav-progress {
-  opacity: 1;
-}
-
 /* ---------- Hambúrguer animado ---------- */
 .burger {
   position: relative;

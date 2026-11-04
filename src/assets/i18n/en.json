@@ -41,7 +41,19 @@
       "topics": "Topics"
     },
     "contact": {
-      "title": "Contact"
+      "title": "Contact",
+      "eyebrow": "Get in touch",
+      "heading": "Shall we build something together?",
+      "text": "I'm open to new opportunities, freelance projects and conversations about technology. Pick the channel you prefer — I usually reply within a day.",
+      "available": "available for new projects",
+      "email": "e-mail",
+      "whatsapp": "whatsapp",
+      "telegram": "telegram",
+      "location": "location",
+      "copy": "Copy e-mail",
+      "copied": "copied!",
+      "send": "Send e-mail",
+      "role": "Software developer"
     }
   }
 }
