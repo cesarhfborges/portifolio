@@ -1,3 +1,123 @@
 :host {
+  /* sem caixa própria: o header sticky passa a usar o <main> como container */
+  display: contents;
+}
+
+/* ---------- Barra do header ----------
+   O fundo é um pseudo-elemento de largura total (encostado no topo, sem borda),
+   enquanto o conteúdo continua alinhado ao container do <main>. */
+.nav-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(50% - 50vw);
+  z-index: -1;
+  pointer-events: none;
+  background-color: rgb(13 18 36 / 0);
+  box-shadow: 0 0 0 0 rgb(0 0 0 / 0);
+  transition:
+    background-color 400ms cubic-bezier(.2, .8, .2, 1),
+    box-shadow 400ms cubic-bezier(.2, .8, .2, 1),
+    backdrop-filter 400ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.nav-bar--scrolled::before {
+  background-color: rgb(13 18 36 / 0.78);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: 0 12px 32px -16px rgb(0 0 0 / 0.75);
+}
+
+/* Logo encolhe levemente ao rolar (transform = sem reflow) */
+.nav-brand {
+  transform-origin: left center;
+  transition: transform 400ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.nav-bar--scrolled .nav-brand {
+  transform: scale(0.85);
+}
+
+/* ---------- Links ---------- */
+.nav-link {
+  position: relative;
   display: block;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: rgb(255 255 255 / 0.72);
+  transition: color 250ms ease;
+  cursor: pointer;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.875rem;
+  right: 0.875rem;
+  bottom: 0.2rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+  transform: scaleX(0);
+  transition: transform 300ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible,
+.nav-link--active {
+  color: #fff;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link--active::after {
+  transform: scaleX(1);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid rgb(236 72 153 / 0.6);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+.nav-link--lg {
+  font-size: 1.25rem;
+}
+
+/* ---------- Dropdown de idioma ---------- */
+.nav-dropdown {
+  border-radius: 0.875rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  background-color: rgb(13 18 36 / 0.92);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px -12px rgb(0 0 0 / 0.8);
+}
+
+/* ---------- Menu mobile ---------- */
+.mobile-menu {
+  background-color: rgb(13 18 36 / 0.9);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 300ms ease, transform 300ms ease, visibility 0s linear 300ms;
+}
+
+.mobile-menu--open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 300ms ease, transform 300ms ease, visibility 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-bar::before,
+  .nav-brand,
+  .nav-link,
+  .nav-link::after,
+  .mobile-menu {
+    transition: none !important;
+  }
 }

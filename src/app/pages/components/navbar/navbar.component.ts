@@ -22,17 +22,20 @@ export class NavbarComponent {
   public _translationService = inject(TranslationService);
 
   navItems = [
-    {path: '/#about', label: 'app.menu.about'},
-    {path: '/#experience', label: 'app.menu.experiences'},
-    {path: '/#skills', label: 'app.menu.skills'},
-    {path: '/#education', label: 'app.menu.education'},
-    // {path: '/blog', label: 'BLOGS'},
-    {path: '/#projects', label: 'app.menu.projects'}
+    {id: 'about', path: '/#about', label: 'app.menu.about'},
+    {id: 'experience', path: '/#experience', label: 'app.menu.experiences'},
+    {id: 'skills', path: '/#skills', label: 'app.menu.skills'},
+    {id: 'education', path: '/#education', label: 'app.menu.education'},
+    // {id: 'blog', path: '/blog', label: 'BLOGS'},
+    {id: 'projects', path: '/#projects', label: 'app.menu.projects'}
   ];
 
   faGlobe = faGlobe;
   isScrolled: boolean = false;
-  private readonly SCROLL_THRESHOLD = 1;
+  activeSection: string | null = null;
+  private readonly SCROLL_THRESHOLD = 16;
+  /** Altura do header + folga: a seção conta como ativa quando o topo dela passa daqui. */
+  private readonly SPY_OFFSET = 120;
 
   toggleDropdown(): void {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -60,6 +63,24 @@ export class NavbarComponent {
   onWindowScroll() {
     const scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
     this.isScrolled = scrollPosition > this.SCROLL_THRESHOLD;
+    this.updateActiveSection();
+  }
+
+  private updateActiveSection(): void {
+    // Escolhe a seção cujo topo passou mais recentemente da linha do header.
+    // Não depende da ordem do menu (na página, Educação vem antes de Habilidades).
+    let current: string | null = null;
+    let closestTop = -Infinity;
+    for (const item of this.navItems) {
+      const el = document.getElementById(item.id);
+      if (!el) continue;
+      const top = el.getBoundingClientRect().top;
+      if (top <= this.SPY_OFFSET && top > closestTop) {
+        closestTop = top;
+        current = item.id;
+      }
+    }
+    this.activeSection = current;
   }
 
   setLang(value: Language) {
