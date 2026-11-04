@@ -1,74 +1,68 @@
 import {Component, HostListener, inject} from '@angular/core';
 import {Language, TranslationService} from '../../../shared/services/translation.service';
-import {faBars, faGlobe, faTimes} from '@fortawesome/free-solid-svg-icons';
-import animations from '../../../shared/animations/animations';
 
 @Component({
   selector: 'app-navbar',
   standalone: false,
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
-  animations: animations
 })
 export class NavbarComponent {
 
-  faBars = faBars;
-  faTimes = faTimes;
-
-  public isDropdownOpen: boolean = false;
   isMenuOpen: boolean = false;
   isMobile: boolean = false;
 
   public _translationService = inject(TranslationService);
 
+  /** Mesma ordem das seções na página — a numeração bate com os títulos ("02. Experiências"). */
   navItems = [
     {id: 'about', path: '/#about', label: 'app.menu.about'},
     {id: 'experience', path: '/#experience', label: 'app.menu.experiences'},
-    {id: 'skills', path: '/#skills', label: 'app.menu.skills'},
     {id: 'education', path: '/#education', label: 'app.menu.education'},
+    {id: 'skills', path: '/#skills', label: 'app.menu.skills'},
     // {id: 'blog', path: '/blog', label: 'BLOGS'},
     {id: 'projects', path: '/#projects', label: 'app.menu.projects'}
   ];
 
-  faGlobe = faGlobe;
   isScrolled: boolean = false;
+  /** 0 → 1, para a barra de progresso de leitura. */
+  scrollProgress: number = 0;
   activeSection: string | null = null;
   private readonly SCROLL_THRESHOLD = 16;
   /** Altura do header + folga: a seção conta como ativa quando o topo dela passa daqui. */
   private readonly SPY_OFFSET = 120;
 
-  toggleDropdown(): void {
-    this.isDropdownOpen = !this.isDropdownOpen;
+  indexLabel(i: number): string {
+    return String(i + 1).padStart(2, '0') + '.';
   }
 
-  @HostListener('window:resize', ['$event'])
+  isCurrentLang(value: Language): boolean {
+    return this._translationService.currentLang === value;
+  }
+
+  @HostListener('window:resize')
   onResize() {
     this.checkScreenSize();
   }
 
-  @HostListener('document:click', ['$event'])
-  onClick(event: Event) {
-    const targetElement = event.target as HTMLElement;
-    const dropdownToggle = document.getElementById('dropdownToggle');
-
-    if (this.isDropdownOpen && dropdownToggle && !dropdownToggle.contains(targetElement)) {
-      const dropdownMenu = document.getElementById('dropdownMenu');
-      if (!dropdownMenu?.contains(targetElement)) {
-        this.isDropdownOpen = false;
-      }
-    }
+  @HostListener('document:keydown.escape')
+  onEscape() {
+    if (this.isMenuOpen) this.toggleMenu();
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
     this.isScrolled = scrollPosition > this.SCROLL_THRESHOLD;
+
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    this.scrollProgress = max > 0 ? Math.min(1, Math.max(0, scrollPosition / max)) : 0;
+
     this.updateActiveSection();
   }
 
   private updateActiveSection(): void {
     // Escolhe a seção cujo topo passou mais recentemente da linha do header.
-    // Não depende da ordem do menu (na página, Educação vem antes de Habilidades).
     let current: string | null = null;
     let closestTop = -Infinity;
     for (const item of this.navItems) {
@@ -85,23 +79,17 @@ export class NavbarComponent {
 
   setLang(value: Language) {
     this._translationService.currentLang = value;
-    this.isDropdownOpen = false;
   }
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    this.isDropdownOpen = false;
-    if (this.isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = this.isMenuOpen ? 'hidden' : '';
   }
 
   private checkScreenSize(): void {
     this.isMobile = window.innerWidth < 768;
-    if (!this.isMobile) {
-      this.isMenuOpen = false;
+    if (!this.isMobile && this.isMenuOpen) {
+      this.toggleMenu();
     }
   }
 }

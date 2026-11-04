@@ -1,15 +1,15 @@
 :host {
-  /* sem caixa própria: o header sticky passa a usar o <main> como container */
+  /* sem caixa própria: o header sticky usa o <app-root> (a página toda) como container */
   display: contents;
 }
 
 /* ---------- Barra do header ----------
-   O fundo é um pseudo-elemento de largura total (encostado no topo, sem borda),
-   enquanto o conteúdo continua alinhado ao container do <main>. */
+   O header tem a largura da página; o fundo é um pseudo-elemento que o cobre inteiro.
+   Não usar 100vw aqui: inclui a barra de rolagem vertical e causa scroll horizontal. */
 .nav-bar::before {
   content: "";
   position: absolute;
-  inset: 0 calc(50% - 50vw);
+  inset: 0;
   z-index: -1;
   pointer-events: none;
   background-color: rgb(13 18 36 / 0);
@@ -37,23 +37,37 @@
   transform: scale(0.85);
 }
 
+/* ---------- Marca ---------- */
+.brand-gradient {
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* ---------- Links ---------- */
 .nav-link {
   position: relative;
   display: block;
-  padding: 0.5rem 0.875rem;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-mono);
   font-size: 0.8125rem;
-  letter-spacing: 0.06em;
   color: rgb(255 255 255 / 0.72);
+  white-space: nowrap;
   transition: color 250ms ease;
   cursor: pointer;
+}
+
+.nav-index {
+  color: #ec4899;
+  opacity: 0.85;
 }
 
 .nav-link::after {
   content: "";
   position: absolute;
-  left: 0.875rem;
-  right: 0.875rem;
+  left: 0.75rem;
+  right: 0.75rem;
   bottom: 0.2rem;
   height: 2px;
   border-radius: 2px;
@@ -74,42 +88,137 @@
   transform: scaleX(1);
 }
 
-.nav-link:focus-visible {
+.nav-link:focus-visible,
+.lang-option:focus-visible,
+.burger:focus-visible {
   outline: 2px solid rgb(236 72 153 / 0.6);
   outline-offset: 2px;
   border-radius: 0.5rem;
 }
 
-.nav-link--lg {
-  font-size: 1.25rem;
+/* ---------- Alternador de idioma ---------- */
+.lang-switch {
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: 0.5rem;
+  padding-left: 0.875rem;
+  border-left: 1px solid rgb(255 255 255 / 0.12);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
 }
 
-/* ---------- Dropdown de idioma ---------- */
-.nav-dropdown {
-  border-radius: 0.875rem;
-  border: 1px solid rgb(255 255 255 / 0.08);
-  background-color: rgb(13 18 36 / 0.92);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 16px 40px -12px rgb(0 0 0 / 0.8);
+.lang-option {
+  padding: 0.25rem 0.25rem;
+  color: rgb(255 255 255 / 0.4);
+  cursor: pointer;
+  transition: color 200ms ease;
 }
+
+.lang-option:hover {
+  color: rgb(255 255 255 / 0.8);
+}
+
+.lang-option--active,
+.lang-option--active:hover {
+  color: #16f2b3;
+  cursor: default;
+}
+
+.lang-sep {
+  color: rgb(255 255 255 / 0.2);
+}
+
+/* ---------- Progresso de leitura ---------- */
+.nav-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+  transform-origin: left center;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+
+.nav-bar--scrolled .nav-progress {
+  opacity: 1;
+}
+
+/* ---------- Hambúrguer animado ---------- */
+.burger {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.burger span {
+  position: absolute;
+  left: 0.6rem;
+  right: 0.6rem;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  transition: transform 300ms cubic-bezier(.2, .8, .2, 1), opacity 200ms ease, background-color 200ms ease;
+}
+
+.burger span:nth-child(1) { top: calc(50% - 7px); }
+.burger span:nth-child(2) { top: calc(50% - 1px); right: 1rem; }
+.burger span:nth-child(3) { top: calc(50% + 5px); }
+
+.burger--open span { background: #ec4899; }
+.burger--open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.burger--open span:nth-child(2) { opacity: 0; }
+.burger--open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
 /* ---------- Menu mobile ---------- */
 .mobile-menu {
-  background-color: rgb(13 18 36 / 0.9);
+  background-color: rgb(13 18 36 / 0.94);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-8px);
-  transition: opacity 300ms ease, transform 300ms ease, visibility 0s linear 300ms;
+  transition: opacity 300ms ease, visibility 0s linear 300ms;
 }
 
 .mobile-menu--open {
   opacity: 1;
   visibility: visible;
+  transition: opacity 300ms ease, visibility 0s;
+}
+
+.nav-link--lg {
+  padding: 0.75rem 0;
+  font-size: 1.375rem;
+}
+
+.nav-link--lg::after {
+  left: 0;
+  right: auto;
+  width: 2.5rem;
+  transform-origin: left center;
+}
+
+.mobile-item {
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 300ms ease, transform 300ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.mobile-menu--open .mobile-item {
+  opacity: 1;
   transform: none;
-  transition: opacity 300ms ease, transform 300ms ease, visibility 0s;
+}
+
+.lang-switch--lg {
+  display: flex;
+  margin-left: 0;
+  padding-left: 0;
+  border-left: 0;
+  font-size: 0.9375rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -117,7 +226,9 @@
   .nav-brand,
   .nav-link,
   .nav-link::after,
-  .mobile-menu {
+  .burger span,
+  .mobile-menu,
+  .mobile-item {
     transition: none !important;
   }
 }

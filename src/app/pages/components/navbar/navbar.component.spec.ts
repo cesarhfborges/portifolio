@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import { NavbarComponent } from './navbar.component';
 import {TranslateModule} from '@ngx-translate/core';
@@ -44,7 +44,6 @@ describe('NavbarComponent', () => {
   });
 
   it('should create', () => {
-    component.toggleDropdown();
     component.toggleMenu();
     component.toggleMenu();
     expect(component).toBeTruthy();
@@ -62,21 +61,6 @@ describe('NavbarComponent', () => {
     expect(component.isMenuOpen).toBeFalse();
   });
 
-  it('onClick: deve fechar o dropdown se o clique for fora do menu e do toggle', () => {
-    component.isDropdownOpen = true;
-    const targetElement = document.createElement('div');
-
-    spyOn(document, 'getElementById').and.callFake((id: string): any => {
-      if (id === 'dropdownToggle') return { contains: (el: any) => el !== targetElement };
-      if (id === 'dropdownMenu') return { contains: (el: any) => el !== targetElement };
-      return null;
-    });
-
-    component.onClick({ target: targetElement } as unknown as Event);
-
-    expect(component.isDropdownOpen).toBeFalse();
-  });
-
   it('onWindowScroll: deve definir isScrolled como true após a rolagem', () => {
     spyOnProperty(window, 'scrollY').and.returnValue(100);
 
@@ -90,12 +74,26 @@ describe('NavbarComponent', () => {
     expect(component.isScrolled).toBeFalse();
   });
 
-  it('setLang: deve definir a linguagem no translationService e fechar o dropdown', () => {
-    component.isDropdownOpen = true;
+  it('setLang: deve definir a linguagem no translationService', () => {
     component.setLang(translations[1].value);
-
     expect(component._translationService.currentLang).toBe(translations[1].value);
+    expect(component.isCurrentLang(translations[1].value)).toBeTrue();
+    expect(component.isCurrentLang(translations[0].value)).toBeFalse();
+  });
 
-    expect(component.isDropdownOpen).toBeFalse();
+  it('indexLabel: deve numerar os itens com dois dígitos', () => {
+    expect(component.indexLabel(0)).toBe('01.');
+    expect(component.indexLabel(4)).toBe('05.');
+  });
+
+  it('navItems: deve seguir a ordem das seções na página', () => {
+    expect(component.navItems.map(i => i.id)).toEqual(['about', 'experience', 'education', 'skills', 'projects']);
+  });
+
+  it('onEscape: deve fechar o menu mobile aberto', () => {
+    component.toggleMenu();
+    component.onEscape();
+    expect(component.isMenuOpen).toBeFalse();
+    expect(document.body.style.overflow).toBe('');
   });
 });

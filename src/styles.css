@@ -13,6 +13,12 @@ body {
   height: 100%;
 }
 
+/* O header sticky (app-navbar) usa o app-root como container: precisa ser bloco,
+   senão o sticky fica preso ao <body> (height: 100%) e solta após uma tela de rolagem. */
+app-root {
+  display: block;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
