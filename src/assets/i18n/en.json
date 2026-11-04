@@ -54,6 +54,14 @@
       "copied": "copied!",
       "send": "Send e-mail",
       "role": "Software developer"
+    },
+    "footer": {
+      "tagline": "Building web and mobile systems since 2011 — from API to interface.",
+      "sections": "sections",
+      "contact": "Contact",
+      "built_with": "Built with",
+      "problems": "0 problems",
+      "rights": "All rights reserved."
     }
   }
 }

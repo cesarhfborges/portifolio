@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import {faCodeFork, faStar} from '@fortawesome/free-solid-svg-icons';
+import {Component, inject} from '@angular/core';
+import {faCircleCheck, faCodeBranch} from '@fortawesome/free-solid-svg-icons';
+import {faGithub, faLinkedin, faStackOverflow, faTelegram} from '@fortawesome/free-brands-svg-icons';
+import {personalData} from '../../../shared/data/personal.data';
+import {TranslationService} from '../../../shared/services/translation.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,8 +12,33 @@ import {faCodeFork, faStar} from '@fortawesome/free-solid-svg-icons';
 })
 export class FooterComponent {
 
-  now: Date = new Date();
+  readonly now: Date = new Date();
+  readonly personalData = personalData;
+  readonly translation = inject(TranslationService);
 
-  starIcon = faStar;
-  forkIcon = faCodeFork;
+  readonly faCodeBranch = faCodeBranch;
+  readonly faCircleCheck = faCircleCheck;
+
+  /** Mesma ordem e numeração do menu e dos títulos de seção. */
+  readonly sections = [
+    {path: '/#about', label: 'app.menu.about'},
+    {path: '/#experience', label: 'app.menu.experiences'},
+    {path: '/#education', label: 'app.menu.education'},
+    {path: '/#skills', label: 'app.menu.skills'},
+    {path: '/#projects', label: 'app.menu.projects'},
+    {path: '/#contact', label: 'app.footer.contact'},
+  ];
+
+  readonly socials = [
+    {icon: faGithub, url: personalData.github, label: 'GitHub'},
+    {icon: faLinkedin, url: personalData.linkedIn, label: 'LinkedIn'},
+    {icon: faStackOverflow, url: personalData.stackOverflow, label: 'Stack Overflow'},
+    {icon: faTelegram, url: `https://t.me/${personalData.telegram}`, label: 'Telegram'},
+  ];
+
+  readonly stack = ['Angular 20', 'TypeScript', 'Tailwind CSS', 'highlight.js'];
+
+  indexLabel(i: number): string {
+    return String(i + 1).padStart(2, '0') + '.';
+  }
 }

@@ -1,17 +1,69 @@
-<div class="relative border-t bg-[#0d1224] border-[#353951] text-white">
-  <div class="mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] py-6 lg:py-10">
-    <div class="flex justify-center -z-40">
-      <div class="absolute top-0 h-[1px] w-1/2 bg-gradient-to-r from-transparent via-violet-500 to-transparent">
-      </div>
+<footer class="footer relative text-white">
+  <span class="footer-glow" aria-hidden="true"></span>
+
+  <!-- ===== Corpo ===== -->
+  <div class="mx-auto grid grid-cols-1 gap-10 px-6 py-12 sm:px-12 md:grid-cols-2 lg:max-w-[70rem] lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-16 lg:py-16 xl:max-w-[76rem] 2xl:max-w-[92rem]">
+
+    <!-- marca -->
+    <div class="flex flex-col gap-5 md:col-span-2 lg:col-span-1">
+      <a routerLink="/" class="flex w-fit items-center gap-3 text-xl font-bold" [attr.aria-label]="personalData.name">
+        <img ngSrc="assets/icons/android-chrome-192x192.png" alt="" [height]="28" [width]="28" />
+        <span><span class="text-white">César</span><span class="brand-gradient"> Borges</span></span>
+      </a>
+      <p class="max-w-sm text-sm leading-relaxed text-gray-400">{{ 'app.footer.tagline' | translate }}</p>
+
+      <ul class="flex gap-2">
+        <li *ngFor="let s of socials">
+          <a class="social-btn" [href]="s.url" target="_blank" rel="noopener" [attr.aria-label]="s.label" [attr.title]="s.label">
+            <fa-icon [icon]="s.icon"></fa-icon>
+          </a>
+        </li>
+      </ul>
     </div>
-    <div class="flex flex-col md:flex-row items-center justify-center">
-      <p class="text-sm">
-        © Developer Portfolio by
-        <a href="https://www.linkedin.com/in/javeed-ishaq/" target="_blank" class="text-[#16f2b3]">
-          César Borges
-        </a>
-        {{now|date:'y'}}.
-      </p>
+
+    <!-- seções -->
+    <nav aria-label="Footer">
+      <p class="footer-heading"><span class="text-[#16f2b3]">$</span> ls ~/{{ 'app.footer.sections' | translate }}</p>
+      <ul class="grid grid-cols-2 gap-x-4 gap-y-1 md:grid-cols-1">
+        <li *ngFor="let item of sections; let i = index">
+          <a class="footer-link" [href]="item.path">
+            <span class="text-pink-500">{{ indexLabel(i) }}</span>
+            {{ (item.label | translate) | lowercase }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- stack -->
+    <div>
+      <p class="footer-heading"><span class="text-[#16f2b3]">$</span> cat package.json</p>
+      <p class="mb-3 text-sm text-gray-400">{{ 'app.footer.built_with' | translate }}</p>
+      <ul class="flex flex-wrap gap-2">
+        <li *ngFor="let tech of stack" class="stack-chip">{{ tech }}</li>
+      </ul>
     </div>
   </div>
-</div>
+
+  <!-- ===== Barra de status (estilo editor) ===== -->
+  <div class="status-bar">
+    <div class="mx-auto flex items-center justify-between gap-4 px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem]">
+      <div class="flex min-w-0 items-center">
+        <span class="status-item inline-flex">
+          <fa-icon [icon]="faCodeBranch"></fa-icon> master
+        </span>
+        <span class="status-item hidden sm:inline-flex">
+          <fa-icon [icon]="faCircleCheck"></fa-icon> {{ 'app.footer.problems' | translate }}
+        </span>
+      </div>
+
+      <div class="flex min-w-0 items-center">
+        <span class="status-item hidden md:inline-flex">UTF-8</span>
+        <span class="status-item hidden md:inline-flex">TypeScript</span>
+        <span class="status-item hidden sm:inline-flex">{{ translation.currentLang }}</span>
+        <span class="status-item status-item--accent inline-flex">
+          © {{ now | date:'y' }} {{ personalData.name }}
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>

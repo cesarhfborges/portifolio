@@ -54,6 +54,14 @@
       "copied": "copiado!",
       "send": "Enviar e-mail",
       "role": "Desenvolvedor de software"
+    },
+    "footer": {
+      "tagline": "Construindo sistemas web e mobile desde 2011 — da API à interface.",
+      "sections": "seções",
+      "contact": "Contato",
+      "built_with": "Feito com",
+      "problems": "0 problemas",
+      "rights": "Todos os direitos reservados."
     }
   }
 }

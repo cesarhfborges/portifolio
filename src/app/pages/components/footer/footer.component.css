@@ -1,3 +1,122 @@
 :host {
   display: block;
 }
+
+.footer {
+  border-top: 1px solid #25213b;
+  background:
+    radial-gradient(60% 120% at 50% 0%, rgb(139 92 246 / 0.08), transparent 70%),
+    #0b0f1f;
+}
+
+/* linha de brilho no topo — mesmo gradiente do resto do site */
+.footer-glow {
+  position: absolute;
+  top: -1px;
+  left: 25%;
+  right: 25%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ec4899, #8b5cf6, transparent);
+  pointer-events: none;
+}
+
+.brand-gradient {
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.footer-heading {
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: #fff;
+}
+
+/* ---------- Links ---------- */
+.footer-link {
+  display: inline-block;
+  padding: 0.25rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.6);
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+.footer-link:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.social-btn {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.625rem;
+  border: 1px solid #25213b;
+  background: #11152c;
+  color: rgb(255 255 255 / 0.7);
+  transition: color 250ms ease, border-color 250ms ease, background 250ms ease, transform 250ms ease;
+}
+
+.social-btn:hover {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  transform: translateY(-2px);
+}
+
+.stack-chip {
+  padding: 0.125rem 0.625rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(139 92 246 / 0.25);
+  background: rgb(139 92 246 / 0.1);
+  color: #ddd6fe;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5rem;
+}
+
+.footer-link:focus-visible,
+.social-btn:focus-visible {
+  outline: 2px solid rgb(236 72 153 / 0.6);
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}
+
+/* ---------- Barra de status ---------- */
+.status-bar {
+  border-top: 1px solid #25213b;
+  background: #1a1443;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.status-item {
+  /* display fica nas classes do template (inline-flex / hidden sm:inline-flex):
+     definido aqui, o seletor encapsulado venceria o "hidden" do Tailwind */
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.375rem 0.625rem;
+  white-space: nowrap;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.status-item:first-child {
+  padding-left: 0;
+}
+
+.status-item--accent {
+  padding-right: 0;
+  color: rgb(255 255 255 / 0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-link,
+  .social-btn {
+    transition: none;
+  }
+}
