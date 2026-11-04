@@ -1,0 +1,52 @@
+<footer class="status-bar" role="status">
+  <div class="flex min-w-0 items-stretch">
+    <span class="status-item status-item--remote" aria-hidden="true">&gt;&lt;</span>
+    <span class="status-item" [attr.title]="'app.status.branch' | translate">
+      <fa-icon [icon]="faCodeBranch"></fa-icon> master
+    </span>
+    <span class="status-item" [attr.title]="'app.status.problems' | translate">
+      <fa-icon [icon]="faCircleXmark"></fa-icon> 0
+      <fa-icon class="ml-1" [icon]="faTriangleExclamation"></fa-icon> 0
+    </span>
+    <button
+      type="button"
+      class="status-item status-item--button status-item--palette inline-flex"
+      [attr.title]="'app.palette.open' | translate"
+      [attr.aria-label]="'app.palette.open' | translate"
+      (click)="workspace.openPalette()"
+    >
+      <fa-icon [icon]="faTerminal"></fa-icon>
+      <span class="hidden md:inline">Ctrl+K</span>
+    </button>
+  </div>
+
+  <div class="flex min-w-0 items-stretch">
+    <span class="status-item hidden sm:inline-flex">
+      {{ 'app.status.line' | translate: { line: workspace.line() } }}
+    </span>
+    <span class="status-item hidden lg:inline-flex">{{ 'app.status.spaces' | translate }}</span>
+    <span class="status-item hidden lg:inline-flex">UTF-8</span>
+    <span class="status-item hidden md:inline-flex" [attr.title]="'app.status.language_mode' | translate">
+      {{ workspace.activeFile().language }}
+    </span>
+    <button
+      type="button"
+      class="status-item status-item--button inline-flex"
+      [attr.title]="'app.status.switch_lang' | translate"
+      (click)="toggleLang()"
+    >{{ translation.currentLang }}</button>
+    <button
+      type="button"
+      class="status-item status-item--button inline-flex"
+      [class.status-item--hidden]="!workspace.scrolled()"
+      [attr.aria-label]="'app.status.back_to_top' | translate"
+      [attr.title]="'app.status.back_to_top' | translate"
+      (click)="scrollTop()"
+    >
+      <fa-icon [icon]="faArrowUp"></fa-icon>
+    </button>
+    <span class="status-item hidden md:inline-flex" [attr.title]="'app.status.notifications' | translate">
+      <fa-icon [icon]="faBell"></fa-icon>
+    </span>
+  </div>
+</footer>

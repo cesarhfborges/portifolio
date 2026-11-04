@@ -1,76 +1,111 @@
-<div id="education" class="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-  <img src="assets/section.svg" alt="Hero" class="absolute top-0 -z-10 w-full">
+<section id="education" class="relative z-50 mt-24 lg:mt-24 border-t border-[#25213b]">
+  <img src="assets/section.svg" alt="" class="absolute top-0 -z-10 w-full">
 
-  <div class="flex justify-center -translate-y-[1px]">
+  <div class="flex -translate-y-[1px] justify-center">
     <div class="w-3/4">
-      <div class="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent w-full"></div>
+      <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent"></div>
     </div>
   </div>
 
-  <div class="flex justify-center my-5 lg:py-8">
+  <div class="my-5 flex justify-center lg:py-8">
     <div class="flex items-center">
-      <span class="w-6 sm:w-24 h-[2px] bg-[#1a1443]"></span>
+      <span class="h-[2px] w-6 bg-[#1a1443] sm:w-24"></span>
       <app-section-title [index]="3" [label]="'app.academic.title' | translate"></app-section-title>
-      <span class="w-6 sm:w-24 h-[2px] bg-[#1a1443]"></span>
+      <span class="h-[2px] w-6 bg-[#1a1443] sm:w-24"></span>
     </div>
   </div>
 
-  <div class="py-8">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-      <div class="flex justify-center items-start">
-        <div class="w-full h-full">
-          <div class="sticky top-10">
-            <div class="w-3/4 h-3/4">
-              <app-animation-lottie [animationPath]="lottieFile"></app-animation-lottie>
-            </div>
-          </div>
+  <div class="ide-window mt-8">
+    <!-- ===== Explorador ===== -->
+    <aside class="explorer">
+      <p class="pane-title">{{ 'app.academic.explorer' | translate }}</p>
+
+      <div class="tree" role="tree" [attr.aria-label]="'app.academic.title' | translate">
+        <!-- pasta raiz -->
+        <div class="tree-row tree-row--root" role="treeitem" aria-expanded="true" aria-selected="false">
+          <fa-icon [icon]="faChevronDown" class="chevron"></fa-icon>
+          <span>formacao</span>
+          <span class="tree-count">{{ total }} {{ 'app.academic.courses' | translate }}</span>
         </div>
-      </div>
 
-      <div>
-        <div class="flex flex-col gap-6">
-          <div
-            #cardRef
-            *ngFor="let education of educations"
-            [attr.data-identifier]="'education-' + education.id"
-            (mouseenter)="onCardMouseEnter(cardRef)"
-            (mouseleave)="onCardMouseLeave(cardRef)"
-            (mousemove)="onCardMouseMove(cardRef, $event)"
-            class="glow-container-experience-1 glow-container relative overflow-hidden p-[3px] rounded-xl"
-          >
-            <div class="blob"></div>
-            <div class="fakeblob"></div>
-            <div class="glow-card glow-card-experience-1 h-fit cursor-pointer border border-[#2a2e5a] transition-all duration-300 relative bg-[#101123] text-gray-200 rounded-xl hover:border-transparent w-full">
-              <img ngSrc="assets/blur-23.svg" alt="Hero" class="absolute bottom-0 opacity-80" fill [priority]="false">
-              <div class="flex items-center gap-x-8 px-6 py-5">
+        <div role="group">
+          <div *ngFor="let folder of folders" role="none">
+            <button
+              type="button"
+              class="tree-row tree-row--folder"
+              role="treeitem"
+              aria-selected="false"
+              [attr.aria-expanded]="isExpanded(folder.year)"
+              (click)="toggleFolder(folder.year)"
+            >
+              <fa-icon [icon]="isExpanded(folder.year) ? faChevronDown : faChevronRight" class="chevron"></fa-icon>
+              <fa-icon [icon]="isExpanded(folder.year) ? faFolderOpen : faFolder" class="folder-icon"></fa-icon>
+              <span>{{ folder.year }}</span>
+              <span class="tree-count">{{ folder.files.length }}</span>
+            </button>
 
-                <div class="text-violet-500 transition-all duration-300 hover:scale-125">
-                  <fa-icon [icon]="workspaceIcon" size="2x"></fa-icon>
-                </div>
-                <div>
-                  <p class="text-base sm:text-lg mb-2 font-medium uppercase">
-                    <span class="text-pink-500 font-bold">{{ education.title }}</span>
-                  </p>
-                  <p class="text-sm sm:text-base text-white">
-                    <span class="font-bold">{{ 'app.academic.duration' | translate }}: </span>{{ education.duration }}
-                  </p>
-                  <p class="text-sm sm:text-base text-white">
-                    <span class="font-bold">{{ 'app.academic.institution' | translate }}: </span>{{ education.institution }}
-                  </p>
-                  <p class="text-sm sm:text-base text-white">
-                    <span class="font-bold">{{ 'app.academic.topics' | translate }}: </span>
-                  </p>
-                  <div class="ps-8">
-                    <ul class="list-disc">
-                      <li *ngFor="let topic of education.topics">{{topic}}</li>
-                    </ul>
-                  </div>
+            <div *ngIf="isExpanded(folder.year)" role="group">
+              <div *ngFor="let file of folder.files" role="none">
+                <button
+                  type="button"
+                  class="tree-row tree-row--file"
+                  role="treeitem"
+                  [class.tree-row--selected]="selectedId() === file.id"
+                  [attr.aria-selected]="selectedId() === file.id"
+                  [attr.title]="file.title"
+                  (click)="open(file)"
+                >
+                  <span class="md-badge" aria-hidden="true">MD</span>
+                  <span class="truncate">{{ file.fileName }}</span>
+                </button>
+
+                <!-- mobile: o conteúdo abre logo abaixo do arquivo -->
+                <div *ngIf="selectedId() === file.id" class="inline-preview lg:hidden">
+                  <ng-container *ngTemplateOutlet="mdContent; context: { $implicit: file }"></ng-container>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </aside>
+
+    <!-- ===== Editor (desktop) ===== -->
+    <div class="editor hidden lg:flex">
+      <ng-container *ngIf="selected() as file; else empty">
+        <div class="editor-tabs">
+          <span class="editor-tab">
+            <span class="md-badge" aria-hidden="true">MD</span>
+            {{ file.fileName }}
+            <span class="text-white/50" aria-hidden="true">×</span>
+          </span>
+        </div>
+        <div class="editor-breadcrumb">
+          formacao <span class="crumb-sep">›</span> {{ file.duration }} <span class="crumb-sep">›</span>
+          <span class="text-white/80">{{ file.fileName }}</span>
+        </div>
+        <div class="editor-body">
+          <ng-container *ngTemplateOutlet="mdContent; context: { $implicit: file }"></ng-container>
+        </div>
+      </ng-container>
+      <ng-template #empty>
+        <p class="m-auto font-mono text-sm text-white/40">{{ 'app.academic.select_hint' | translate }}</p>
+      </ng-template>
     </div>
   </div>
-</div>
+</section>
+
+<!-- conteúdo do arquivo .md, numerado e colorido como no editor -->
+<ng-template #mdContent let-file>
+  <ol class="md-lines">
+    <li *ngFor="let line of lines(file)" class="md-line">
+      <ng-container [ngSwitch]="line.kind">
+        <span *ngSwitchCase="'h1'"><span class="md-mark"># </span><span class="md-h1">{{ line.text }}</span></span>
+        <span *ngSwitchCase="'meta'"><span class="md-mark">**</span><span class="md-key">{{ line.label! | translate }}:</span><span class="md-mark">**</span> {{ line.text }}</span>
+        <span *ngSwitchCase="'h2'"><span class="md-mark">## </span><span class="md-h2">{{ line.label! | translate }}</span></span>
+        <span *ngSwitchCase="'item'"><span class="md-bullet">- </span>{{ line.text }}</span>
+        <span *ngSwitchDefault>&nbsp;</span>
+      </ng-container>
+    </li>
+  </ol>
+</ng-template>

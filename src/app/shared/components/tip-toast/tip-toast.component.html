@@ -1,0 +1,20 @@
+<div *ngIf="visible()" class="toast" role="status" aria-live="polite">
+  <div class="flex items-start gap-3">
+    <fa-icon [icon]="faCircleInfo" class="mt-0.5 text-[#3b9eff]"></fa-icon>
+    <p class="flex-1 text-[13px] leading-5 text-white/85">
+      <span class="text-white">{{ 'app.palette.hint_title' | translate }}:</span>
+      {{ (touch ? 'app.palette.hint_mobile' : 'app.palette.hint_desktop') | translate }}
+    </p>
+    <button type="button" class="toast-close" [attr.aria-label]="'app.palette.close' | translate" (click)="close()">
+      <fa-icon [icon]="faXmark"></fa-icon>
+    </button>
+  </div>
+  <div class="mt-3 flex justify-end gap-2">
+    <button type="button" class="toast-btn toast-btn--secondary" (click)="dismissForever()">
+      {{ 'app.palette.dismiss' | translate }}
+    </button>
+    <button type="button" class="toast-btn toast-btn--primary" (click)="tryIt()">
+      {{ 'app.palette.try' | translate }}
+    </button>
+  </div>
+</div>

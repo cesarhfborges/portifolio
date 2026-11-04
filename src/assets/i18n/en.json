@@ -6,7 +6,8 @@
       "skills": "Skills",
       "education": "education",
       "projects": "Projects",
-      "language": "Language"
+      "language": "Language",
+      "explorer": "Explorer"
     },
     "heroSection": {
       "designation": "Software Developer",
@@ -16,9 +17,15 @@
       "hireable": "ready for the next challenge"
     },
     "about": {
-      "name": "About me",
       "title": "Who I am?",
-      "text": "Hi, I'm César, a professional web and mobile systems developer with over 8 years of experience, specializing in creating APIs, graphical interfaces, and responsive, efficient, and integrated applications. My expertise spans front-end and back-end, enabling me to develop cross-platform mobile applications and dynamic web interfaces that deliver exceptional user experiences. With a solid foundation in Laravel, Node, Spring Boot, PostgreSQL, Mongo, MariaDB, and other back-end technologies, I have a holistic approach to building scalable, end-to-end solutions. My passion for innovation drives me to constantly learn and master new technologies, including IONIC and React Native Multiplatform, while striving to stay ahead of the ever-evolving technology landscape. From working on socket server utilities for real-time applications to custom systems, I've gained a deep understanding of the challenges and possibilities of modern application development. I'm a self-motivated problem-solver who thrives on bringing ideas to life through clean, efficient, and maintainable code. Let's build something amazing together!"
+      "p1": "Hi, I'm <strong>César</strong>, a web and mobile systems developer with <strong>over %YEARS% years of experience</strong>, specialized in building <strong>APIs</strong>, graphical interfaces and responsive, efficient, integrated applications.",
+      "p2": "I work from <strong>front-end to back-end</strong>: I build cross-platform mobile apps and dynamic web interfaces on a solid foundation of <strong>Laravel, Node, Spring Boot, PostgreSQL, MongoDB and MariaDB</strong>, with an end-to-end approach to scalable solutions.",
+      "p3": "From <strong>socket servers for real-time apps</strong> to custom systems, I enjoy turning ideas into products with <strong>clean, efficient and maintainable code</strong> — and I keep learning new technologies, like Ionic and React Native. Shall we build something amazing together?",
+      "currently": "currently",
+      "stat_years": "years of experience",
+      "stat_companies": "companies",
+      "stat_techs": "technologies",
+      "stat_courses": "courses & degrees"
     },
     "experiences": {
       "title": "Experiences",
@@ -38,7 +45,12 @@
       "title": "Academic",
       "duration": "Duração",
       "institution": "Instituição",
-      "topics": "Topics"
+      "topics": "Topics",
+      "explorer": "Explorer",
+      "open_editors": "Open editors",
+      "year": "Year",
+      "courses": "courses",
+      "select_hint": "Select a file in the explorer"
     },
     "contact": {
       "title": "Contact",
@@ -62,6 +74,48 @@
       "built_with": "Built with",
       "problems": "0 problems",
       "rights": "All rights reserved."
+    },
+    "files": {
+      "hero": "person.ts",
+      "about": "about.md",
+      "experience": "experience.ts",
+      "education": "education.json",
+      "skills": "skills.yaml",
+      "projects": "projects.tsx",
+      "contact": "contact.sh"
+    },
+    "status": {
+      "branch": "Current branch",
+      "problems": "No problems",
+      "spaces": "Spaces: 2",
+      "language_mode": "Language mode",
+      "switch_lang": "Switch language",
+      "back_to_top": "Back to top",
+      "notifications": "Notifications",
+      "line": "Ln {{line}}, Col 1"
+    },
+    "palette": {
+      "placeholder": "Type a command or a section name…",
+      "go_to": "Go to",
+      "top": "Go to top",
+      "lang": "Change language",
+      "copy_email": "Copy e-mail",
+      "copied": "E-mail copied!",
+      "send_email": "Send e-mail",
+      "resume": "Open resume",
+      "github": "Open GitHub",
+      "linkedin": "Open LinkedIn",
+      "empty": "No matching commands",
+      "cat_nav": "navigation",
+      "cat_pref": "preferences",
+      "cat_contact": "contact",
+      "open": "Command palette",
+      "hint_title": "Tip",
+      "hint_desktop": "Press Ctrl+K to browse the portfolio like in an IDE.",
+      "hint_mobile": "Tap >_ in the status bar to open the command palette.",
+      "try": "Try it",
+      "dismiss": "Don't show again",
+      "close": "Close"
     }
   }
 }

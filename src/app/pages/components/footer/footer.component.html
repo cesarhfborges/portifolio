@@ -1,4 +1,4 @@
-<footer class="footer relative text-white">
+<footer class="footer relative text-white mt-24 lg:mt-24">
   <span class="footer-glow" aria-hidden="true"></span>
 
   <!-- ===== Corpo ===== -->
@@ -44,26 +44,9 @@
     </div>
   </div>
 
-  <!-- ===== Barra de status (estilo editor) ===== -->
-  <div class="status-bar">
-    <div class="mx-auto flex items-center justify-between gap-4 px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem]">
-      <div class="flex min-w-0 items-center">
-        <span class="status-item inline-flex">
-          <fa-icon [icon]="faCodeBranch"></fa-icon> master
-        </span>
-        <span class="status-item hidden sm:inline-flex">
-          <fa-icon [icon]="faCircleCheck"></fa-icon> {{ 'app.footer.problems' | translate }}
-        </span>
-      </div>
-
-      <div class="flex min-w-0 items-center">
-        <span class="status-item hidden md:inline-flex">UTF-8</span>
-        <span class="status-item hidden md:inline-flex">TypeScript</span>
-        <span class="status-item hidden sm:inline-flex">{{ translation.currentLang }}</span>
-        <span class="status-item status-item--accent inline-flex">
-          © {{ now | date:'y' }} {{ personalData.name }}
-        </span>
-      </div>
-    </div>
+  <div class="border-t border-[#25213b]">
+    <p class="mx-auto px-6 py-5 text-center font-mono text-xs text-white/40 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem]">
+      © {{ now | date:'y' }} {{ personalData.name }} · {{ 'app.footer.rights' | translate }}
+    </p>
   </div>
 </footer>

@@ -1,6 +1,39 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, computed, signal} from '@angular/core';
+import {faChevronDown, faChevronRight, faFolder, faFolderOpen} from '@fortawesome/free-solid-svg-icons';
 import {educationsData} from '../../../../utils/data/educations.data';
-import {faGraduationCap} from '@fortawesome/free-solid-svg-icons';
+import {Education} from '../../../shared/models/education.interface';
+
+export interface EducationFile extends Education {
+  /** nome de arquivo exibido na árvore, ex.: "curso-php-7.md" */
+  fileName: string;
+}
+
+export interface YearFolder {
+  year: string;
+  files: EducationFile[];
+}
+
+/** "Curso PHP 7" → "curso-php-7.md" (no máximo 4 palavras, sem acentos). */
+export function toFileName(title: string): string {
+  const slug = title
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s.]/g, ' ')
+    .replace(/\./g, '-')
+    .trim()
+    .split(/\s+/)
+    .slice(0, 4)
+    .join('-');
+  return `${slug || 'curso'}.md`;
+}
+
+/** Linha do "arquivo markdown" mostrado no editor. */
+interface MdLine {
+  kind: 'h1' | 'meta' | 'h2' | 'item' | 'blank';
+  label?: string;
+  text?: string;
+}
 
 @Component({
   selector: 'app-education',
@@ -8,65 +41,67 @@ import {faGraduationCap} from '@fortawesome/free-solid-svg-icons';
   templateUrl: './education.component.html',
   styleUrl: './education.component.css'
 })
-export class EducationComponent implements OnInit {
-  educations = educationsData;
-  workspaceIcon = faGraduationCap;
-  lottieFile: any = null;
+export class EducationComponent {
+  readonly faFolder = faFolder;
+  readonly faFolderOpen = faFolderOpen;
+  readonly faChevronDown = faChevronDown;
+  readonly faChevronRight = faChevronRight;
 
-  private animationFrameId: number | null = null;
+  /** Cursos agrupados em pastas por ano, do mais recente para o mais antigo. */
+  readonly folders: YearFolder[] = this.buildFolders(educationsData);
 
-  ngOnInit() {
-    void this.init();
+  readonly total = educationsData.length;
+
+  /** Curso aberto no editor — começa pelo mais recente. */
+  readonly selectedId = signal<number>(this.folders[0]?.files[0]?.id ?? 0);
+
+  /** Pastas expandidas — começa só com a mais recente. */
+  readonly expanded = signal<Set<string>>(new Set(this.folders.slice(0, 1).map(f => f.year)));
+
+  readonly selected = computed<EducationFile | undefined>(() =>
+    this.folders.flatMap(f => f.files).find(f => f.id === this.selectedId())
+  );
+
+  isExpanded(year: string): boolean {
+    return this.expanded().has(year);
   }
 
-  public onCardMouseEnter(container: HTMLElement): void {
-    const blob = container.querySelector('.blob') as HTMLElement;
-    if (blob) {
-      blob.style.opacity = '1';
+  toggleFolder(year: string): void {
+    const next = new Set(this.expanded());
+    if (next.has(year)) {
+      next.delete(year);
+    } else {
+      next.add(year);
     }
+    this.expanded.set(next);
   }
 
-  public onCardMouseLeave(container: HTMLElement): void {
-    const blob = container.querySelector('.blob') as HTMLElement;
-    if (blob) {
-      blob.style.opacity = '0';
-    }
-    if (this.animationFrameId) {
-      cancelAnimationFrame(this.animationFrameId);
-      this.animationFrameId = null;
-    }
+  open(file: EducationFile): void {
+    this.selectedId.set(file.id);
   }
 
-  public onCardMouseMove(container: HTMLElement, event: MouseEvent): void {
-    this.updateBlobPosition(container, event);
+  /** Conteúdo do "arquivo" em linhas, para o editor numerar. */
+  lines(file: EducationFile): MdLine[] {
+    return [
+      {kind: 'h1', text: file.title},
+      {kind: 'blank'},
+      {kind: 'meta', label: 'app.academic.institution', text: file.institution},
+      {kind: 'meta', label: 'app.academic.year', text: file.duration},
+      {kind: 'blank'},
+      {kind: 'h2', label: 'app.academic.topics'},
+      ...file.topics.map(t => ({kind: 'item' as const, text: t})),
+    ];
   }
 
-  async init(): Promise<void> {
-    try {
-      this.lottieFile = await fetch('assets/lottie/programmer.json').then(res => {
-        return res.json();
-      });
-    } catch (error) {
-      console.error('Error loading Lottie animation:', error);
+  private buildFolders(data: Education[]): YearFolder[] {
+    const byYear = new Map<string, EducationFile[]>();
+    for (const item of data) {
+      const list = byYear.get(item.duration) ?? [];
+      list.push({...item, fileName: toFileName(item.title)});
+      byYear.set(item.duration, list);
     }
-  }
-
-  private updateBlobPosition(container: HTMLElement, mouseEvent: MouseEvent): void {
-    if (this.animationFrameId) {
-      cancelAnimationFrame(this.animationFrameId);
-    }
-    this.animationFrameId = requestAnimationFrame(() => {
-      const blob = container.querySelector('.blob') as HTMLElement;
-      const fblob = container.querySelector('.fakeblob') as HTMLElement;
-
-      if (!blob || !fblob) {
-        return;
-      }
-      const rec = fblob.getBoundingClientRect();
-      const translateX = (mouseEvent.clientX - rec.left) - (rec.width / 2);
-      const translateY = (mouseEvent.clientY - rec.top) - (rec.height / 2);
-      blob.style.transform = `translate(${translateX}px, ${translateY}px)`;
-      this.animationFrameId = null;
-    });
+    return [...byYear.entries()]
+      .sort(([a], [b]) => b.localeCompare(a))
+      .map(([year, files]) => ({year, files}));
   }
 }

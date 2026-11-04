@@ -86,34 +86,6 @@
   border-radius: 0.375rem;
 }
 
-/* ---------- Barra de status ---------- */
-.status-bar {
-  border-top: 1px solid #25213b;
-  background: #1a1443;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: rgb(255 255 255 / 0.7);
-}
-
-.status-item {
-  /* display fica nas classes do template (inline-flex / hidden sm:inline-flex):
-     definido aqui, o seletor encapsulado venceria o "hidden" do Tailwind */
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.375rem 0.625rem;
-  white-space: nowrap;
-  transition: background-color 150ms ease, color 150ms ease;
-}
-
-.status-item:first-child {
-  padding-left: 0;
-}
-
-.status-item--accent {
-  padding-right: 0;
-  color: rgb(255 255 255 / 0.9);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .footer-link,
   .social-btn {

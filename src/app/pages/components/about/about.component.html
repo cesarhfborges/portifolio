@@ -1,29 +1,50 @@
-<div id="about" class="my-12 lg:my-16 relative">
-  <div class="hidden lg:flex flex-col items-center absolute top-16 -right-8">
-        <span class="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
-          {{ ('app.about.name' | translate) | uppercase }}
-        </span>
-    <span class="h-36 w-[2px] bg-[#1a1443]"></span>
+<section id="about" class="relative mt-24 lg:mt-24">
+  <div class="mb-10 flex justify-center lg:mb-16">
+    <div class="flex items-center">
+      <span class="h-[2px] w-6 bg-[#1a1443] sm:w-24"></span>
+      <app-section-title [index]="1" [label]="'app.about.title' | translate"></app-section-title>
+      <span class="h-[2px] w-6 bg-[#1a1443] sm:w-24"></span>
+    </div>
   </div>
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+
+  <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.35fr_1fr] lg:gap-16">
+
+    <!-- ===== Texto ===== -->
     <div class="order-2 lg:order-1">
-      <p class="font-medium mb-5 text-[#16f2b3] text-xl uppercase">
-        <span class="font-mono text-base text-pink-500 mr-1 normal-case">01.</span>
-        {{ 'app.about.title' | translate }}
+      <div class="about-text flex flex-col gap-4 text-gray-300 lg:text-lg">
+        <p [innerHTML]="withYears(('app.about.p1' | translate))"></p>
+        <p [innerHTML]="'app.about.p2' | translate"></p>
+        <p [innerHTML]="'app.about.p3' | translate"></p>
+      </div>
+
+      <p *ngIf="current" class="current-role mt-6">
+        <span class="text-[#16f2b3]">&gt;</span>
+        <span class="text-white/50"> {{ 'app.about.currently' | translate }}:</span>
+        <span class="text-white"> {{ current.title }}</span>
+        <span class="text-pink-500"> &#64; </span>
+        <span class="text-white">{{ current.company }}</span>
       </p>
-      <p class="text-gray-200 text-sm lg:text-lg text-justify">
-        {{ 'app.about.text' | translate }}
-      </p>
+
+      <!-- números em uma linha discreta -->
+      <ul class="about-stats mt-8">
+        <li *ngFor="let stat of stats; let i = index" class="stat">
+          <span class="stat-value">{{ displayed()[i] }}{{ stat.suffix }}</span>
+          <span class="stat-label">{{ stat.label | translate }}</span>
+        </li>
+      </ul>
     </div>
-    <div class="flex justify-center order-1 lg:order-2 h-[340px] min-h-[340px] h-full flex items-center">
-      <img
-        [ngSrc]="personalData.profile"
-        alt="César Borges"
-        class="rounded-lg transition-all duration-1000 grayscale hover:grayscale-0 hover:scale-110 cursor-pointer w-[250px] h-[360px] object-cover"
-        [height]="360"
-        [width]="250"
-        [priority]="true"
-      />
+
+    <!-- ===== Foto (solta, como no original) ===== -->
+    <div class="order-1 flex justify-center lg:order-2">
+      <div class="photo-wrap">
+        <img
+          [ngSrc]="personalData.profile"
+          [alt]="personalData.name"
+          class="photo"
+          [height]="380"
+          [width]="266"
+        />
+      </div>
     </div>
   </div>
-</div>
+</section>
