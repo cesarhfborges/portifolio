@@ -1,0 +1,118 @@
+:host {
+  display: block;
+}
+
+/* ---------- Texto ---------- */
+.about-text {
+  line-height: 1.75;
+}
+
+/* <strong> vem do texto traduzido (innerHTML), por isso ::ng-deep */
+:host ::ng-deep .about-text strong {
+  font-weight: 600;
+  color: #fff;
+}
+
+.current-role {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  padding: 0.625rem 0.875rem;
+  border-left: 2px solid #ec4899;
+  background: rgb(255 255 255 / 0.02);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+/* ---------- Números (sem caixas: só divisórias finas) ---------- */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgb(255 255 255 / 0.06);
+}
+
+@media (min-width: 640px) {
+  .about-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0 1rem;
+  border-left: 1px solid rgb(255 255 255 / 0.08);
+}
+
+.stat:first-child,
+.stat:nth-child(3) {
+  padding-left: 0;
+  border-left: 0;
+}
+
+@media (min-width: 640px) {
+  .stat:nth-child(3) {
+    padding-left: 1rem;
+    border-left: 1px solid rgb(255 255 255 / 0.08);
+  }
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stat-label {
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  color: rgb(255 255 255 / 0.55);
+}
+
+/* ---------- Foto ---------- */
+.photo-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+/* brilho suave atrás da foto (a imagem tem fundo transparente) */
+.photo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 15% 5% 0;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(139 92 246 / 0.35), rgb(236 72 153 / 0.12) 60%, transparent);
+  filter: blur(20px);
+  opacity: 0.6;
+  transition: opacity 700ms ease;
+}
+
+.photo-wrap:hover::before {
+  opacity: 1;
+}
+
+.photo {
+  width: 16.5rem;
+  height: auto;
+  filter: grayscale(1);
+  transition: filter 700ms ease, transform 700ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.photo-wrap:hover .photo {
+  filter: grayscale(0);
+  transform: translateY(-4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo,
+  .photo-wrap::before {
+    transition: none;
+  }
+}

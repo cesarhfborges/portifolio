@@ -16,9 +16,15 @@
       "hireable": "pronto para o próximo desafio"
     },
     "about": {
-      "name": "Sobre",
       "title": "Quem sou eu?",
-      "text": "Olá, sou César, profissional desenvolvedor de sistemas web e mobile com mais de 8 anos de experiência, especializado na criação de APIs, interfaces gráficas, aplicações responsivas, eficientes e integradas. Minha expertise abrange front-end e back-end, permitindo-me desenvolver aplicativos mobile multiplataforma e interfaces web dinâmicas que proporcionam experiências excepcionais ao usuário. Com uma base sólida em Laravel, Node, Spring Boot, PostgreSQL, Mongo, MariaDB e outras tecnologias de back-end, tenho uma abordagem holística para a construção de soluções escaláveis e de ponta a ponta. Minha paixão por inovação me leva a aprender e dominar constantemente novas tecnologias, incluindo IONIC e React Native Multiplatform, enquanto me esforço para me manter à frente no cenário tecnológico em constante evolução. Desde trabalhar em utilitários de servidor de socket para aplicativos em tempo real até sistemas personalizados, adquiri um profundo conhecimento dos desafios e possibilidades do desenvolvimento de aplicativos modernos. Sou um solucionador de problemas automotivado que prospera em dar vida a ideias por meio de código limpo, eficiente e sustentável. Vamos construir algo incrível juntos!"
+      "p1": "Olá, sou <strong>César</strong>, desenvolvedor de sistemas web e mobile com <strong>mais de %YEARS% anos de experiência</strong>, especializado na criação de <strong>APIs</strong>, interfaces gráficas e aplicações responsivas, eficientes e integradas.",
+      "p2": "Atuo do <strong>front-end ao back-end</strong>: desenvolvo aplicativos mobile multiplataforma e interfaces web dinâmicas sobre uma base sólida em <strong>Laravel, Node, Spring Boot, PostgreSQL, MongoDB e MariaDB</strong>, com uma abordagem de ponta a ponta para soluções escaláveis.",
+      "p3": "De servidores de <strong>socket para aplicações em tempo real</strong> a sistemas sob medida, gosto de transformar ideias em produto com <strong>código limpo, eficiente e sustentável</strong> — e sigo aprendendo tecnologias novas, como Ionic e React Native. Vamos construir algo incrível juntos?",
+      "currently": "atualmente",
+      "stat_years": "anos de experiência",
+      "stat_companies": "empresas",
+      "stat_techs": "tecnologias",
+      "stat_courses": "cursos e formações"
     },
     "experiences": {
       "title": "Experiências profissionais",
