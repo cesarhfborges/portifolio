@@ -38,7 +38,7 @@
           <button
             class="px-3 text-xs md:px-8 py-3 md:py-4 bg-[#0d1224] rounded-full border-none text-center md:text-sm font-medium uppercase tracking-wider text-[#ffff] no-underline transition-all duration-200 ease-out md:font-semibold flex items-center gap-1 hover:gap-3 cursor-pointer">
             <span>{{ 'app.heroSection.contact_me' | translate }}</span>
-            <fa-icon [icon]="faDownload"></fa-icon>
+            <fa-icon [icon]="faEnvelope"></fa-icon>
           </button>
         </a>
 
@@ -58,22 +58,33 @@
         <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
         <div class="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>
       </div>
-      <div class="px-4 lg:px-8 py-5">
-        <div class="flex flex-row space-x-2">
+      <div class="flex items-center gap-4 px-4 lg:px-8 py-4">
+        <div class="flex flex-row space-x-2" aria-hidden="true">
           <div class="h-3 w-3 rounded-full bg-red-400"></div>
           <div class="h-3 w-3 rounded-full bg-orange-400"></div>
           <div class="h-3 w-3 rounded-full bg-green-200"></div>
         </div>
+        <span class="code-tab font-mono">person.ts</span>
       </div>
-      <div class="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 ">
-        <pre>
-          <code
-            [highlight]="codeString"
-            language="typescript"
-            lang="typescript"
-            class="font-mono text-xs md:text-sm lg:text-base"
-          ></code>
-        </pre>
+
+      <div class="code-scroll flex overflow-x-auto border-t-[2px] border-indigo-900 py-4 pl-4 sm:pl-0 font-mono text-xs md:text-sm leading-6">
+        <div class="code-gutter hidden sm:flex select-none" aria-hidden="true">
+          <span *ngFor="let n of lineNumbers">{{ n }}</span>
+        </div>
+        <!-- o código "fantasma" reserva o espaço final, então a janela não cresce enquanto digita -->
+        <pre class="code-stack pr-4" [attr.aria-label]="fullCode"><code class="code-ghost" aria-hidden="true">{{ fullCode }}</code><code class="hljs code-live" aria-hidden="true" [innerHTML]="typedHtml()"></code></pre>
+      </div>
+
+      <div class="code-terminal font-mono text-xs md:text-sm" aria-live="polite">
+        <div>
+          <span class="text-[#16f2b3]">&gt;</span>
+          <span class="text-white/90"> {{ terminalTyped() }}</span>
+          <span class="type-caret" *ngIf="codeDone() && !showResult()"></span>
+        </div>
+        <div class="code-result" [class.code-result--visible]="showResult()">
+          <span class="text-[#16f2b3]">true</span>
+          <span class="text-white/40"> // {{ 'app.heroSection.hireable' | translate }}</span>
+        </div>
       </div>
     </div>
   </div>

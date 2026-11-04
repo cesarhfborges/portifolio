@@ -33,6 +33,7 @@ import localePt from '@angular/common/locales/pt';
 import localeEn from '@angular/common/locales/en';
 import player from 'lottie-web';
 import {ScrollToTopComponent} from './shared/components/scroll-to-top/scroll-to-top.component';
+import {SectionTitleComponent} from './shared/components/section-title/section-title.component';
 import {Highlight, provideHighlightOptions} from 'ngx-highlightjs';
 
 registerLocaleData(localePt, 'pt');
@@ -53,7 +54,8 @@ registerLocaleData(localeEn, 'en');
     EducationComponent,
     ContactComponent,
     ProjectCardComponent,
-    ScrollToTopComponent
+    ScrollToTopComponent,
+    SectionTitleComponent
   ],
   imports: [
     BrowserModule,

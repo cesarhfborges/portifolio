@@ -13,7 +13,7 @@ export const projects: Project[] = [
   {
     id: 1,
     name: "Seguros Residencial, Empresarial, Consórcio",
-    description: "Sistema web para contratação de seguros nas agências do banco do brasil, com Angular, java EE, quarkus, com uso de recursos complexos, integração de API`s e consumo dados oriundos de sistemas cobol java e python, os sistemas em questão objetivam permitir a simulçõa, venda, cancelamentos, alterações diversas nas cotações e contratos dos clientes.",
+    description: "Sistema web para contratação de seguros nas agências do banco do brasil, com Angular, java EE, quarkus, com uso de recursos complexos, integração de API`s e consumo dados oriundos de sistemas cobol java e python, os sistemas em questão objetivam permitir a simulação, venda, cancelamentos, alterações diversas nas cotações e contratos dos clientes.",
     tools: ["Angular", "Java EE", "Quarkus", "PLSql"],
     code: "",
     role: "Desenvolvedor Sênior",
@@ -33,7 +33,7 @@ export const projects: Project[] = [
   {
     id: 3,
     name: "Maquininha PIX Brasal combustiveis",
-    description: "Este é um dos projetos que tenho mais orgulho, pela simplicidade e pelo beneficio, este foi um projeto que permitiu a rede de postos de combustiveis ofertar o recebimento via PIX em primeira mão, quando na epoca ainda não haviam maquininhas com suporte a esse metodo de pagamento, era oferecido tambem acumulo de km para trocar posteriormente por combutivel.",
+    description: "Este é um dos projetos que tenho mais orgulho, pela simplicidade e pelo beneficio, este foi um projeto que permitiu a rede de postos de combustiveis ofertar o recebimento via PIX em primeira mão, quando na epoca ainda não haviam maquininhas com suporte a esse metodo de pagamento, era oferecido tambem acumulo de km para trocar posteriormente por combustível.",
     tools: ["Ionic", "NODEjs", "SqlServer", "Socket"],
     code: "",
     // demo: "https://play.google.com/store/apps/details?id=com.mocowi.mocowi",

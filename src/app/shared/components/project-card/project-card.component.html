@@ -1,44 +1,53 @@
-<div
-  class="w-full h-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
-  <div class="flex -translate-y-[1px] justify-center">
+<article class="project-card group">
+  <div class="flex -translate-y-[1px] justify-center" aria-hidden="true">
     <div class="w-3/4">
       <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent"></div>
     </div>
   </div>
-  <div class="p-6 flex flex-col gap-4">
-    <div class="flex items-center gap-2">
-      <div class="text-gray-400">const</div>
-      <div class="text-[#e5a663]">project</div>
-      <div class="text-gray-400">=</div>
-      <div class="text-gray-400">&#123;</div>
-    </div>
 
-    <div class="flex flex-col gap-2 ml-8">
-      <div>
-        <span class="text-[#e87d88]">name: </span>
-        <span class="text-[#5ba0fc]">"{{project.name}}"</span>
-        <span class="text-gray-400">,</span>
-      </div>
-      <div>
-        <span class="text-[#e87d88]">tools: </span>
-        <span class="text-[#5ba0fc]">[</span>
-        <span *ngFor="let tool of project.tools; let last = last" class="text-[#5ba0fc]">
-          "{{tool}}"{{!last ? ', ' : ''}}
-        </span>
-        <span class="text-[#5ba0fc]">]</span>
-        <span class="text-gray-400">,</span>
-      </div>
-      <div>
-        <span class="text-[#e87d88]">role: </span>
-        <span class="text-[#5ba0fc]">"{{project.role}}"</span>
-        <span class="text-gray-400">,</span>
-      </div>
-      <div>
-        <span class="text-[#e87d88]">description: </span>
-        <span class="text-[#5ba0fc]">"{{project.description}}"</span>
-      </div>
+  <!-- barra do editor -->
+  <header class="flex items-center gap-4 border-b border-white/5 px-4 py-2.5">
+    <div class="flex gap-1.5" aria-hidden="true">
+      <span class="h-2.5 w-2.5 rounded-full bg-red-400/80"></span>
+      <span class="h-2.5 w-2.5 rounded-full bg-orange-400/80"></span>
+      <span class="h-2.5 w-2.5 rounded-full bg-green-200/80"></span>
     </div>
+    <span class="project-tab font-mono">{{ fileName }}</span>
+  </header>
 
-    <div><span class="text-gray-400">&#125;;</span></div>
+  <!-- corpo: cada linha = número + conteúdo (o número fica no topo quando o texto quebra) -->
+  <div class="py-4 font-mono text-[13px] leading-6 md:text-sm">
+    <div class="code-line">
+      <span class="ln">1</span>
+      <span><span class="hljs-keyword">const</span>&nbsp;<span class="hljs-variable">project</span>: <span class="hljs-title class_">Project</span> = &#123;</span>
+    </div>
+    <div class="code-line">
+      <span class="ln">2</span>
+      <span class="pl-4"><span class="hljs-attr">name</span>: <span class="hljs-string">'{{ project.name }}'</span>,</span>
+    </div>
+    <div class="code-line">
+      <span class="ln">3</span>
+      <span class="pl-4"><span class="hljs-attr">role</span>: <span class="hljs-string">'{{ project.role }}'</span>,</span>
+    </div>
+    <div class="code-line">
+      <span class="ln">4</span>
+      <span class="pl-4 flex flex-wrap items-center gap-1.5">
+        <span><span class="hljs-attr">tools</span>: [</span>
+        <span *ngFor="let tool of project.tools" class="tool-chip">{{ tool }}</span>
+        <span>],</span>
+      </span>
+    </div>
+    <div class="code-line">
+      <span class="ln">5</span>
+      <span class="pl-4"><span class="hljs-attr">description</span>:</span>
+    </div>
+    <div class="code-line">
+      <span class="ln">6</span>
+      <span class="pl-8 description"><span class="hljs-string">'{{ project.description }}'</span>,</span>
+    </div>
+    <div class="code-line">
+      <span class="ln">7</span>
+      <span>&#125;;<span class="card-caret" aria-hidden="true"></span></span>
+    </div>
   </div>
-</div>
+</article>

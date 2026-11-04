@@ -4,6 +4,10 @@
 @import 'highlight.js/styles/monokai-sublime.css';
 /*@import 'highlight.js/styles/routeros.min.css';*/
 
+@theme {
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
 html,
 body {
   height: 100%;
