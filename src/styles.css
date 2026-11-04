@@ -13,10 +13,24 @@ body {
   height: 100%;
 }
 
+/* Âncoras (#about, #experience...) param abaixo do header sticky, e não atrás dele.
+   Mobile: header de 3.5rem; md+: abas 3rem + breadcrumb 1.75rem. Inclui uma folga. */
+html {
+  scroll-padding-top: 4.5rem;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 5.5rem;
+  }
+}
+
 /* O header sticky (app-navbar) usa o app-root como container: precisa ser bloco,
    senão o sticky fica preso ao <body> (height: 100%) e solta após uma tela de rolagem. */
 app-root {
   display: block;
+  /* espaço para a barra de status fixa (app-status-bar, 24px) */
+  padding-bottom: 1.5rem;
 }
 
 body {

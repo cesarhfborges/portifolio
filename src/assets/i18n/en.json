@@ -6,7 +6,8 @@
       "skills": "Skills",
       "education": "education",
       "projects": "Projects",
-      "language": "Language"
+      "language": "Language",
+      "explorer": "Explorer"
     },
     "heroSection": {
       "designation": "Software Developer",
@@ -44,7 +45,12 @@
       "title": "Academic",
       "duration": "Duração",
       "institution": "Instituição",
-      "topics": "Topics"
+      "topics": "Topics",
+      "explorer": "Explorer",
+      "open_editors": "Open editors",
+      "year": "Year",
+      "courses": "courses",
+      "select_hint": "Select a file in the explorer"
     },
     "contact": {
       "title": "Contact",
@@ -68,6 +74,48 @@
       "built_with": "Built with",
       "problems": "0 problems",
       "rights": "All rights reserved."
+    },
+    "files": {
+      "hero": "person.ts",
+      "about": "about.md",
+      "experience": "experience.ts",
+      "education": "education.json",
+      "skills": "skills.yaml",
+      "projects": "projects.tsx",
+      "contact": "contact.sh"
+    },
+    "status": {
+      "branch": "Current branch",
+      "problems": "No problems",
+      "spaces": "Spaces: 2",
+      "language_mode": "Language mode",
+      "switch_lang": "Switch language",
+      "back_to_top": "Back to top",
+      "notifications": "Notifications",
+      "line": "Ln {{line}}, Col 1"
+    },
+    "palette": {
+      "placeholder": "Type a command or a section name…",
+      "go_to": "Go to",
+      "top": "Go to top",
+      "lang": "Change language",
+      "copy_email": "Copy e-mail",
+      "copied": "E-mail copied!",
+      "send_email": "Send e-mail",
+      "resume": "Open resume",
+      "github": "Open GitHub",
+      "linkedin": "Open LinkedIn",
+      "empty": "No matching commands",
+      "cat_nav": "navigation",
+      "cat_pref": "preferences",
+      "cat_contact": "contact",
+      "open": "Command palette",
+      "hint_title": "Tip",
+      "hint_desktop": "Press Ctrl+K to browse the portfolio like in an IDE.",
+      "hint_mobile": "Tap >_ in the status bar to open the command palette.",
+      "try": "Try it",
+      "dismiss": "Don't show again",
+      "close": "Close"
     }
   }
 }

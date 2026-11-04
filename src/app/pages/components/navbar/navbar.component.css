@@ -27,14 +27,57 @@
   box-shadow: 0 12px 32px -16px rgb(0 0 0 / 0.75);
 }
 
-/* Logo encolhe levemente ao rolar (transform = sem reflow) */
-.nav-brand {
-  transform-origin: left center;
-  transition: transform 400ms cubic-bezier(.2, .8, .2, 1);
+/* ---------- Grade do header ---------- */
+.nav-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: 3.5rem;
+  column-gap: 1.5rem;
 }
 
-.nav-bar--scrolled .nav-brand {
-  transform: scale(0.85);
+@media (min-width: 768px) {
+  .nav-grid {
+    grid-template-rows: 3rem 1.75rem;
+  }
+}
+
+/* linha fina entre abas e breadcrumb, de ponta a ponta da página (só ao rolar) */
+.nav-bar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 3rem;
+  height: 1px;
+  background: rgb(255 255 255 / 0.06);
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .nav-bar--scrolled::after {
+    opacity: 1;
+  }
+}
+
+.nav-brand {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.nav-actions {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  align-items: stretch;
 }
 
 /* ---------- Marca ---------- */
@@ -45,64 +88,138 @@
   color: transparent;
 }
 
-/* ---------- Links ---------- */
-.nav-link {
-  position: relative;
-  display: block;
-  padding: 0.5rem 0.75rem;
+/* ---------- Ícone de tipo de arquivo (TS, MD, {} ...) ---------- */
+.file-badge {
+  display: inline-block;
+  min-width: 1.25rem;
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: rgb(255 255 255 / 0.72);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+/* ---------- Abas de arquivo ---------- */
+.tabs {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  align-items: stretch;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+/* esmaece a borda direita só quando há abas fora da área visível */
+.tabs--overflow {
+  mask-image: linear-gradient(90deg, #000 calc(100% - 2rem), transparent);
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0 0.4rem 0 0.6rem;
+  border-right: 1px solid rgb(255 255 255 / 0.06);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgb(255 255 255 / 0.5);
   white-space: nowrap;
-  transition: color 250ms ease;
-  cursor: pointer;
+  transition: color 200ms ease, background-color 200ms ease;
 }
 
-.nav-index {
-  color: #ec4899;
-  opacity: 0.85;
+.tab:first-child {
+  border-left: 1px solid rgb(255 255 255 / 0.06);
 }
 
-.nav-link::after {
+/* borda superior colorida da aba ativa */
+.tab::before {
   content: "";
   position: absolute;
-  left: 0.75rem;
-  right: 0.75rem;
-  bottom: 0.2rem;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 2px;
-  border-radius: 2px;
   background: linear-gradient(90deg, #ec4899, #8b5cf6);
   transform: scaleX(0);
-  transition: transform 300ms cubic-bezier(.2, .8, .2, 1);
+  transition: transform 250ms cubic-bezier(.2, .8, .2, 1);
 }
 
-.nav-link:hover,
-.nav-link:focus-visible,
-.nav-link--active {
+.tab:hover {
+  color: rgb(255 255 255 / 0.85);
+  background: rgb(255 255 255 / 0.03);
+}
+
+.tab--active {
   color: #fff;
+  background: rgb(255 255 255 / 0.06);
 }
 
-.nav-link:hover::after,
-.nav-link:focus-visible::after,
-.nav-link--active::after {
+.tab--active::before {
   transform: scaleX(1);
 }
 
-.nav-link:focus-visible,
+/* "×" decorativo: aparece na aba ativa e no hover, como numa IDE */
+.tab-close {
+  width: 0.875rem;
+  font-size: 0.9rem;
+  line-height: 1;
+  text-align: center;
+  color: rgb(255 255 255 / 0.5);
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.tab:hover .tab-close,
+.tab--active .tab-close {
+  opacity: 1;
+}
+
+/* ---------- Breadcrumb (alinhado ao início das abas) ---------- */
+.breadcrumb {
+  grid-column: 2 / 4;
+  grid-row: 2;
+  align-items: center;
+  padding-left: 0.6rem; /* mesmo recuo do texto da primeira aba */
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgb(255 255 255 / 0.4);
+  white-space: nowrap;
+}
+
+.crumb-sep {
+  margin: 0 0.5rem;
+  color: rgb(255 255 255 / 0.25);
+}
+
+.crumb-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.tab:focus-visible,
+.mobile-file:focus-visible,
 .lang-option:focus-visible,
 .burger:focus-visible {
   outline: 2px solid rgb(236 72 153 / 0.6);
-  outline-offset: 2px;
-  border-radius: 0.5rem;
+  outline-offset: -2px;
+  border-radius: 0.375rem;
 }
 
 /* ---------- Alternador de idioma ---------- */
 .lang-switch {
   align-items: center;
   gap: 0.35rem;
-  margin-left: 0.5rem;
-  padding-left: 0.875rem;
-  border-left: 1px solid rgb(255 255 255 / 0.12);
+  padding-left: 1rem;
+  border-left: 1px solid rgb(255 255 255 / 0.06);
   font-family: var(--font-mono);
   font-size: 0.75rem;
 }
@@ -131,6 +248,7 @@
 /* ---------- Hambúrguer animado ---------- */
 .burger {
   position: relative;
+  align-self: center;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 0.5rem;
@@ -172,16 +290,29 @@
   transition: opacity 300ms ease, visibility 0s;
 }
 
-.nav-link--lg {
-  padding: 0.75rem 0;
-  font-size: 1.375rem;
+.explorer-title {
+  margin-bottom: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.4);
 }
 
-.nav-link--lg::after {
-  left: 0;
-  right: auto;
-  width: 2.5rem;
-  transform-origin: left center;
+.mobile-file {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 0.75rem;
+  border-radius: 0.5rem;
+  border-left: 2px solid transparent;
+  font-family: var(--font-mono);
+  font-size: 1.0625rem;
+}
+
+.mobile-file--active {
+  border-left-color: #ec4899;
+  background: rgb(255 255 255 / 0.05);
 }
 
 .mobile-item {
@@ -205,9 +336,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .nav-bar::before,
-  .nav-brand,
-  .nav-link,
-  .nav-link::after,
+  .nav-bar::after,
+  .tab,
+  .tab::before,
   .burger span,
   .mobile-menu,
   .mobile-item {

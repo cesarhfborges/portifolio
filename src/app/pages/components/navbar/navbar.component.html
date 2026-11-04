@@ -1,43 +1,47 @@
 <header
-  class="nav-bar sticky top-0 z-[100] flex h-20 items-center text-white"
+  class="nav-bar sticky top-0 z-[100] text-white"
   [class.nav-bar--scrolled]="isScrolled || isMenuOpen"
 >
-  <!-- mesmo container do <main> (app.component.html) para alinhar logo e links ao conteúdo -->
+  <!--
+    Grade de 3 colunas (marca | abas | idioma) em 2 linhas (abas | breadcrumb):
+    abas e idioma ocupam a altura toda da linha, então textos e divisórias ficam no mesmo eixo,
+    e o breadcrumb começa exatamente onde começam as abas.
+  -->
   <nav
-    class="relative mx-auto flex w-full items-center justify-between gap-6 px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem]"
+    class="nav-grid mx-auto w-full px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem]"
     aria-label="Main"
   >
-    <a routerLink="/" class="nav-brand flex shrink-0 items-center text-2xl font-bold" aria-label="César Borges">
+    <a routerLink="/" class="nav-brand" aria-label="César Borges">
       <img
         ngSrc="assets/icons/android-chrome-192x192.png"
-        class="mr-3"
         alt=""
         [priority]="true"
-        [height]="30"
-        [width]="30"
+        [height]="28"
+        [width]="28"
       />
-      <span class="inline md:hidden xl:inline">
+      <span class="inline md:hidden 2xl:inline">
         <span class="text-white">César</span>
         <span class="brand-gradient"> Borges</span>
       </span>
     </a>
 
-    <div class="flex items-center gap-2">
-      <ul class="hidden md:flex flex-row items-center">
-        <li *ngFor="let item of navItems; let i = index">
-          <a
-            href="{{item.path}}"
-            class="nav-link"
-            [class.nav-link--active]="activeSection === item.id"
-            [attr.aria-current]="activeSection === item.id ? 'location' : null"
-          >
-            <span class="nav-index hidden lg:inline">{{ indexLabel(i) }}</span>
-            {{ (item.label | translate) | lowercase }}
-          </a>
-        </li>
-      </ul>
+    <!-- abas: cada seção é um "arquivo" aberto -->
+    <div #tabs class="tabs hidden md:flex" [class.tabs--overflow]="tabsOverflow" (scroll)="onTabsScroll()">
+      <a
+        *ngFor="let file of files; let i = index"
+        [href]="'/#' + file.id"
+        class="tab"
+        [class.tab--active]="activeSection === file.id"
+        [attr.aria-current]="activeSection === file.id ? 'location' : null"
+        [attr.title]="indexLabel(i) + ' ' + (file.label | translate)"
+      >
+        <span class="file-badge" [style.color]="file.color" aria-hidden="true">{{ file.badge }}</span>
+        <span>{{ file.file | translate }}</span>
+        <span class="tab-close" aria-hidden="true">×</span>
+      </a>
+    </div>
 
-      <!-- alternador de idioma -->
+    <div class="nav-actions">
       <div class="lang-switch hidden md:flex" role="group" [attr.aria-label]="'app.menu.language' | translate">
         <ng-container *ngFor="let lang of _translationService.langs; let last = last">
           <button
@@ -64,26 +68,40 @@
         <span></span><span></span><span></span>
       </button>
     </div>
+
+    <!-- breadcrumb do arquivo ativo: mesma coluna das abas -->
+    <div class="breadcrumb hidden md:flex" aria-label="Breadcrumb">
+      <span>portfolio</span>
+      <span class="crumb-sep" aria-hidden="true">›</span>
+      <span>src</span>
+      <span class="crumb-sep" aria-hidden="true">›</span>
+      <span class="crumb-current">
+        <span class="file-badge" [style.color]="activeFile.color" aria-hidden="true">{{ activeFile.badge }}</span>
+        {{ activeFile.file | translate }}
+      </span>
+    </div>
   </nav>
 </header>
 
 <div
   id="mobileMenu"
-  class="mobile-menu fixed inset-0 z-[90] flex flex-col px-6 pt-28 pb-10 md:hidden"
+  class="mobile-menu fixed inset-0 z-[90] flex flex-col px-6 pt-24 pb-14 md:hidden"
   [class.mobile-menu--open]="isMenuOpen"
   [attr.aria-hidden]="!isMenuOpen"
 >
+  <p class="explorer-title">{{ 'app.menu.explorer' | translate }}</p>
   <ul class="flex flex-col gap-1">
-    <li *ngFor="let item of navItems; let i = index" class="mobile-item" [style.transition-delay.ms]="isMenuOpen ? 60 + i * 40 : 0">
+    <li *ngFor="let file of files; let i = index" class="mobile-item" [style.transition-delay.ms]="isMenuOpen ? 60 + i * 40 : 0">
       <a
-        href="{{item.path}}"
-        class="nav-link nav-link--lg"
-        [class.nav-link--active]="activeSection === item.id"
+        [href]="'/#' + file.id"
+        class="mobile-file"
+        [class.mobile-file--active]="activeSection === file.id"
         [attr.tabindex]="isMenuOpen ? null : -1"
         (click)="toggleMenu()"
       >
-        <span class="nav-index">{{ indexLabel(i) }}</span>
-        {{ (item.label | translate) | lowercase }}
+        <span class="file-badge" [style.color]="file.color" aria-hidden="true">{{ file.badge }}</span>
+        <span class="text-white">{{ file.file | translate }}</span>
+        <span class="ml-auto whitespace-nowrap text-xs text-white/35">{{ indexLabel(i) }} {{ (file.label | translate) | lowercase }}</span>
       </a>
     </li>
   </ul>

@@ -1,0 +1,70 @@
+:host {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 95;
+}
+
+.status-bar {
+  display: flex;
+  height: 1.5rem;
+  align-items: stretch;
+  justify-content: space-between;
+  border-top: 1px solid rgb(139 92 246 / 0.35);
+  background: #1a1443;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgb(255 255 255 / 0.8);
+}
+
+/* display fica nas classes do template (inline-flex / hidden sm:inline-flex):
+   definido aqui, o seletor encapsulado venceria o "hidden" do Tailwind */
+.status-item {
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0 0.625rem;
+  white-space: nowrap;
+  transition: background-color 150ms ease, color 150ms ease, opacity 200ms ease;
+}
+
+.status-item:not(.hidden) {
+  display: inline-flex;
+}
+
+.status-item--remote {
+  padding: 0 0.75rem;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: -0.1em;
+}
+
+.status-item--button {
+  cursor: pointer;
+}
+
+.status-item--button:hover {
+  background: rgb(255 255 255 / 0.1);
+  color: #fff;
+}
+
+.status-item--button:focus-visible {
+  outline: 1px solid #ec4899;
+  outline-offset: -1px;
+}
+
+.status-item--palette {
+  color: #16f2b3;
+}
+
+.status-item--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-item {
+    transition: none;
+  }
+}

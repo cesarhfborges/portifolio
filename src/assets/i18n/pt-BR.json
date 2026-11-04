@@ -6,7 +6,8 @@
       "skills": "Habilidades",
       "education": "Educação",
       "projects": "Projetos",
-      "language": "Idioma"
+      "language": "Idioma",
+      "explorer": "Explorador"
     },
     "heroSection": {
       "designation": "Desenvolvedor de software",
@@ -44,7 +45,12 @@
       "title": "Formação acadêmica",
       "duration": "Duração",
       "institution": "Instituição",
-      "topics": "Tópicos"
+      "topics": "Tópicos",
+      "explorer": "Explorador",
+      "open_editors": "Editores abertos",
+      "year": "Ano",
+      "courses": "cursos",
+      "select_hint": "Selecione um arquivo no explorador"
     },
     "contact": {
       "title": "Contato",
@@ -68,6 +74,48 @@
       "built_with": "Feito com",
       "problems": "0 problemas",
       "rights": "Todos os direitos reservados."
+    },
+    "files": {
+      "hero": "person.ts",
+      "about": "sobre.md",
+      "experience": "experiencias.ts",
+      "education": "educacao.json",
+      "skills": "habilidades.yaml",
+      "projects": "projetos.tsx",
+      "contact": "contato.sh"
+    },
+    "status": {
+      "branch": "Branch atual",
+      "problems": "Nenhum problema",
+      "spaces": "Espaços: 2",
+      "language_mode": "Modo de linguagem",
+      "switch_lang": "Alternar idioma",
+      "back_to_top": "Voltar ao topo",
+      "notifications": "Notificações",
+      "line": "Ln {{line}}, Col 1"
+    },
+    "palette": {
+      "placeholder": "Digite um comando ou o nome de uma seção…",
+      "go_to": "Ir para",
+      "top": "Ir para o topo",
+      "lang": "Alterar idioma",
+      "copy_email": "Copiar e-mail",
+      "copied": "E-mail copiado!",
+      "send_email": "Enviar e-mail",
+      "resume": "Abrir currículo",
+      "github": "Abrir GitHub",
+      "linkedin": "Abrir LinkedIn",
+      "empty": "Nenhum comando encontrado",
+      "cat_nav": "navegação",
+      "cat_pref": "preferências",
+      "cat_contact": "contato",
+      "open": "Paleta de comandos",
+      "hint_title": "Dica",
+      "hint_desktop": "Pressione Ctrl+K para navegar pelo portfólio como numa IDE.",
+      "hint_mobile": "Toque em >_ na barra de status para abrir a paleta de comandos.",
+      "try": "Experimentar",
+      "dismiss": "Não mostrar novamente",
+      "close": "Fechar"
     }
   }
 }

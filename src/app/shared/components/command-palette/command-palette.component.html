@@ -1,0 +1,61 @@
+<div *ngIf="workspace.paletteOpen()" class="palette-backdrop">
+  <!-- clicar fora fecha (Esc também, pelo campo de busca) -->
+  <button
+    type="button"
+    class="palette-scrim"
+    tabindex="-1"
+    [attr.aria-label]="'app.palette.close' | translate"
+    (click)="close()"
+  ></button>
+  <div
+    class="palette"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="'app.palette.open' | translate"
+  >
+    <div class="palette-input-row">
+      <span class="text-[#16f2b3]" aria-hidden="true">&gt;</span>
+      <input
+        #input
+        type="text"
+        class="palette-input"
+        role="combobox"
+        aria-expanded="true"
+        aria-controls="palette-list"
+        [attr.aria-activedescendant]="results.length ? 'cmd-' + results[activeIndex()]?.id : null"
+        [placeholder]="'app.palette.placeholder' | translate"
+        [value]="query()"
+        (input)="onInput($any($event.target).value)"
+        (keydown)="onKeydown($event)"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <kbd class="palette-kbd">Esc</kbd>
+    </div>
+
+    <ul #list id="palette-list" class="palette-list" role="listbox">
+      <li
+        *ngFor="let cmd of results; let i = index"
+        [id]="'cmd-' + cmd.id"
+        class="palette-item"
+        role="option"
+        [class.palette-item--active]="i === activeIndex()"
+        [attr.aria-selected]="i === activeIndex()"
+        tabindex="-1"
+        (mouseenter)="activeIndex.set(i)"
+        (click)="execute(cmd)"
+        (keydown.enter)="execute(cmd)"
+      >
+        <span class="palette-icon" aria-hidden="true">
+          <span *ngIf="cmd.badge" class="palette-badge" [style.color]="cmd.badge.color">{{ cmd.badge.text }}</span>
+          <fa-icon *ngIf="cmd.icon" [icon]="cmd.icon"></fa-icon>
+        </span>
+        <span class="truncate">{{ cmd.title }}</span>
+        <span class="palette-category hidden sm:inline">{{ cmd.category }}</span>
+      </li>
+      <li *ngIf="!results.length" class="palette-empty">{{ 'app.palette.empty' | translate }}</li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="feedback()" class="palette-feedback" role="status">✓ {{ feedback() }}</div>

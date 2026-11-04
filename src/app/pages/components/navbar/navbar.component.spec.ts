@@ -86,8 +86,16 @@ describe('NavbarComponent', () => {
     expect(component.indexLabel(4)).toBe('05.');
   });
 
-  it('navItems: deve seguir a ordem das seções na página', () => {
-    expect(component.navItems.map(i => i.id)).toEqual(['about', 'experience', 'education', 'skills', 'projects']);
+  it('files: as abas devem seguir a ordem das seções na página', () => {
+    expect(component.files.map(i => i.id))
+      .toEqual(['about', 'experience', 'education', 'skills', 'projects', 'contact']);
+  });
+
+  it('activeFile: no topo da página o arquivo ativo é o do hero (person.ts)', () => {
+    spyOnProperty(window, 'scrollY').and.returnValue(0);
+    component.onWindowScroll();
+    expect(component.activeSection).toBe('hero');
+    expect(component.activeFile.language).toBe('TypeScript');
   });
 
   it('onEscape: deve fechar o menu mobile aberto', () => {

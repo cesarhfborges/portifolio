@@ -1,8 +1,6 @@
-import {Component, inject} from '@angular/core';
-import {faCircleCheck, faCodeBranch} from '@fortawesome/free-solid-svg-icons';
+import {Component} from '@angular/core';
 import {faGithub, faLinkedin, faStackOverflow, faTelegram} from '@fortawesome/free-brands-svg-icons';
 import {personalData} from '../../../shared/data/personal.data';
-import {TranslationService} from '../../../shared/services/translation.service';
 
 @Component({
   selector: 'app-footer',
@@ -14,10 +12,6 @@ export class FooterComponent {
 
   readonly now: Date = new Date();
   readonly personalData = personalData;
-  readonly translation = inject(TranslationService);
-
-  readonly faCodeBranch = faCodeBranch;
-  readonly faCircleCheck = faCircleCheck;
 
   /** Mesma ordem e numeração do menu e dos títulos de seção. */
   readonly sections = [
